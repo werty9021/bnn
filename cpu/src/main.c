@@ -16,7 +16,7 @@ int main(){
     struct Dim2d padding_size = {.x = 1, .y = 1}; // Padding
     
     /*** Layer 0; full precision conv + binary activation ***/
-    struct FloatTensor *l0_input = floattensor_from_file(1, Ci0, H, W, "../data/input.bin");
+    struct FloatTensor *l0_input = floattensor_from_file(1, Ci0, H, W, "../data/input/50x50.bin");
     struct FloatTensor *float_weights = floattensor_from_file(Co, Ci0, kernel_size.y, kernel_size.x, "../data/weights/conv0.bin");
     struct FloatTensor *float_output = conv2d_skip2(l0_input, float_weights, &kernel_size, &padding_size);
     // floattensor_to_file(float_output, "../data/output/conv0.bin"); // Write output to file

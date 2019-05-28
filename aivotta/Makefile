@@ -12,7 +12,7 @@ SRC = $(call rwildcard, $(SRC_DIR), *.c *.h)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 CC = tcecc
-TCEFLAGS += -a arch/basic.adf -k input_data,l0_weights
+TCEFLAGS += -a arch/basic.adf -k input_data,l0_weights,output_data
 CPPFLAGS += $(foreach dir,$(INCL_DIR),-I$(dir))# -I is a preprocessor flag, not a compiler flag
 CFLAGS += -O0 --std=c11
 LDFLAGS += # -L is a linker flag
@@ -29,13 +29,14 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(TCEFLAGS) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 compare:
-	pipenv run python ../compare.py
+	python3 ../compare.py
 
 simulate:
 	ttasim -a arch/basic.adf -p main.tpef -e "\
-	load_data /a data input_data ../data/input.bin;\
+	load_data /a data input_data ../data/input/5x5.bin;\
 	load_data /a data l0_weights ../data/weights/conv0.bin;\
-	run; x /a data /u w /n 20 /f ../data/output/out.bin input_data; quit;"
+	load_data /a data l1_weights ../data/weights/conv1.bin;\
+	run; x /a data /u w /n 6400 /f ../data/output/conv1.bin output_data; quit;"
 
 clean:
 	$(RM) $(OBJ)
