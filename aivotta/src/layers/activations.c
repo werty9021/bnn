@@ -2,7 +2,6 @@
 #include "tensor_utils.h"
 #include "assert.h"
 #include <stdio.h>
-#include "print_arrays.h"
 
 #define MAX(a, b) (a > b ? a : b)
 #define SIGN(a, t) (a >= t ? 1 : 0)

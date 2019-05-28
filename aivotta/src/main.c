@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdint.h>
 #include "types.h"
 #include "tensor_utils.h"
@@ -27,14 +26,6 @@ int main(){
     struct FloatTensor *input = floattensor_from_ptr(1, 1, H, W, input_data);
     struct FloatTensor *float_weights = floattensor_from_ptr(Co, 1, kernel_size.y, kernel_size.x, l0_weights);
     struct FloatTensor *float_output = conv2d_skip2(input, float_weights, &kernel_size, &padding_size);
-
-     for (int j=0; j<5; j++){
-        printf("%f %p\n", input_data[0][j], &input_data[0][j]);
-    }
-
-    for (int j=0; j<5; j++){
-        printf("%f %p\n", *(input->data+j), (input->data+j));
-    }
 
     free_floattensor(float_output);
 

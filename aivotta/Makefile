@@ -12,7 +12,7 @@ SRC = $(call rwildcard, $(SRC_DIR), *.c *.h)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 CC = tcecc
-TCEFLAGS += --swfp -a arch/basic.adf -k input_data,l0_weights
+TCEFLAGS += -a arch/basic.adf -k input_data,l0_weights
 CPPFLAGS += $(foreach dir,$(INCL_DIR),-I$(dir))# -I is a preprocessor flag, not a compiler flag
 CFLAGS += -O0 --std=c11
 LDFLAGS += # -L is a linker flag
