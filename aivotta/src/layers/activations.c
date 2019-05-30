@@ -2,12 +2,13 @@
 #include "tensor_utils.h"
 #include "assert.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 #define MAX(a, b) (a > b ? a : b)
 #define SIGN(a, t) (a >= t ? 1 : 0)
 #define SET_BIT(var, pos, val) var |= (val << pos) // variable, position, value
 
-struct FloatTensor * relu(struct UIntTensor *tensor, struct FloatTensor *a, struct FloatTensor *b){
+struct FloatTensor * relu(struct UIntTensor *tensor, struct FloatTensor2 *a, struct FloatTensor2 *b){
     struct FloatTensor *output = floattensor_init(tensor->N, tensor->C, tensor->H, tensor->W, 1);
 
     for(int l = 0; l < tensor->N; l++){
@@ -38,8 +39,13 @@ struct FloatTensor * relu(struct UIntTensor *tensor, struct FloatTensor *a, stru
     }
 
     free_uinttensor(tensor);
+    #if __PLATFORM == _TCE
+    free(a);
+    free(b);
+    #else
     free_floattensor(a);
     free_floattensor(b);
+    #endif
 
     return output;
 }
@@ -71,7 +77,7 @@ struct UIntTensor* sign_from_float(struct FloatTensor *tensor){
     return output;
 }
 
-struct UIntTensor* sign_from_uint(struct UIntTensor *tensor, struct UIntTensor *threshold){
+struct UIntTensor* sign_from_uint(struct UIntTensor *tensor, struct UIntTensor2 *threshold){
     assert(tensor->C % 32 == 0);
     assert(tensor->C == threshold->W);
 
@@ -109,7 +115,11 @@ struct UIntTensor* sign_from_uint(struct UIntTensor *tensor, struct UIntTensor *
     }
 
     free_uinttensor(tensor);
+    #if __PLATFORM == _TCE
+    free(threshold);
+    #else
     free_uinttensor(threshold);
+    #endif
 
     return output;
 }

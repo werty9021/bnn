@@ -16,16 +16,17 @@
 //init tensor
 struct FloatTensor* floattensor_init(int N, int C, int H, int W, bool zeros);
 struct UIntTensor* uinttensor_init(int N, int C, int H, int W, bool zeros);
-struct IntTensor* inttensor_init(int N, int C, int H, int W, bool zeros);
 
-//tensor from ptr
-struct FloatTensor* floattensor_from_ptr(int N, int C, int H, int W, float *data);
-struct UIntTensor* uinttensor_from_ptr(int N, int C, int H, int W, uint32_t *data);
-struct IntTensor* inttensor_from_ptr(int N, int C, int H, int W, int *data);
+//tensor from file
+struct FloatTensor2* floattensor_from_file(int N, int C, int H, int W, char *path);
+struct UIntTensor2* uinttensor_from_file(int N, int C, int H, int W, char *path);
+
+//tensor to file
+void floattensor_to_file(struct FloatTensor *tensor, char *path);
+void uinttensor_to_file(struct UIntTensor *tensor, char *path);
 
 //free tensor memory
 void free_floattensor(struct FloatTensor *tensor);
 void free_uinttensor(struct UIntTensor *tensor);
-void free_inttensor(struct IntTensor *tensor);
 
 #endif

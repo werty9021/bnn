@@ -48,8 +48,8 @@ for filename in sorted(os.listdir('../data/output/')):
                     if ((j==0 and i==0) or (j==size[0]-1 and i==0) or (j==0 and i==size[1]-1) or (j==size[0]-1 and i==size[1]-1)):
                         T += 1*64;
                     out2[k,j,i] = 2*out[k,j,i] - T
-        print(ref[8])
-        print(out2[8])
+        print(ref[63])
+        print(out2[63])
         print((ref==out2).mean())
         mean = (ref-out2).mean()
     # else:

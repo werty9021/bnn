@@ -10,16 +10,16 @@
 
 int main(){
     // Convolve with skipping computations
-    const int H = 50, W = 50; // Input size
+    const int H = 5, W = 5; // Input size
     const int Co = 64, Ci = 64/32, Ci0 = 1; // Output/Input channels
     struct Dim2d kernel_size = {.x = 3, .y = 3}; // Kernel
     struct Dim2d padding_size = {.x = 1, .y = 1}; // Padding
     
     /*** Layer 0; full precision conv + binary activation ***/
-    struct FloatTensor *l0_input = floattensor_from_file(1, Ci0, H, W, "../data/input/50x50.bin");
+    struct FloatTensor *l0_input = floattensor_from_file(1, Ci0, H, W, "../data/input/5x5.bin");
     struct FloatTensor *float_weights = floattensor_from_file(Co, Ci0, kernel_size.y, kernel_size.x, "../data/weights/conv0.bin");
     struct FloatTensor *float_output = conv2d_skip2(l0_input, float_weights, &kernel_size, &padding_size);
-    // floattensor_to_file(float_output, "../data/output/conv0.bin"); // Write output to file
+    floattensor_to_file(float_output, "../data/output/conv0.bin"); // Write output to file
 
     // struct UIntTensor *output = sign_from_float(float_output);
     // uinttensor_to_file(output, "../data/output/act0.bin");  // Write output to file
@@ -37,13 +37,13 @@ int main(){
             output = sign_from_uint(output, thresholds);
         }
         sprintf(path, "../data/output/act%d.bin", i-1);
-        // uinttensor_to_file(output, path);  // Write output to file
+        uinttensor_to_file(output, path);  // Write output to file
 
         sprintf(path, "../data/weights/conv%d.bin", i);
         weights = uinttensor_from_file(Co, Ci, kernel_size.y, kernel_size.x, path);
         output = binconv2d_skip(output, weights, &kernel_size, &padding_size);
         sprintf(path, "../data/output/conv%d.bin", i);
-        // uinttensor_to_file(output, path);  // Write output to file        
+        uinttensor_to_file(output, path);  // Write output to file        
     }
 
     /*** Layer 16; relu + output conv ***/
