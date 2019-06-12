@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<osal version="0.1">
+
+  <operation>
+    <name>XNORPOPCNTACC</name>
+    <description/>
+    <inputs>3</inputs>
+    <outputs>1</outputs>
+    <in element-count="1" element-width="32" id="1" type="UIntWord"/>
+    <in element-count="1" element-width="32" id="2" type="UIntWord"/>
+    <in element-count="1" element-width="32" id="3" type="UIntWord"/>
+    <out element-count="1" element-width="32" id="4" type="UIntWord"/>
+  </operation>
+
+  <operation>
+    <name>SET_BIT</name>
+    <description/>
+    <inputs>2</inputs>
+    <outputs>1</outputs>
+    <in element-count="1" element-width="32" id="1" type="UIntWord"/>
+    <in element-count="1" element-width="32" id="2" type="UIntWord"/>
+    <out element-count="1" element-width="32" id="3" type="UIntWord"/>
+  </operation>
+
+  <operation>
+    <name>POPCOUNT</name>
+    <description/>
+    <inputs>1</inputs>
+    <outputs>1</outputs>
+    <in element-count="1" element-width="32" id="1" type="UIntWord"/>
+    <out element-count="1" element-width="32" id="2" type="UIntWord"/>
+  </operation>
+
+  <operation>
+    <name>POPCOUNTACC</name>
+    <description/>
+    <inputs>2</inputs>
+    <outputs>1</outputs>
+    <in element-count="1" element-width="32" id="1" type="UIntWord"/>
+    <in element-count="1" element-width="32" id="2" type="UIntWord"/>
+    <out element-count="1" element-width="32" id="3" type="UIntWord"/>
+  </operation>
+
+</osal>

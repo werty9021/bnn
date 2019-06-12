@@ -62,10 +62,14 @@ struct UIntTensor* sign_from_float(struct FloatTensor *tensor){
 
     for(int l = 0; l < tensor->N; l++){
         for(int k = 0; k < tensor->C / 32; k++){
-            for(int pos = 0; pos < 32; pos++){
-                for(int j = 0; j < tensor->H; j++){
-                    for(int i = 0; i < tensor->W; i++){
-                        SET_BIT(*IND4(output, l, k, j, i), (31 - pos), SIGN(*IND4(tensor, l, (k*32 + pos), j, i), 0));
+            for(int j = 0; j < tensor->H; j++){
+                for(int i = 0; i < tensor->W; i++){
+                    for(int pos = 0; pos < 32; pos++){
+                        // SET_BIT(*IND4(output, l, k, j, i), (31 - pos), SIGN(*IND4(tensor, l, (k*32 + pos), j, i), 0));
+
+                        if (*IND4(tensor, l, (k*32 + pos), j, i) >= 0) {
+                            _TCE_SET_BIT(pos, *IND4(output, l, k, j, i), *IND4(output, l, k, j, i));
+                        }
                     }
                 }
             }
@@ -107,7 +111,12 @@ struct UIntTensor* sign_from_uint(struct UIntTensor *tensor, struct UIntTensor2 
                         uint32_t t = *IND1(threshold, (k*32 + pos));
                         uint32_t thres = t > T ? t - T : 0;
                         uint32_t a = 2* *IND4(tensor, l, (k*32 + pos), j, i);
-                        SET_BIT(*IND4(output, l, k, j, i), (31 - pos), SIGN(a, thres));
+                        // SET_BIT(*IND4(output, l, k, j, i), (31 - pos), SIGN(a, thres));
+
+
+                        if (a >= thres) {
+                            _TCE_SET_BIT(pos, *IND4(output, l, k, j, i), *IND4(output, l, k, j, i));
+                        }
                     }
                 }
             }

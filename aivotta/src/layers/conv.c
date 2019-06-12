@@ -4,6 +4,7 @@
 #include <string.h>
 #include "types.h"
 #include "tensor_utils.h"
+#include "tceops.h"
 
 struct FloatTensor* conv2d_skip1(struct FloatTensor2 *input, struct FloatTensor2 *weights, struct Dim2d *kernel_size, struct Dim2d *padding_size){
     // Short variable names
@@ -118,7 +119,20 @@ struct UIntTensor* binconv2d_skip(struct UIntTensor *input, struct UIntTensor2 *
                             //     printf("%u \n", popcnt);
                             // }
                             
-                            *IND3(output, z, y, x) += __builtin_popcount(~(*IND3(input, i, (y - Py + k), (x - Px + l)) ^ *IND4(weights, z, i, k, l)));
+                            // *IND3(output, z, y, x) += __builtin_popcount(~(*IND3(input, i, (y - Py + k), (x - Px + l)) ^ *IND4(weights, z, i, k, l)));
+
+                            uint32_t xnor = ~(*IND3(input, i, (y - Py + k), (x - Px + l)) ^ *IND4(weights, z, i, k, l));
+                            
+                            /* Opt 1 */
+                            // uint32_t popcnt = 0;
+                            // _TCE_POPCOUNT(xnor, popcnt);
+                            // *IND3(output, z, y, x) += popcnt;
+
+                            /* Opt 2 */
+                            _TCE_POPCOUNTACC(xnor, *IND3(output, z, y, x), *IND3(output, z, y, x));
+
+                            /* Opt 3 */
+                            // _TCE_XNORPOPCNTACC(*IND3(input, i, (y - Py + k), (x - Px + l)), *IND4(weights, z, i, k, l), *IND3(output, z, y, x), *IND3(output, z, y, x));
                         }
                     }
                 }
