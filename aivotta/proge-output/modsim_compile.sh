@@ -47,13 +47,13 @@ vcom vhdl/tta0_imem_mau_pkg.vhdl || exit 1
 vcom vhdl/tta0_globals_pkg.vhdl || exit 1
 vcom vhdl/tta0_params_pkg.vhdl || exit 1
 vcom $coverage_opt -check_synthesis vhdl/lsu_le.vhdl || exit 1
-vcom $coverage_opt -check_synthesis vhdl/stdout.vhdl || exit 1
 vcom vhdl/util_pkg.vhdl || exit 1
 vcom $coverage_opt -check_synthesis vhdl/monolithic_alu_shladd_medium.vhdl || exit 1
+vcom $coverage_opt -check_synthesis vhdl/stdout.vhdl || exit 1
 vcom $coverage_opt -check_synthesis vhdl/fixed_float_types_c.vhdl || exit 1
 vcom $coverage_opt -check_synthesis vhdl/fixed_pkg_c.vhdl || exit 1
 vcom $coverage_opt -check_synthesis vhdl/float_pkg_c.vhdl || exit 1
-vcom $coverage_opt -check_synthesis vhdl/fpu_sp_conv.vhdl || exit 1
+vcom $coverage_opt -check_synthesis vhdl/fpu_sp_div.vhdl || exit 1
 vcom $coverage_opt -check_synthesis vhdl/sabrewing_tce.vhd || exit 1
 vcom $coverage_opt -check_synthesis vhdl/alu_pkg_lvl1.vhd || exit 1
 vcom $coverage_opt -check_synthesis vhdl/alu_pkg_lvl2.vhd || exit 1
@@ -72,10 +72,9 @@ vcom $coverage_opt -check_synthesis vhdl/lzd.vhd || exit 1
 vcom $coverage_opt -check_synthesis vhdl/normalize.vhd || exit 1
 vcom $coverage_opt -check_synthesis vhdl/round.vhd || exit 1
 vcom $coverage_opt -check_synthesis vhdl/backend.vhd || exit 1
-vcom $coverage_opt -check_synthesis vhdl/fpu_sp_div.vhdl || exit 1
+vcom $coverage_opt -check_synthesis vhdl/fpu_sp_conv.vhdl || exit 1
 vcom $coverage_opt -check_synthesis vhdl/fu_bnn_ops.vhd || exit 1
 vcom $coverage_opt -check_synthesis vhdl/rf_1wr_1rd_always_1_guarded_0.vhd || exit 1
-vcom vhdl/tta0_imem_mau_pkg.vhdl || exit 1
 vcom $coverage_opt -check_synthesis vhdl/tta0.vhdl || exit 1
 
 vcom -check_synthesis gcu_ic/gcu_opcodes_pkg.vhdl || exit 1

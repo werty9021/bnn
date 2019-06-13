@@ -1822,20 +1822,20 @@
   <address-space name="data">
     <width>8</width>
     <min-address>0</min-address>
-    <max-address>4294967295</max-address>
+    <max-address>1073741823</max-address>
     <numerical-id>0</numerical-id>
   </address-space>
 
   <address-space name="instructions">
     <width>8</width>
     <min-address>0</min-address>
-    <max-address>4294967295</max-address>
+    <max-address>16777215</max-address>
   </address-space>
 
   <address-space name="inputdata">
     <width>8</width>
     <min-address>0</min-address>
-    <max-address>4294967295</max-address>
+    <max-address>16777215</max-address>
     <numerical-id>1</numerical-id>
   </address-space>
 

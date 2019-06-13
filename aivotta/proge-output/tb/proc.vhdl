@@ -35,18 +35,18 @@ architecture structural of proc is
   signal tta_core_imem_en_x_wire : std_logic;
   signal tta_core_imem_addr_wire : std_logic_vector(IMEMADDRWIDTH-1 downto 0);
   signal tta_core_imem_data_wire : std_logic_vector(IMEMWIDTHINMAUS*IMEMMAUWIDTH-1 downto 0);
-  signal tta_core_fu_LSU_inp_mem_en_x_wire : std_logic_vector(0 downto 0);
-  signal tta_core_fu_LSU_inp_wr_en_x_wire : std_logic_vector(0 downto 0);
-  signal tta_core_fu_LSU_inp_wr_mask_x_wire : std_logic_vector(31 downto 0);
-  signal tta_core_fu_LSU_inp_addr_wire : std_logic_vector(fu_LSU_inp_addrw-2-1 downto 0);
-  signal tta_core_fu_LSU_inp_data_in_wire : std_logic_vector(31 downto 0);
-  signal tta_core_fu_LSU_inp_data_out_wire : std_logic_vector(31 downto 0);
   signal tta_core_fu_LSU_mem_en_x_wire : std_logic_vector(0 downto 0);
   signal tta_core_fu_LSU_wr_en_x_wire : std_logic_vector(0 downto 0);
   signal tta_core_fu_LSU_wr_mask_x_wire : std_logic_vector(31 downto 0);
   signal tta_core_fu_LSU_addr_wire : std_logic_vector(fu_LSU_addrw-2-1 downto 0);
   signal tta_core_fu_LSU_data_in_wire : std_logic_vector(31 downto 0);
   signal tta_core_fu_LSU_data_out_wire : std_logic_vector(31 downto 0);
+  signal tta_core_fu_LSU_inp_mem_en_x_wire : std_logic_vector(0 downto 0);
+  signal tta_core_fu_LSU_inp_wr_en_x_wire : std_logic_vector(0 downto 0);
+  signal tta_core_fu_LSU_inp_wr_mask_x_wire : std_logic_vector(31 downto 0);
+  signal tta_core_fu_LSU_inp_addr_wire : std_logic_vector(fu_LSU_inp_addrw-2-1 downto 0);
+  signal tta_core_fu_LSU_inp_data_in_wire : std_logic_vector(31 downto 0);
+  signal tta_core_fu_LSU_inp_data_out_wire : std_logic_vector(31 downto 0);
 
   component tta0
     generic (
@@ -59,18 +59,18 @@ architecture structural of proc is
       imem_addr : out std_logic_vector(IMEMADDRWIDTH-1 downto 0);
       imem_data : in std_logic_vector(IMEMWIDTHINMAUS*IMEMMAUWIDTH-1 downto 0);
       locked : out std_logic;
-      fu_LSU_inp_mem_en_x : out std_logic_vector(1-1 downto 0);
-      fu_LSU_inp_wr_en_x : out std_logic_vector(1-1 downto 0);
-      fu_LSU_inp_wr_mask_x : out std_logic_vector(fu_LSU_inp_dataw-1 downto 0);
-      fu_LSU_inp_addr : out std_logic_vector(fu_LSU_inp_addrw-2-1 downto 0);
-      fu_LSU_inp_data_in : in std_logic_vector(fu_LSU_inp_dataw-1 downto 0);
-      fu_LSU_inp_data_out : out std_logic_vector(fu_LSU_inp_dataw-1 downto 0);
       fu_LSU_mem_en_x : out std_logic_vector(1-1 downto 0);
       fu_LSU_wr_en_x : out std_logic_vector(1-1 downto 0);
       fu_LSU_wr_mask_x : out std_logic_vector(fu_LSU_dataw-1 downto 0);
       fu_LSU_addr : out std_logic_vector(fu_LSU_addrw-2-1 downto 0);
       fu_LSU_data_in : in std_logic_vector(fu_LSU_dataw-1 downto 0);
-      fu_LSU_data_out : out std_logic_vector(fu_LSU_dataw-1 downto 0));
+      fu_LSU_data_out : out std_logic_vector(fu_LSU_dataw-1 downto 0);
+      fu_LSU_inp_mem_en_x : out std_logic_vector(1-1 downto 0);
+      fu_LSU_inp_wr_en_x : out std_logic_vector(1-1 downto 0);
+      fu_LSU_inp_wr_mask_x : out std_logic_vector(fu_LSU_inp_dataw-1 downto 0);
+      fu_LSU_inp_addr : out std_logic_vector(fu_LSU_inp_addrw-2-1 downto 0);
+      fu_LSU_inp_data_in : in std_logic_vector(fu_LSU_inp_dataw-1 downto 0);
+      fu_LSU_inp_data_out : out std_logic_vector(fu_LSU_inp_dataw-1 downto 0));
   end component;
 
   component synch_sram
@@ -96,18 +96,18 @@ begin
   imem0_en_x_wire <= tta_core_imem_en_x_wire;
   imem0_addr_wire <= tta_core_imem_addr_wire;
   tta_core_imem_data_wire <= imem0_q_wire;
-  dmem_inputdata_en_x_wire <= tta_core_fu_LSU_inp_mem_en_x_wire(0);
-  dmem_inputdata_wr_x_wire <= tta_core_fu_LSU_inp_wr_en_x_wire(0);
-  dmem_inputdata_bit_wr_x_wire <= tta_core_fu_LSU_inp_wr_mask_x_wire;
-  dmem_inputdata_addr_wire <= tta_core_fu_LSU_inp_addr_wire;
-  tta_core_fu_LSU_inp_data_in_wire <= dmem_inputdata_q_wire;
-  dmem_inputdata_d_wire <= tta_core_fu_LSU_inp_data_out_wire;
   dmem_data_en_x_wire <= tta_core_fu_LSU_mem_en_x_wire(0);
   dmem_data_wr_x_wire <= tta_core_fu_LSU_wr_en_x_wire(0);
   dmem_data_bit_wr_x_wire <= tta_core_fu_LSU_wr_mask_x_wire;
   dmem_data_addr_wire <= tta_core_fu_LSU_addr_wire;
   tta_core_fu_LSU_data_in_wire <= dmem_data_q_wire;
   dmem_data_d_wire <= tta_core_fu_LSU_data_out_wire;
+  dmem_inputdata_en_x_wire <= tta_core_fu_LSU_inp_mem_en_x_wire(0);
+  dmem_inputdata_wr_x_wire <= tta_core_fu_LSU_inp_wr_en_x_wire(0);
+  dmem_inputdata_bit_wr_x_wire <= tta_core_fu_LSU_inp_wr_mask_x_wire;
+  dmem_inputdata_addr_wire <= tta_core_fu_LSU_inp_addr_wire;
+  tta_core_fu_LSU_inp_data_in_wire <= dmem_inputdata_q_wire;
+  dmem_inputdata_d_wire <= tta_core_fu_LSU_inp_data_out_wire;
 
   tta_core : tta0
     generic map (
@@ -120,18 +120,18 @@ begin
       imem_addr => tta_core_imem_addr_wire,
       imem_data => tta_core_imem_data_wire,
       locked => locked(0),
-      fu_LSU_inp_mem_en_x => tta_core_fu_LSU_inp_mem_en_x_wire,
-      fu_LSU_inp_wr_en_x => tta_core_fu_LSU_inp_wr_en_x_wire,
-      fu_LSU_inp_wr_mask_x => tta_core_fu_LSU_inp_wr_mask_x_wire,
-      fu_LSU_inp_addr => tta_core_fu_LSU_inp_addr_wire,
-      fu_LSU_inp_data_in => tta_core_fu_LSU_inp_data_in_wire,
-      fu_LSU_inp_data_out => tta_core_fu_LSU_inp_data_out_wire,
       fu_LSU_mem_en_x => tta_core_fu_LSU_mem_en_x_wire,
       fu_LSU_wr_en_x => tta_core_fu_LSU_wr_en_x_wire,
       fu_LSU_wr_mask_x => tta_core_fu_LSU_wr_mask_x_wire,
       fu_LSU_addr => tta_core_fu_LSU_addr_wire,
       fu_LSU_data_in => tta_core_fu_LSU_data_in_wire,
-      fu_LSU_data_out => tta_core_fu_LSU_data_out_wire);
+      fu_LSU_data_out => tta_core_fu_LSU_data_out_wire,
+      fu_LSU_inp_mem_en_x => tta_core_fu_LSU_inp_mem_en_x_wire,
+      fu_LSU_inp_wr_en_x => tta_core_fu_LSU_inp_wr_en_x_wire,
+      fu_LSU_inp_wr_mask_x => tta_core_fu_LSU_inp_wr_mask_x_wire,
+      fu_LSU_inp_addr => tta_core_fu_LSU_inp_addr_wire,
+      fu_LSU_inp_data_in => tta_core_fu_LSU_inp_data_in_wire,
+      fu_LSU_inp_data_out => tta_core_fu_LSU_inp_data_out_wire);
 
   imem0 : synch_sram
     generic map (
@@ -149,22 +149,6 @@ begin
       bit_wr_x => (others => '1'),
       q => imem0_q_wire);
 
-  dmem_inputdata : synch_sram
-    generic map (
-      DATAW => fu_LSU_inp_dataw,
-      ADDRW => fu_LSU_inp_addrw-2,
-      INITFILENAME => "tb/dmem_inputdata_init.img",
-      access_trace => false,
-      ACCESSTRACEFILENAME => "access_trace")
-    port map (
-      clk => clk,
-      d => dmem_inputdata_d_wire,
-      addr => dmem_inputdata_addr_wire,
-      en_x => dmem_inputdata_en_x_wire,
-      wr_x => dmem_inputdata_wr_x_wire,
-      bit_wr_x => dmem_inputdata_bit_wr_x_wire,
-      q => dmem_inputdata_q_wire);
-
   dmem_data : synch_sram
     generic map (
       DATAW => fu_LSU_dataw,
@@ -180,5 +164,21 @@ begin
       wr_x => dmem_data_wr_x_wire,
       bit_wr_x => dmem_data_bit_wr_x_wire,
       q => dmem_data_q_wire);
+
+  dmem_inputdata : synch_sram
+    generic map (
+      DATAW => fu_LSU_inp_dataw,
+      ADDRW => fu_LSU_inp_addrw-2,
+      INITFILENAME => "tb/dmem_inputdata_init.img",
+      access_trace => false,
+      ACCESSTRACEFILENAME => "access_trace")
+    port map (
+      clk => clk,
+      d => dmem_inputdata_d_wire,
+      addr => dmem_inputdata_addr_wire,
+      en_x => dmem_inputdata_en_x_wire,
+      wr_x => dmem_inputdata_wr_x_wire,
+      bit_wr_x => dmem_inputdata_bit_wr_x_wire,
+      q => dmem_inputdata_q_wire);
 
 end structural;

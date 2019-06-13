@@ -3,7 +3,7 @@ use work.tta0_imem_mau.all;
 
 package tta0_globals is
   -- address width of the instruction memory
-  constant IMEMADDRWIDTH : positive := 32;
+  constant IMEMADDRWIDTH : positive := 24;
   -- width of the instruction memory in MAUs
   constant IMEMWIDTHINMAUS : positive := 1;
   -- width of instruction fetch block.

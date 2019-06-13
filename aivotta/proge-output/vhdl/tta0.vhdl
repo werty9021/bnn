@@ -19,18 +19,18 @@ entity tta0 is
     imem_addr : out std_logic_vector(IMEMADDRWIDTH-1 downto 0);
     imem_data : in std_logic_vector(IMEMWIDTHINMAUS*IMEMMAUWIDTH-1 downto 0);
     locked : out std_logic;
-    fu_LSU_inp_mem_en_x : out std_logic_vector(0 downto 0);
-    fu_LSU_inp_wr_en_x : out std_logic_vector(0 downto 0);
-    fu_LSU_inp_wr_mask_x : out std_logic_vector(fu_LSU_inp_dataw-1 downto 0);
-    fu_LSU_inp_addr : out std_logic_vector(fu_LSU_inp_addrw-2-1 downto 0);
-    fu_LSU_inp_data_in : in std_logic_vector(fu_LSU_inp_dataw-1 downto 0);
-    fu_LSU_inp_data_out : out std_logic_vector(fu_LSU_inp_dataw-1 downto 0);
     fu_LSU_mem_en_x : out std_logic_vector(0 downto 0);
     fu_LSU_wr_en_x : out std_logic_vector(0 downto 0);
     fu_LSU_wr_mask_x : out std_logic_vector(fu_LSU_dataw-1 downto 0);
     fu_LSU_addr : out std_logic_vector(fu_LSU_addrw-2-1 downto 0);
     fu_LSU_data_in : in std_logic_vector(fu_LSU_dataw-1 downto 0);
-    fu_LSU_data_out : out std_logic_vector(fu_LSU_dataw-1 downto 0));
+    fu_LSU_data_out : out std_logic_vector(fu_LSU_dataw-1 downto 0);
+    fu_LSU_inp_mem_en_x : out std_logic_vector(0 downto 0);
+    fu_LSU_inp_wr_en_x : out std_logic_vector(0 downto 0);
+    fu_LSU_inp_wr_mask_x : out std_logic_vector(fu_LSU_inp_dataw-1 downto 0);
+    fu_LSU_inp_addr : out std_logic_vector(fu_LSU_inp_addrw-2-1 downto 0);
+    fu_LSU_inp_data_in : in std_logic_vector(fu_LSU_inp_dataw-1 downto 0);
+    fu_LSU_inp_data_out : out std_logic_vector(fu_LSU_inp_dataw-1 downto 0));
 
 end tta0;
 
@@ -49,15 +49,15 @@ architecture structural of tta0 is
   signal fu_ALU_o1load_wire : std_logic;
   signal fu_ALU_t1opcode_wire : std_logic_vector(3 downto 0);
   signal fu_ALU_glock_wire : std_logic;
-  signal fu_BNN_OPS_t1data_wire : std_logic_vector(31 downto 0);
-  signal fu_BNN_OPS_t1load_wire : std_logic;
-  signal fu_BNN_OPS_r1data_wire : std_logic_vector(31 downto 0);
-  signal fu_BNN_OPS_o2data_wire : std_logic_vector(31 downto 0);
-  signal fu_BNN_OPS_o2load_wire : std_logic;
-  signal fu_BNN_OPS_o3data_wire : std_logic_vector(31 downto 0);
-  signal fu_BNN_OPS_o3load_wire : std_logic;
-  signal fu_BNN_OPS_t1opcode_wire : std_logic_vector(1 downto 0);
-  signal fu_BNN_OPS_glock_wire : std_logic;
+  signal fu_BNN_OPS_instance_t1data_wire : std_logic_vector(31 downto 0);
+  signal fu_BNN_OPS_instance_t1load_wire : std_logic;
+  signal fu_BNN_OPS_instance_r1data_wire : std_logic_vector(31 downto 0);
+  signal fu_BNN_OPS_instance_o2data_wire : std_logic_vector(31 downto 0);
+  signal fu_BNN_OPS_instance_o2load_wire : std_logic;
+  signal fu_BNN_OPS_instance_o3data_wire : std_logic_vector(31 downto 0);
+  signal fu_BNN_OPS_instance_o3load_wire : std_logic;
+  signal fu_BNN_OPS_instance_t1opcode_wire : std_logic_vector(1 downto 0);
+  signal fu_BNN_OPS_instance_glock_wire : std_logic;
   signal fu_F32_I32_CONVERTER_t1data_wire : std_logic_vector(31 downto 0);
   signal fu_F32_I32_CONVERTER_t1load_wire : std_logic;
   signal fu_F32_I32_CONVERTER_r1data_wire : std_logic_vector(31 downto 0);
@@ -72,14 +72,14 @@ architecture structural of tta0 is
   signal fu_FALU_r1data_wire : std_logic_vector(31 downto 0);
   signal fu_FALU_t1opcode_wire : std_logic_vector(3 downto 0);
   signal fu_FALU_glock_wire : std_logic;
-  signal fu_LSU_inp_t1data_wire : std_logic_vector(31 downto 0);
+  signal fu_LSU_inp_t1data_wire : std_logic_vector(23 downto 0);
   signal fu_LSU_inp_t1load_wire : std_logic;
   signal fu_LSU_inp_r1data_wire : std_logic_vector(31 downto 0);
   signal fu_LSU_inp_o1data_wire : std_logic_vector(31 downto 0);
   signal fu_LSU_inp_o1load_wire : std_logic;
   signal fu_LSU_inp_t1opcode_wire : std_logic_vector(2 downto 0);
   signal fu_LSU_inp_glock_wire : std_logic;
-  signal fu_LSU_t1data_wire : std_logic_vector(31 downto 0);
+  signal fu_LSU_t1data_wire : std_logic_vector(29 downto 0);
   signal fu_LSU_t1load_wire : std_logic;
   signal fu_LSU_r1data_wire : std_logic_vector(31 downto 0);
   signal fu_LSU_o1data_wire : std_logic_vector(31 downto 0);
@@ -118,13 +118,13 @@ architecture structural of tta0 is
   signal ic_socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i3_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal ic_socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_data0_wire : std_logic_vector(31 downto 0);
   signal ic_socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_bus_cntrl_wire : std_logic_vector(2 downto 0);
-  signal ic_socket_LSU_i1_data_wire : std_logic_vector(31 downto 0);
+  signal ic_socket_LSU_i1_data_wire : std_logic_vector(29 downto 0);
   signal ic_socket_LSU_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal ic_socket_LSU_o1_data0_wire : std_logic_vector(31 downto 0);
   signal ic_socket_LSU_o1_bus_cntrl_wire : std_logic_vector(2 downto 0);
   signal ic_socket_LSU_i2_data_wire : std_logic_vector(31 downto 0);
   signal ic_socket_LSU_i2_bus_cntrl_wire : std_logic_vector(1 downto 0);
-  signal ic_socket_LSU_inp_i1_data_wire : std_logic_vector(31 downto 0);
+  signal ic_socket_LSU_inp_i1_data_wire : std_logic_vector(23 downto 0);
   signal ic_socket_LSU_inp_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal ic_socket_LSU_inp_o1_data0_wire : std_logic_vector(31 downto 0);
   signal ic_socket_LSU_inp_o1_bus_cntrl_wire : std_logic_vector(2 downto 0);
@@ -421,17 +421,6 @@ architecture structural of tta0 is
       glock : in std_logic);
   end component;
 
-  component printchar_always_1
-    generic (
-      dataw : integer);
-    port (
-      t1data : in std_logic_vector(dataw-1 downto 0);
-      t1load : in std_logic;
-      clk : in std_logic;
-      rstx : in std_logic;
-      glock : in std_logic);
-  end component;
-
   component fu_abs_add_and_eq_gt_gtu_ior_neg_shl_shl1add_shl2add_shr_shru_sub_sxhw_sxqw_xor_always_1
     generic (
       dataw : integer;
@@ -448,14 +437,26 @@ architecture structural of tta0 is
       glock : in std_logic);
   end component;
 
-  component fpu_sp_conv
+  component printchar_always_1
+    generic (
+      dataw : integer);
+    port (
+      t1data : in std_logic_vector(dataw-1 downto 0);
+      t1load : in std_logic;
+      clk : in std_logic;
+      rstx : in std_logic;
+      glock : in std_logic);
+  end component;
+
+  component fpu_sp_div
     generic (
       busw : integer);
     port (
       t1data : in std_logic_vector(busw-1 downto 0);
       t1load : in std_logic;
+      o1data : in std_logic_vector(busw-1 downto 0);
+      o1load : in std_logic;
       r1data : out std_logic_vector(busw-1 downto 0);
-      t1opcode : in std_logic_vector(2-1 downto 0);
       clk : in std_logic;
       rstx : in std_logic;
       glock : in std_logic);
@@ -480,21 +481,20 @@ architecture structural of tta0 is
       glock : in std_logic);
   end component;
 
-  component fpu_sp_div
+  component fpu_sp_conv
     generic (
       busw : integer);
     port (
       t1data : in std_logic_vector(busw-1 downto 0);
       t1load : in std_logic;
-      o1data : in std_logic_vector(busw-1 downto 0);
-      o1load : in std_logic;
       r1data : out std_logic_vector(busw-1 downto 0);
+      t1opcode : in std_logic_vector(2-1 downto 0);
       clk : in std_logic;
       rstx : in std_logic;
       glock : in std_logic);
   end component;
 
-  component bnn_ops
+  component fu_bnn_ops
     generic (
       busw : integer);
     port (
@@ -555,13 +555,13 @@ architecture structural of tta0 is
       socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i3_bus_cntrl : in std_logic_vector(2-1 downto 0);
       socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_data0 : in std_logic_vector(32-1 downto 0);
       socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_bus_cntrl : in std_logic_vector(3-1 downto 0);
-      socket_LSU_i1_data : out std_logic_vector(32-1 downto 0);
+      socket_LSU_i1_data : out std_logic_vector(30-1 downto 0);
       socket_LSU_i1_bus_cntrl : in std_logic_vector(2-1 downto 0);
       socket_LSU_o1_data0 : in std_logic_vector(32-1 downto 0);
       socket_LSU_o1_bus_cntrl : in std_logic_vector(3-1 downto 0);
       socket_LSU_i2_data : out std_logic_vector(32-1 downto 0);
       socket_LSU_i2_bus_cntrl : in std_logic_vector(2-1 downto 0);
-      socket_LSU_inp_i1_data : out std_logic_vector(32-1 downto 0);
+      socket_LSU_inp_i1_data : out std_logic_vector(24-1 downto 0);
       socket_LSU_inp_i1_bus_cntrl : in std_logic_vector(2-1 downto 0);
       socket_LSU_inp_o1_data0 : in std_logic_vector(32-1 downto 0);
       socket_LSU_inp_o1_bus_cntrl : in std_logic_vector(3-1 downto 0);
@@ -673,10 +673,10 @@ begin
   fu_F32_I32_CONVERTER_t1opcode_wire <= inst_decoder_fu_F32_I32_CONVERTER_opc_wire;
   fu_divf_t1load_wire <= inst_decoder_fu_divf_in1t_load_wire;
   fu_divf_o1load_wire <= inst_decoder_fu_divf_in2_load_wire;
-  fu_BNN_OPS_t1load_wire <= inst_decoder_fu_BNN_OPS_in1t_load_wire;
-  fu_BNN_OPS_o2load_wire <= inst_decoder_fu_BNN_OPS_in2_load_wire;
-  fu_BNN_OPS_o3load_wire <= inst_decoder_fu_BNN_OPS_in3_load_wire;
-  fu_BNN_OPS_t1opcode_wire <= inst_decoder_fu_BNN_OPS_opc_wire;
+  fu_BNN_OPS_instance_t1load_wire <= inst_decoder_fu_BNN_OPS_in1t_load_wire;
+  fu_BNN_OPS_instance_o2load_wire <= inst_decoder_fu_BNN_OPS_in2_load_wire;
+  fu_BNN_OPS_instance_o3load_wire <= inst_decoder_fu_BNN_OPS_in3_load_wire;
+  fu_BNN_OPS_instance_t1opcode_wire <= inst_decoder_fu_BNN_OPS_opc_wire;
   rf_RF_t1load_wire <= inst_decoder_rf_RF_wr_load_wire;
   rf_RF_t1opcode_wire <= inst_decoder_rf_RF_wr_opc_wire;
   rf_RF_r1load_wire <= inst_decoder_rf_RF_rd_load_wire;
@@ -699,34 +699,34 @@ begin
   fu_STREAM_glock_wire <= inst_decoder_glock_wire(4);
   fu_F32_I32_CONVERTER_glock_wire <= inst_decoder_glock_wire(5);
   fu_divf_glock_wire <= inst_decoder_glock_wire(6);
-  fu_BNN_OPS_glock_wire <= inst_decoder_glock_wire(7);
+  fu_BNN_OPS_instance_glock_wire <= inst_decoder_glock_wire(7);
   rf_RF_glock_wire <= inst_decoder_glock_wire(8);
   rf_BOOL_glock_wire <= inst_decoder_glock_wire(9);
   iu_IMM1_glock_wire <= inst_decoder_glock_wire(10);
   ic_glock_wire <= inst_decoder_glock_wire(11);
-  fu_LSU_inp_t1data_wire <= ic_socket_LSU_inp_i1_data_wire;
-  ic_socket_LSU_inp_o1_data0_wire <= fu_LSU_inp_r1data_wire;
-  fu_LSU_inp_o1data_wire <= ic_socket_LSU_inp_i2_data_wire;
   fu_LSU_t1data_wire <= ic_socket_LSU_i1_data_wire;
   ic_socket_LSU_o1_data0_wire <= fu_LSU_r1data_wire;
   fu_LSU_o1data_wire <= ic_socket_LSU_i2_data_wire;
-  fu_STREAM_t1data_wire <= ic_socket_STREAM_i2_data_wire;
+  fu_LSU_inp_t1data_wire <= ic_socket_LSU_inp_i1_data_wire;
+  ic_socket_LSU_inp_o1_data0_wire <= fu_LSU_inp_r1data_wire;
+  fu_LSU_inp_o1data_wire <= ic_socket_LSU_inp_i2_data_wire;
   fu_ALU_t1data_wire <= ic_socket_ALU_i3_data_wire;
   ic_socket_ALU_o2_data0_wire <= fu_ALU_r1data_wire;
   fu_ALU_o1data_wire <= ic_socket_ALU_i4_data_wire;
-  fu_F32_I32_CONVERTER_t1data_wire <= ic_socket_cfi_cfiu_cif_cifu_i1_data_wire;
-  ic_socket_cfi_cfiu_cif_cifu_o1_data0_wire <= fu_F32_I32_CONVERTER_r1data_wire;
+  fu_STREAM_t1data_wire <= ic_socket_STREAM_i2_data_wire;
+  fu_divf_t1data_wire <= ic_socket_divf_i1_data_wire;
+  fu_divf_o1data_wire <= ic_socket_divf_i2_data_wire;
+  ic_socket_divf_o1_data0_wire <= fu_divf_r1data_wire;
   fu_FALU_o1data_wire <= ic_socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i1_data_wire;
   fu_FALU_t1data_wire <= ic_socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i2_data_wire;
   fu_FALU_o2data_wire <= ic_socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i3_data_wire;
   ic_socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_data0_wire <= fu_FALU_r1data_wire;
-  fu_divf_t1data_wire <= ic_socket_divf_i1_data_wire;
-  fu_divf_o1data_wire <= ic_socket_divf_i2_data_wire;
-  ic_socket_divf_o1_data0_wire <= fu_divf_r1data_wire;
-  fu_BNN_OPS_t1data_wire <= ic_socket_popcount_popcountacc_xnorpopcntacc_set_bit_i1_data_wire;
-  ic_socket_popcount_popcountacc_xnorpopcntacc_set_bit_o1_data0_wire <= fu_BNN_OPS_r1data_wire;
-  fu_BNN_OPS_o2data_wire <= ic_socket_popcount_popcountacc_xnorpopcntacc_set_bit_i2_data_wire;
-  fu_BNN_OPS_o3data_wire <= ic_socket_popcount_popcountacc_xnorpopcntacc_set_bit_i3_data_wire;
+  fu_F32_I32_CONVERTER_t1data_wire <= ic_socket_cfi_cfiu_cif_cifu_i1_data_wire;
+  ic_socket_cfi_cfiu_cif_cifu_o1_data0_wire <= fu_F32_I32_CONVERTER_r1data_wire;
+  fu_BNN_OPS_instance_t1data_wire <= ic_socket_popcount_popcountacc_xnorpopcntacc_set_bit_i1_data_wire;
+  ic_socket_popcount_popcountacc_xnorpopcntacc_set_bit_o1_data0_wire <= fu_BNN_OPS_instance_r1data_wire;
+  fu_BNN_OPS_instance_o2data_wire <= ic_socket_popcount_popcountacc_xnorpopcntacc_set_bit_i2_data_wire;
+  fu_BNN_OPS_instance_o3data_wire <= ic_socket_popcount_popcountacc_xnorpopcntacc_set_bit_i3_data_wire;
   ic_socket_bool_o1_data0_wire <= rf_BOOL_r1data_wire;
   rf_BOOL_t1data_wire <= ic_socket_bool_i1_data_wire;
   ic_socket_RF_o1_data0_wire <= rf_RF_r1data_wire;
@@ -850,27 +850,6 @@ begin
       rf_guard_BOOL_1 => inst_decoder_rf_guard_BOOL_1_wire,
       glock => inst_decoder_glock_wire);
 
-  fu_LSU_inp : fu_lsu_le_always_3
-    generic map (
-      dataw => fu_LSU_inp_dataw,
-      addrw => fu_LSU_inp_addrw)
-    port map (
-      t1data => fu_LSU_inp_t1data_wire,
-      t1load => fu_LSU_inp_t1load_wire,
-      r1data => fu_LSU_inp_r1data_wire,
-      o1data => fu_LSU_inp_o1data_wire,
-      o1load => fu_LSU_inp_o1load_wire,
-      t1opcode => fu_LSU_inp_t1opcode_wire,
-      mem_en_x => fu_LSU_inp_mem_en_x,
-      wr_en_x => fu_LSU_inp_wr_en_x,
-      wr_mask_x => fu_LSU_inp_wr_mask_x,
-      addr => fu_LSU_inp_addr,
-      data_in => fu_LSU_inp_data_in,
-      data_out => fu_LSU_inp_data_out,
-      clk => clk,
-      rstx => rstx,
-      glock => fu_LSU_inp_glock_wire);
-
   fu_LSU : fu_lsu_le_always_3
     generic map (
       dataw => fu_LSU_dataw,
@@ -892,15 +871,26 @@ begin
       rstx => rstx,
       glock => fu_LSU_glock_wire);
 
-  fu_STREAM : printchar_always_1
+  fu_LSU_inp : fu_lsu_le_always_3
     generic map (
-      dataw => 8)
+      dataw => fu_LSU_inp_dataw,
+      addrw => fu_LSU_inp_addrw)
     port map (
-      t1data => fu_STREAM_t1data_wire,
-      t1load => fu_STREAM_t1load_wire,
+      t1data => fu_LSU_inp_t1data_wire,
+      t1load => fu_LSU_inp_t1load_wire,
+      r1data => fu_LSU_inp_r1data_wire,
+      o1data => fu_LSU_inp_o1data_wire,
+      o1load => fu_LSU_inp_o1load_wire,
+      t1opcode => fu_LSU_inp_t1opcode_wire,
+      mem_en_x => fu_LSU_inp_mem_en_x,
+      wr_en_x => fu_LSU_inp_wr_en_x,
+      wr_mask_x => fu_LSU_inp_wr_mask_x,
+      addr => fu_LSU_inp_addr,
+      data_in => fu_LSU_inp_data_in,
+      data_out => fu_LSU_inp_data_out,
       clk => clk,
       rstx => rstx,
-      glock => fu_STREAM_glock_wire);
+      glock => fu_LSU_inp_glock_wire);
 
   fu_ALU : fu_abs_add_and_eq_gt_gtu_ior_neg_shl_shl1add_shl2add_shr_shru_sub_sxhw_sxqw_xor_always_1
     generic map (
@@ -917,17 +907,28 @@ begin
       rstx => rstx,
       glock => fu_ALU_glock_wire);
 
-  fu_F32_I32_CONVERTER : fpu_sp_conv
+  fu_STREAM : printchar_always_1
+    generic map (
+      dataw => 8)
+    port map (
+      t1data => fu_STREAM_t1data_wire,
+      t1load => fu_STREAM_t1load_wire,
+      clk => clk,
+      rstx => rstx,
+      glock => fu_STREAM_glock_wire);
+
+  fu_divf : fpu_sp_div
     generic map (
       busw => 32)
     port map (
-      t1data => fu_F32_I32_CONVERTER_t1data_wire,
-      t1load => fu_F32_I32_CONVERTER_t1load_wire,
-      r1data => fu_F32_I32_CONVERTER_r1data_wire,
-      t1opcode => fu_F32_I32_CONVERTER_t1opcode_wire,
+      t1data => fu_divf_t1data_wire,
+      t1load => fu_divf_t1load_wire,
+      o1data => fu_divf_o1data_wire,
+      o1load => fu_divf_o1load_wire,
+      r1data => fu_divf_r1data_wire,
       clk => clk,
       rstx => rstx,
-      glock => fu_F32_I32_CONVERTER_glock_wire);
+      glock => fu_divf_glock_wire);
 
   fu_FALU : sabrewing_tce
     generic map (
@@ -947,34 +948,33 @@ begin
       rstx => rstx,
       glock => fu_FALU_glock_wire);
 
-  fu_divf : fpu_sp_div
+  fu_F32_I32_CONVERTER : fpu_sp_conv
     generic map (
       busw => 32)
     port map (
-      t1data => fu_divf_t1data_wire,
-      t1load => fu_divf_t1load_wire,
-      o1data => fu_divf_o1data_wire,
-      o1load => fu_divf_o1load_wire,
-      r1data => fu_divf_r1data_wire,
+      t1data => fu_F32_I32_CONVERTER_t1data_wire,
+      t1load => fu_F32_I32_CONVERTER_t1load_wire,
+      r1data => fu_F32_I32_CONVERTER_r1data_wire,
+      t1opcode => fu_F32_I32_CONVERTER_t1opcode_wire,
       clk => clk,
       rstx => rstx,
-      glock => fu_divf_glock_wire);
+      glock => fu_F32_I32_CONVERTER_glock_wire);
 
-  fu_BNN_OPS : bnn_ops
+  fu_BNN_OPS_instance : fu_bnn_ops
     generic map (
       busw => 32)
     port map (
-      t1data => fu_BNN_OPS_t1data_wire,
-      t1load => fu_BNN_OPS_t1load_wire,
-      r1data => fu_BNN_OPS_r1data_wire,
-      o2data => fu_BNN_OPS_o2data_wire,
-      o2load => fu_BNN_OPS_o2load_wire,
-      o3data => fu_BNN_OPS_o3data_wire,
-      o3load => fu_BNN_OPS_o3load_wire,
-      t1opcode => fu_BNN_OPS_t1opcode_wire,
+      t1data => fu_BNN_OPS_instance_t1data_wire,
+      t1load => fu_BNN_OPS_instance_t1load_wire,
+      r1data => fu_BNN_OPS_instance_r1data_wire,
+      o2data => fu_BNN_OPS_instance_o2data_wire,
+      o2load => fu_BNN_OPS_instance_o2load_wire,
+      o3data => fu_BNN_OPS_instance_o3data_wire,
+      o3load => fu_BNN_OPS_instance_o3load_wire,
+      t1opcode => fu_BNN_OPS_instance_t1opcode_wire,
       clk => clk,
       rstx => rstx,
-      glock => fu_BNN_OPS_glock_wire);
+      glock => fu_BNN_OPS_instance_glock_wire);
 
   rf_BOOL : rf_1wr_1rd_always_1_guarded_0
     generic map (

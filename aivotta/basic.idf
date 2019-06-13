@@ -4,27 +4,22 @@
   <ic-decoder-plugin>
     <name>DefaultICDecoder</name>
     <file>tce:DefaultICDecoderPlugin.so</file>
-    <parameter name="bustrace">
-      <value>yes</value>
-    </parameter>
     <parameter name="bustracestartingcycle">
       <value>5</value>
     </parameter>
+    <parameter name="bustrace">
+      <value>yes</value>
+    </parameter>
   </ic-decoder-plugin>
-
-  <fu name="LSU_inp">
-    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
-    <fu-id>399</fu-id>
-  </fu>
 
   <fu name="LSU">
     <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
     <fu-id>399</fu-id>
   </fu>
 
-  <fu name="STREAM">
+  <fu name="LSU_inp">
     <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
-    <fu-id>400</fu-id>
+    <fu-id>399</fu-id>
   </fu>
 
   <fu name="ALU">
@@ -32,9 +27,14 @@
     <fu-id>388</fu-id>
   </fu>
 
-  <fu name="F32_I32_CONVERTER">
+  <fu name="STREAM">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>400</fu-id>
+  </fu>
+
+  <fu name="divf">
     <hdb-file>tce:fpu_embedded.hdb</hdb-file>
-    <fu-id>16</fu-id>
+    <fu-id>19</fu-id>
   </fu>
 
   <fu name="FALU">
@@ -42,9 +42,9 @@
     <fu-id>28</fu-id>
   </fu>
 
-  <fu name="divf">
+  <fu name="F32_I32_CONVERTER">
     <hdb-file>tce:fpu_embedded.hdb</hdb-file>
-    <fu-id>19</fu-id>
+    <fu-id>16</fu-id>
   </fu>
 
   <fu name="BNN_OPS">
@@ -54,7 +54,7 @@
 
   <rf name="BOOL">
     <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
-    <rf-id>96</rf-id>
+    <rf-id>112</rf-id>
   </rf>
 
   <rf name="RF">
@@ -64,7 +64,7 @@
 
   <iu name="IMM1">
     <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
-    <rf-id>161</rf-id>
+    <rf-id>164</rf-id>
   </iu>
 
 </adf-implementation>

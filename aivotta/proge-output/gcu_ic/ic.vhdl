@@ -37,13 +37,13 @@ entity tta0_interconn is
     socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i3_bus_cntrl : in std_logic_vector(1 downto 0);
     socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_data0 : in std_logic_vector(31 downto 0);
     socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_LSU_i1_data : out std_logic_vector(31 downto 0);
+    socket_LSU_i1_data : out std_logic_vector(29 downto 0);
     socket_LSU_i1_bus_cntrl : in std_logic_vector(1 downto 0);
     socket_LSU_o1_data0 : in std_logic_vector(31 downto 0);
     socket_LSU_o1_bus_cntrl : in std_logic_vector(2 downto 0);
     socket_LSU_i2_data : out std_logic_vector(31 downto 0);
     socket_LSU_i2_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_LSU_inp_i1_data : out std_logic_vector(31 downto 0);
+    socket_LSU_inp_i1_data : out std_logic_vector(23 downto 0);
     socket_LSU_inp_i1_bus_cntrl : in std_logic_vector(1 downto 0);
     socket_LSU_inp_o1_data0 : in std_logic_vector(31 downto 0);
     socket_LSU_inp_o1_bus_cntrl : in std_logic_vector(2 downto 0);
@@ -341,7 +341,7 @@ begin -- comb_andor
       BUSW_0 => 32,
       BUSW_1 => 32,
       BUSW_2 => 32,
-      DATAW => 32)
+      DATAW => 30)
     port map (
       databus0 => databus_B1,
       databus1 => databus_B1_1,
@@ -367,7 +367,7 @@ begin -- comb_andor
       BUSW_0 => 32,
       BUSW_1 => 32,
       BUSW_2 => 32,
-      DATAW => 32)
+      DATAW => 24)
     port map (
       databus0 => databus_B1,
       databus1 => databus_B1_1,
