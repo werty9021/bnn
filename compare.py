@@ -1,9 +1,9 @@
 import numpy as np
 import os
 
-size = (481, 321)
-size = (50, 50)
-size = (5, 5)
+size = (480, 320)
+size = (48, 32)
+#size = (5, 5)
 for filename in sorted(os.listdir('../data/output/')):
     suffix = filename.split('.')[0]
     if suffix in ['conv0', 'conv16', 'act15']:
@@ -11,7 +11,7 @@ for filename in sorted(os.listdir('../data/output/')):
         out_dtype = np.float32
     elif 'conv' in suffix:
         ref_dtype = np.float32
-        out_dtype = np.uint32
+        out_dtype = np.uint16
     else:
         ref_dtype = out_dtype = np.uint32
 
@@ -33,8 +33,8 @@ for filename in sorted(os.listdir('../data/output/')):
         mean = np.bitwise_xor(ref, out).mean()
 
     elif 'conv' in suffix and suffix not in ['conv0', 'conv16']:
-        ref = np.fromfile('../data/ref/{}x{}/{}.bin'.format(size[0], size[1], suffix), dtype=ref_dtype).reshape((64, *size))
-        out = np.fromfile('../data/output/{}.bin'.format(suffix), dtype=out_dtype).reshape((64, *size))
+        ref = np.fromfile('../data/ref/{}x{}/{}.bin'.format(size[0], size[1], suffix), dtype=ref_dtype).reshape((*size, 64))
+        out = np.fromfile('../data/output/{}.bin'.format(suffix), dtype=out_dtype).reshape((*size, 64))
         # out2=out
         out2 = np.zeros_like(out,dtype=np.int32)
         for k in range(0, 64):
@@ -47,9 +47,9 @@ for filename in sorted(os.listdir('../data/output/')):
                         T -= 3*64;
                     if ((j==0 and i==0) or (j==size[0]-1 and i==0) or (j==0 and i==size[1]-1) or (j==size[0]-1 and i==size[1]-1)):
                         T += 1*64;
-                    out2[k,j,i] = 2*out[k,j,i] - T
-        print(ref[63])
-        print(out2[63])
+                    out2[j,i,k] = 2*out[j,i,k] - T
+        print(ref[:,:,63])
+        print(out2[:,:,63])
         print((ref==out2).mean())
         mean = (ref-out2).mean()
     # else:
@@ -71,6 +71,12 @@ for filename in sorted(os.listdir('../data/output/')):
         #     # print(ref[3])
         #     # print(out2[3])
         #     # mean = (ref-out2).mean()
+    elif suffix in ['conv0']:
+        ref = np.fromfile('../data/ref/{}x{}/{}.bin'.format(size[0], size[1], suffix), dtype=ref_dtype)
+        out = np.fromfile('../data/output/{}.bin'.format(suffix), dtype=out_dtype)*2**-28
+        print(ref[:10])
+        print(out[:10])
+        mean = (ref-out).mean()
     else:
         ref = np.fromfile('../data/ref/{}x{}/{}.bin'.format(size[0], size[1], suffix), dtype=ref_dtype)
         out = np.fromfile('../data/output/{}.bin'.format(suffix), dtype=out_dtype)

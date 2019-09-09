@@ -1,0 +1,1258 @@
+
+*** Running vivado
+    with args -log toplevel_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source toplevel_wrapper.tcl -notrace
+
+
+****** Vivado v2018.2 (64-bit)
+  **** SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+  **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source toplevel_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2018.2/data/ip'.
+Command: link_design -top toplevel_wrapper -part xc7z020clg400-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Project 1-454] Reading design checkpoint '/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_0_1/toplevel_axi_smc_0.dcp' for cell 'toplevel_i/axi_smc'
+INFO: [Project 1-454] Reading design checkpoint '/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_1_0/toplevel_axi_smc_1_0.dcp' for cell 'toplevel_i/axi_smc_1'
+INFO: [Project 1-454] Reading design checkpoint '/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_processing_system7_0_0_1/toplevel_processing_system7_0_0.dcp' for cell 'toplevel_i/processing_system7_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_rst_ps7_0_100M_0_1/toplevel_rst_ps7_0_100M_0.dcp' for cell 'toplevel_i/rst_ps7_0_100M'
+INFO: [Project 1-454] Reading design checkpoint '/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_tta_core_toplevel_0_0_1/toplevel_tta_core_toplevel_0_0.dcp' for cell 'toplevel_i/tta_core_toplevel_0'
+INFO: [Netlist 29-17] Analyzing 2354 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_processing_system7_0_0_1/toplevel_processing_system7_0_0.xdc] for cell 'toplevel_i/processing_system7_0/inst'
+WARNING: [Vivado 12-2489] -input_jitter contains time 0.449970 which will be rounded to 0.450 to ensure it is an integer multiple of 1 picosecond [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_processing_system7_0_0_1/toplevel_processing_system7_0_0.xdc:21]
+Finished Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_processing_system7_0_0_1/toplevel_processing_system7_0_0.xdc] for cell 'toplevel_i/processing_system7_0/inst'
+Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_0_1/bd_0/ip/ip_1/bd_d524_psr_aclk_0_board.xdc] for cell 'toplevel_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_0_1/bd_0/ip/ip_1/bd_d524_psr_aclk_0_board.xdc] for cell 'toplevel_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_0_1/bd_0/ip/ip_1/bd_d524_psr_aclk_0.xdc] for cell 'toplevel_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_0_1/bd_0/ip/ip_1/bd_d524_psr_aclk_0.xdc] for cell 'toplevel_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_rst_ps7_0_100M_0_1/toplevel_rst_ps7_0_100M_0_board.xdc] for cell 'toplevel_i/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_rst_ps7_0_100M_0_1/toplevel_rst_ps7_0_100M_0_board.xdc] for cell 'toplevel_i/rst_ps7_0_100M/U0'
+Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_rst_ps7_0_100M_0_1/toplevel_rst_ps7_0_100M_0.xdc] for cell 'toplevel_i/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_rst_ps7_0_100M_0_1/toplevel_rst_ps7_0_100M_0.xdc] for cell 'toplevel_i/rst_ps7_0_100M/U0'
+Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_1_0/bd_0/ip/ip_1/bd_bbb2_psr_aclk_0_board.xdc] for cell 'toplevel_i/axi_smc_1/inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_1_0/bd_0/ip/ip_1/bd_bbb2_psr_aclk_0_board.xdc] for cell 'toplevel_i/axi_smc_1/inst/clk_map/psr_aclk/U0'
+Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_1_0/bd_0/ip/ip_1/bd_bbb2_psr_aclk_0.xdc] for cell 'toplevel_i/axi_smc_1/inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [/home/floran/Vivado/aivotta/aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_1_0/bd_0/ip/ip_1/bd_bbb2_psr_aclk_0.xdc] for cell 'toplevel_i/axi_smc_1/inst/clk_map/psr_aclk/U0'
+Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Finished Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Finished Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc/inst/s00_nodes/s00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Finished Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc/inst/s00_nodes/s00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Finished Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Finished Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc_1/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Finished Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc_1/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc_1/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Finished Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc_1/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc_1/inst/s00_nodes/s00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Finished Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc_1/inst/s00_nodes/s00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc_1/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Finished Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc_1/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc_1/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+Finished Sourcing Tcl File [/opt/Xilinx/Vivado/2018.2/data/ip/xpm/xpm_memory/tcl/xpm_memory_xdc.tcl] for cell 'toplevel_i/axi_smc_1/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory'
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 278 instances were transformed.
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 182 instances
+  RAM64M => RAM64M (RAMD64E, RAMD64E, RAMD64E, RAMD64E): 80 instances
+  RAM64X1D => RAM64X1D (RAMD64E, RAMD64E): 16 instances
+
+15 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:45 . Memory (MB): peak = 1772.523 ; gain = 519.020 ; free physical = 5014 ; free virtual = 12630
+Command: opt_design -directive Explore
+INFO: [Vivado_Tcl 4-136] Directive used for opt_design is: Explore
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1772.523 ; gain = 0.000 ; free physical = 5008 ; free virtual = 12624
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 1e10ac123
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:23 . Memory (MB): peak = 2243.070 ; gain = 470.547 ; free physical = 4562 ; free virtual = 12178
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 20 inverter(s) to 109 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: 1dc04768b
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:03 . Memory (MB): peak = 2243.070 ; gain = 0.000 ; free physical = 4627 ; free virtual = 12243
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 0 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 5 inverter(s) to 7 load pin(s).
+Phase 2 Constant propagation | Checksum: 23c04e8a8
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 2243.070 ; gain = 0.000 ; free physical = 4627 ; free virtual = 12243
+INFO: [Opt 31-389] Phase Constant propagation created 216 cells and removed 764 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: 2272cea98
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 2243.070 ; gain = 0.000 ; free physical = 4624 ; free virtual = 12240
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 1718 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: 2272cea98
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 2243.070 ; gain = 0.000 ; free physical = 4626 ; free virtual = 12243
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 5 Shift Register Optimization
+Phase 5 Shift Register Optimization | Checksum: 1b4af82e2
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:09 . Memory (MB): peak = 2243.070 ; gain = 0.000 ; free physical = 4625 ; free virtual = 12241
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: 1b4af82e2
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 2243.070 ; gain = 0.000 ; free physical = 4625 ; free virtual = 12241
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.14 . Memory (MB): peak = 2243.070 ; gain = 0.000 ; free physical = 4625 ; free virtual = 12241
+Ending Logic Optimization Task | Checksum: 1b4af82e2
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 2243.070 ; gain = 0.000 ; free physical = 4625 ; free virtual = 12241
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=1.750 | TNS=0.000 |
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 54 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 0 newly gated: 0 Total Ports: 108
+Ending PowerOpt Patch Enables Task | Checksum: 1b4af82e2
+
+Time (s): cpu = 00:00:00.29 ; elapsed = 00:00:00.31 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4524 ; free virtual = 12141
+Ending Power Optimization Task | Checksum: 1b4af82e2
+
+Time (s): cpu = 00:00:59 ; elapsed = 00:00:17 . Memory (MB): peak = 2840.207 ; gain = 597.137 ; free physical = 4572 ; free virtual = 12188
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 1b4af82e2
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4572 ; free virtual = 12188
+INFO: [Common 17-83] Releasing license: Implementation
+38 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:01:32 ; elapsed = 00:00:52 . Memory (MB): peak = 2840.207 ; gain = 1067.684 ; free physical = 4572 ; free virtual = 12189
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00.11 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4570 ; free virtual = 12188
+INFO: [Common 17-1381] The checkpoint '/home/floran/Vivado/aivotta/aivotta.runs/impl_1/toplevel_wrapper_opt.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:16 ; elapsed = 00:00:15 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4575 ; free virtual = 12201
+INFO: [runtcl-4] Executing : report_drc -file toplevel_wrapper_drc_opted.rpt -pb toplevel_wrapper_drc_opted.pb -rpx toplevel_wrapper_drc_opted.rpx
+Command: report_drc -file toplevel_wrapper_drc_opted.rpt -pb toplevel_wrapper_drc_opted.pb -rpx toplevel_wrapper_drc_opted.rpx
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Coretcl 2-168] The results of DRC are in file /home/floran/Vivado/aivotta/aivotta.runs/impl_1/toplevel_wrapper_drc_opted.rpt.
+report_drc completed successfully
+Command: place_design -directive Explore
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+WARNING: [DRC CHECK-3] Report rule limit reached: REQP-1839 rule limit reached: 20 violations have been found.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[13] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[11]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_channel/data_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/active_load_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/destination_sel_r_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/lock_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_channel/data_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_cmd_in_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_command_fifo/write_ready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/write_cmd_in_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/write_command_fifo/write_ready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/a_aready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/a_live_read_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/a_rdata_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_aready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_live_read_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_rdata_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_bpcc_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_bppc_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_bppc_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_forcebp_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_wait_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors, 21 Warnings
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 46-5] The placer was invoked with the 'Explore' directive.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 8 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.08 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4563 ; free virtual = 12189
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 15a6b7460
+
+Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.11 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4563 ; free virtual = 12189
+Netlist sorting complete. Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4563 ; free virtual = 12189
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 904ea6ae
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4505 ; free virtual = 12130
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 135e4a164
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:16 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4404 ; free virtual = 12030
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 135e4a164
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:16 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4404 ; free virtual = 12030
+Phase 1 Placer Initialization | Checksum: 135e4a164
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:16 . Memory (MB): peak = 2840.207 ; gain = 0.000 ; free physical = 4404 ; free virtual = 12030
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 8efb9d77
+
+Time (s): cpu = 00:00:51 ; elapsed = 00:00:20 . Memory (MB): peak = 2860.230 ; gain = 20.023 ; free physical = 4351 ; free virtual = 11977
+
+Phase 2.2 Physical Synthesis In Placer
+INFO: [Physopt 32-76] Pass 1. Identified 1 candidate net for fanout optimization.
+INFO: [Physopt 32-81] Processed net toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_rdata_valid_r_reg_0. Replicated 5 times.
+INFO: [Physopt 32-232] Optimized 1 net. Created 5 new instances.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 1 net or cell. Created 5 new cells, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.13 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4315 ; free virtual = 11941
+Netlist sorting complete. Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4316 ; free virtual = 11942
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+|  Optimization       |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------
+|  Very High Fanout   |            5  |              0  |                     1  |           0  |           1  |  00:00:02  |
+|  Total              |            5  |              0  |                     1  |           0  |           1  |  00:00:02  |
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.2 Physical Synthesis In Placer | Checksum: 149f3be03
+
+Time (s): cpu = 00:03:33 ; elapsed = 00:01:15 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4316 ; free virtual = 11942
+Phase 2 Global Placement | Checksum: 1c612665f
+
+Time (s): cpu = 00:03:52 ; elapsed = 00:01:21 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4343 ; free virtual = 11969
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 1c612665f
+
+Time (s): cpu = 00:03:53 ; elapsed = 00:01:22 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4343 ; free virtual = 11969
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1d68a1e13
+
+Time (s): cpu = 00:04:21 ; elapsed = 00:01:31 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4337 ; free virtual = 11963
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 23e4c8713
+
+Time (s): cpu = 00:04:24 ; elapsed = 00:01:32 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4337 ; free virtual = 11963
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 1888f6747
+
+Time (s): cpu = 00:04:24 ; elapsed = 00:01:32 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4337 ; free virtual = 11963
+
+Phase 3.5 Timing Path Optimizer
+Phase 3.5 Timing Path Optimizer | Checksum: 1888f6747
+
+Time (s): cpu = 00:04:24 ; elapsed = 00:01:32 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4337 ; free virtual = 11963
+
+Phase 3.6 Fast Optimization
+Phase 3.6 Fast Optimization | Checksum: 1b46f0c9e
+
+Time (s): cpu = 00:04:26 ; elapsed = 00:01:34 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4338 ; free virtual = 11964
+
+Phase 3.7 Small Shape Detail Placement
+Phase 3.7 Small Shape Detail Placement | Checksum: 14f325326
+
+Time (s): cpu = 00:04:54 ; elapsed = 00:02:00 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4288 ; free virtual = 11914
+
+Phase 3.8 Re-assign LUT pins
+Phase 3.8 Re-assign LUT pins | Checksum: 19a72e079
+
+Time (s): cpu = 00:04:56 ; elapsed = 00:02:02 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4290 ; free virtual = 11916
+
+Phase 3.9 Pipeline Register Optimization
+Phase 3.9 Pipeline Register Optimization | Checksum: 19a72e079
+
+Time (s): cpu = 00:04:56 ; elapsed = 00:02:03 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4290 ; free virtual = 11916
+Phase 3 Detail Placement | Checksum: 19a72e079
+
+Time (s): cpu = 00:04:57 ; elapsed = 00:02:03 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4290 ; free virtual = 11916
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: a5ad09b4
+
+Phase 4.1.1.1 BUFG Insertion
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/rf_vRF1024/SR[0], BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/fu_dmem_LSU/pipeline_r_reg[3][width][0]_0, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/inst_decoder/astrb_r_reg[0][0], BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/fu_dmem_LSU/rready_r0, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_rdata_r, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/fu_dmem_LSU/result_long_r, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/inst_decoder/shadow_in3_r_reg[0]_0[0], BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/inst_decoder/shadow_in2_r_reg[0]_0[0], BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/inst_decoder/data_out1_cycle_0_r_reg[1023][0], BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/inst_decoder/adata_r_reg[1023]_0[0], BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/rf_vRF1024/i__n_0, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/rf_vRF1024/i___2_n_0, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/rf_vRF1024/i___1_n_0, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/core/rf_vRF1024/i___0_n_0, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/b_rdata_r, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-31] BUFG insertion identified 15 candidate nets, 0 success, 15 skipped for placement/routing, 0 skipped for timing, 0 skipped for netlist change reason.
+Phase 4.1.1.1 BUFG Insertion | Checksum: a5ad09b4
+
+Time (s): cpu = 00:05:34 ; elapsed = 00:02:14 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4319 ; free virtual = 11945
+INFO: [Place 30-746] Post Placement Timing Summary WNS=0.505. For the most accurate timing information please run report_timing.
+Phase 4.1.1 Post Placement Optimization | Checksum: d815133e
+
+Time (s): cpu = 00:05:48 ; elapsed = 00:02:27 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4318 ; free virtual = 11944
+Phase 4.1 Post Commit Optimization | Checksum: d815133e
+
+Time (s): cpu = 00:05:48 ; elapsed = 00:02:27 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4318 ; free virtual = 11944
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: d815133e
+
+Time (s): cpu = 00:05:50 ; elapsed = 00:02:28 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4318 ; free virtual = 11944
+
+Phase 4.3 Placer Reporting
+Phase 4.3 Placer Reporting | Checksum: d815133e
+
+Time (s): cpu = 00:05:50 ; elapsed = 00:02:28 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4319 ; free virtual = 11945
+
+Phase 4.4 Final Placement Cleanup
+Phase 4.4 Final Placement Cleanup | Checksum: 17b822334
+
+Time (s): cpu = 00:05:50 ; elapsed = 00:02:29 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4319 ; free virtual = 11945
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 17b822334
+
+Time (s): cpu = 00:05:51 ; elapsed = 00:02:29 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4319 ; free virtual = 11945
+Ending Placer Task | Checksum: 151eb026d
+
+Time (s): cpu = 00:05:51 ; elapsed = 00:02:29 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4370 ; free virtual = 11996
+INFO: [Common 17-83] Releasing license: Implementation
+76 Infos, 22 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:05:57 ; elapsed = 00:02:34 . Memory (MB): peak = 2868.234 ; gain = 28.027 ; free physical = 4370 ; free virtual = 11996
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:12 ; elapsed = 00:00:04 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4276 ; free virtual = 11975
+INFO: [Common 17-1381] The checkpoint '/home/floran/Vivado/aivotta/aivotta.runs/impl_1/toplevel_wrapper_placed.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:23 ; elapsed = 00:00:16 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4344 ; free virtual = 11989
+INFO: [runtcl-4] Executing : report_io -file toplevel_wrapper_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.17 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4334 ; free virtual = 11979
+INFO: [runtcl-4] Executing : report_utilization -file toplevel_wrapper_utilization_placed.rpt -pb toplevel_wrapper_utilization_placed.pb
+report_utilization: Time (s): cpu = 00:00:00.52 ; elapsed = 00:00:00.57 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4344 ; free virtual = 11988
+INFO: [runtcl-4] Executing : report_control_sets -verbose -file toplevel_wrapper_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00.24 ; elapsed = 00:00:00.30 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4341 ; free virtual = 11986
+Command: phys_opt_design -directive Explore
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Vivado_Tcl 4-137] Directive used for phys_opt_design is: Explore
+INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.250 ns. Skipping all physical synthesis optimizations.
+INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
+INFO: [Common 17-83] Releasing license: Implementation
+86 Infos, 22 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+phys_opt_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:08 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4339 ; free virtual = 11984
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:13 ; elapsed = 00:00:04 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4242 ; free virtual = 11961
+INFO: [Common 17-1381] The checkpoint '/home/floran/Vivado/aivotta/aivotta.runs/impl_1/toplevel_wrapper_physopt.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:22 ; elapsed = 00:00:16 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4308 ; free virtual = 11971
+Command: route_design -directive Explore -tns_cleanup
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-270] Using Router directive 'Explore'.
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
+Checksum: PlaceDB: 742eb59a ConstDB: 0 ShapeSum: ddbc4cd3 RouteDB: 0
+
+Phase 1 Build RT Design
+Phase 1 Build RT Design | Checksum: 197905dcd
+
+Time (s): cpu = 00:00:32 ; elapsed = 00:00:20 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4146 ; free virtual = 11810
+Post Restoration Checksum: NetGraph: 9928a518 NumContArr: fe67b8b5 Constraints: 0 Timing: 0
+
+Phase 2 Router Initialization
+
+Phase 2.1 Create Timer
+Phase 2.1 Create Timer | Checksum: 197905dcd
+
+Time (s): cpu = 00:00:33 ; elapsed = 00:00:21 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4150 ; free virtual = 11814
+
+Phase 2.2 Fix Topology Constraints
+Phase 2.2 Fix Topology Constraints | Checksum: 197905dcd
+
+Time (s): cpu = 00:00:34 ; elapsed = 00:00:22 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4116 ; free virtual = 11780
+
+Phase 2.3 Pre Route Cleanup
+Phase 2.3 Pre Route Cleanup | Checksum: 197905dcd
+
+Time (s): cpu = 00:00:34 ; elapsed = 00:00:22 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4116 ; free virtual = 11780
+ Number of Nodes with overlaps = 0
+
+Phase 2.4 Update Timing
+Phase 2.4 Update Timing | Checksum: 131836a22
+
+Time (s): cpu = 00:01:22 ; elapsed = 00:00:33 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4091 ; free virtual = 11755
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.637  | TNS=0.000  | WHS=-0.355 | THS=-538.818|
+
+Phase 2 Router Initialization | Checksum: 1d4886fe7
+
+Time (s): cpu = 00:01:42 ; elapsed = 00:00:38 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4086 ; free virtual = 11749
+
+Phase 3 Initial Routing
+Phase 3 Initial Routing | Checksum: 15f315fb6
+
+Time (s): cpu = 00:03:16 ; elapsed = 00:00:55 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4060 ; free virtual = 11724
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 27839
+ Number of Nodes with overlaps = 9151
+ Number of Nodes with overlaps = 3141
+ Number of Nodes with overlaps = 1257
+ Number of Nodes with overlaps = 538
+ Number of Nodes with overlaps = 159
+ Number of Nodes with overlaps = 46
+ Number of Nodes with overlaps = 31
+ Number of Nodes with overlaps = 17
+ Number of Nodes with overlaps = 12
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.499 | TNS=-5.787 | WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: 928ef7cc
+
+Time (s): cpu = 00:23:12 ; elapsed = 00:04:38 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4074 ; free virtual = 11737
+
+Phase 4.2 Global Iteration 1
+ Number of Nodes with overlaps = 3154
+ Number of Nodes with overlaps = 1355
+ Number of Nodes with overlaps = 622
+ Number of Nodes with overlaps = 281
+ Number of Nodes with overlaps = 131
+ Number of Nodes with overlaps = 56
+ Number of Nodes with overlaps = 32
+ Number of Nodes with overlaps = 12
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.352 | TNS=-1.397 | WHS=N/A    | THS=N/A    |
+
+Phase 4.2 Global Iteration 1 | Checksum: 1f3543f09
+
+Time (s): cpu = 00:29:03 ; elapsed = 00:05:49 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4068 ; free virtual = 11732
+
+Phase 4.3 Global Iteration 2
+ Number of Nodes with overlaps = 3265
+ Number of Nodes with overlaps = 1677
+ Number of Nodes with overlaps = 749
+ Number of Nodes with overlaps = 427
+ Number of Nodes with overlaps = 199
+ Number of Nodes with overlaps = 114
+ Number of Nodes with overlaps = 84
+ Number of Nodes with overlaps = 51
+ Number of Nodes with overlaps = 30
+ Number of Nodes with overlaps = 26
+ Number of Nodes with overlaps = 5
+ Number of Nodes with overlaps = 8
+ Number of Nodes with overlaps = 7
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.365 | TNS=-1.538 | WHS=N/A    | THS=N/A    |
+
+Phase 4.3 Global Iteration 2 | Checksum: ed84dec7
+
+Time (s): cpu = 00:37:40 ; elapsed = 00:07:36 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4071 ; free virtual = 11735
+Phase 4 Rip-up And Reroute | Checksum: ed84dec7
+
+Time (s): cpu = 00:37:41 ; elapsed = 00:07:37 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4071 ; free virtual = 11735
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 TNS Cleanup
+
+Phase 5.1.1 Delay CleanUp
+
+Phase 5.1.1.1 Update Timing
+Phase 5.1.1.1 Update Timing | Checksum: eb0d20a8
+
+Time (s): cpu = 00:37:50 ; elapsed = 00:07:39 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4073 ; free virtual = 11737
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.237 | TNS=-0.705 | WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+
+Phase 5.1.1.2 Update Timing
+Phase 5.1.1.2 Update Timing | Checksum: 168ef388f
+
+Time (s): cpu = 00:37:52 ; elapsed = 00:07:39 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4070 ; free virtual = 11734
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.237 | TNS=-0.705 | WHS=N/A    | THS=N/A    |
+
+Phase 5.1.1 Delay CleanUp | Checksum: 16f17938b
+
+Time (s): cpu = 00:37:53 ; elapsed = 00:07:40 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4070 ; free virtual = 11734
+Phase 5.1 TNS Cleanup | Checksum: 16f17938b
+
+Time (s): cpu = 00:37:54 ; elapsed = 00:07:40 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4070 ; free virtual = 11734
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 16f17938b
+
+Time (s): cpu = 00:37:54 ; elapsed = 00:07:40 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4070 ; free virtual = 11734
+Phase 5 Delay and Skew Optimization | Checksum: 16f17938b
+
+Time (s): cpu = 00:37:54 ; elapsed = 00:07:40 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4070 ; free virtual = 11734
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 11c17668b
+
+Time (s): cpu = 00:38:02 ; elapsed = 00:07:42 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4070 ; free virtual = 11734
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.237 | TNS=-0.705 | WHS=0.031  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 1070da9ab
+
+Time (s): cpu = 00:38:02 ; elapsed = 00:07:42 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4070 ; free virtual = 11734
+Phase 6 Post Hold Fix | Checksum: 1070da9ab
+
+Time (s): cpu = 00:38:02 ; elapsed = 00:07:43 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4070 ; free virtual = 11734
+
+Phase 7 Timing Verification
+
+Phase 7.1 Update Timing
+Phase 7.1 Update Timing | Checksum: 1179a6672
+
+Time (s): cpu = 00:38:21 ; elapsed = 00:07:46 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4073 ; free virtual = 11737
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.237 | TNS=-0.705 | WHS=N/A    | THS=N/A    |
+
+Phase 7 Timing Verification | Checksum: 1179a6672
+
+Time (s): cpu = 00:38:22 ; elapsed = 00:07:46 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4073 ; free virtual = 11737
+
+Phase 8 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 32.0429 %
+  Global Horizontal Routing Utilization  = 38.2926 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Congestion Report
+North Dir 2x2 Area, Max Cong = 92.7928%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X34Y68 -> INT_R_X35Y69
+   INT_L_X38Y66 -> INT_R_X39Y67
+   INT_L_X40Y66 -> INT_R_X41Y67
+   INT_L_X38Y64 -> INT_R_X39Y65
+   INT_L_X40Y64 -> INT_R_X41Y65
+South Dir 4x4 Area, Max Cong = 86.205%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X40Y46 -> INT_R_X43Y49
+East Dir 16x16 Area, Max Cong = 88.488%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X16Y22 -> INT_R_X31Y37
+   INT_L_X32Y22 -> INT_R_X47Y37
+   INT_L_X16Y6 -> INT_R_X31Y21
+   INT_L_X32Y6 -> INT_R_X47Y21
+West Dir 8x8 Area, Max Cong = 85.8915%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X16Y38 -> INT_R_X23Y45
+   INT_L_X24Y30 -> INT_R_X31Y37
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 1
+Effective congestion level: 3 Aspect Ratio: 0.6 Sparse Ratio: 0.625
+Direction: South
+----------------
+Congested clusters found at Level 1
+Effective congestion level: 2 Aspect Ratio: 0.6 Sparse Ratio: 1.75
+Direction: East
+----------------
+Congested clusters found at Level 4
+Effective congestion level: 5 Aspect Ratio: 1 Sparse Ratio: 1
+Direction: West
+----------------
+Congested clusters found at Level 2
+Effective congestion level: 4 Aspect Ratio: 0.555556 Sparse Ratio: 1.5625
+
+Phase 8 Route finalize | Checksum: 1179a6672
+
+Time (s): cpu = 00:38:23 ; elapsed = 00:07:46 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4073 ; free virtual = 11737
+
+Phase 9 Verifying routed nets
+
+ Verification completed successfully
+Phase 9 Verifying routed nets | Checksum: 1179a6672
+
+Time (s): cpu = 00:38:23 ; elapsed = 00:07:46 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4071 ; free virtual = 11735
+
+Phase 10 Depositing Routes
+Phase 10 Depositing Routes | Checksum: cfb488af
+
+Time (s): cpu = 00:38:27 ; elapsed = 00:07:50 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4071 ; free virtual = 11734
+
+Phase 11 Incr Placement Change
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4072 ; free virtual = 11736
+INFO: [Place 30-746] Post Placement Timing Summary WNS=0.504. For the most accurate timing information please run report_timing.
+Ending IncrPlace Task | Checksum: 940a8c16
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:25 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4077 ; free virtual = 11741
+Phase 11 Incr Placement Change | Checksum: cfb488af
+
+Time (s): cpu = 00:39:16 ; elapsed = 00:08:17 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4077 ; free virtual = 11741
+
+Phase 12 Build RT Design
+Phase 12 Build RT Design | Checksum: 122e63636
+
+Time (s): cpu = 00:39:24 ; elapsed = 00:08:24 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4053 ; free virtual = 11716
+Post Restoration Checksum: NetGraph: 291f341e NumContArr: b2ef9750 Constraints: 0 Timing: 0
+
+Phase 13 Router Initialization
+
+Phase 13.1 Create Timer
+Phase 13.1 Create Timer | Checksum: dc0ecb6e
+
+Time (s): cpu = 00:39:27 ; elapsed = 00:08:27 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4044 ; free virtual = 11708
+
+Phase 13.2 Fix Topology Constraints
+Phase 13.2 Fix Topology Constraints | Checksum: dc0ecb6e
+
+Time (s): cpu = 00:39:27 ; elapsed = 00:08:28 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4012 ; free virtual = 11675
+
+Phase 13.3 Pre Route Cleanup
+Phase 13.3 Pre Route Cleanup | Checksum: 1499ea57e
+
+Time (s): cpu = 00:39:28 ; elapsed = 00:08:28 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4012 ; free virtual = 11675
+ Number of Nodes with overlaps = 0
+
+Phase 13.4 Update Timing
+Phase 13.4 Update Timing | Checksum: 1652f8ea1
+
+Time (s): cpu = 00:40:29 ; elapsed = 00:08:42 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3962 ; free virtual = 11626
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.390  | TNS=0.000  | WHS=-0.355 | THS=-536.679|
+
+Phase 13 Router Initialization | Checksum: 20833d5cd
+
+Time (s): cpu = 00:40:49 ; elapsed = 00:08:47 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3965 ; free virtual = 11629
+
+Phase 14 Initial Routing
+Phase 14 Initial Routing | Checksum: 23aca607c
+
+Time (s): cpu = 00:40:56 ; elapsed = 00:08:49 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3943 ; free virtual = 11607
+
+Phase 15 Rip-up And Reroute
+
+Phase 15.1 Global Iteration 0
+ Number of Nodes with overlaps = 5079
+ Number of Nodes with overlaps = 2479
+ Number of Nodes with overlaps = 1270
+ Number of Nodes with overlaps = 877
+ Number of Nodes with overlaps = 508
+ Number of Nodes with overlaps = 254
+ Number of Nodes with overlaps = 108
+ Number of Nodes with overlaps = 41
+ Number of Nodes with overlaps = 14
+ Number of Nodes with overlaps = 6
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.005 | TNS=-0.005 | WHS=N/A    | THS=N/A    |
+
+Phase 15.1 Global Iteration 0 | Checksum: 1539509d1
+
+Time (s): cpu = 00:48:56 ; elapsed = 00:10:17 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3943 ; free virtual = 11607
+
+Phase 15.2 Global Iteration 1
+ Number of Nodes with overlaps = 3003
+ Number of Nodes with overlaps = 1479
+ Number of Nodes with overlaps = 713
+ Number of Nodes with overlaps = 254
+ Number of Nodes with overlaps = 197
+ Number of Nodes with overlaps = 73
+ Number of Nodes with overlaps = 60
+ Number of Nodes with overlaps = 48
+ Number of Nodes with overlaps = 19
+ Number of Nodes with overlaps = 11
+ Number of Nodes with overlaps = 5
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 6
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.445 | TNS=-1.731 | WHS=N/A    | THS=N/A    |
+
+Phase 15.2 Global Iteration 1 | Checksum: 1bed605c6
+
+Time (s): cpu = 00:54:36 ; elapsed = 00:11:23 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3950 ; free virtual = 11614
+Phase 15 Rip-up And Reroute | Checksum: 1bed605c6
+
+Time (s): cpu = 00:54:36 ; elapsed = 00:11:23 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3950 ; free virtual = 11614
+
+Phase 16 Delay and Skew Optimization
+
+Phase 16.1 TNS Cleanup
+
+Phase 16.1.1 Delay CleanUp
+
+Phase 16.1.1.1 Update Timing
+Phase 16.1.1.1 Update Timing | Checksum: 286461cc8
+
+Time (s): cpu = 00:54:46 ; elapsed = 00:11:25 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3954 ; free virtual = 11617
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.005 | TNS=-0.005 | WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+
+Phase 16.1.1.2 Update Timing
+Phase 16.1.1.2 Update Timing | Checksum: 16b127e41
+
+Time (s): cpu = 00:54:48 ; elapsed = 00:11:26 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3949 ; free virtual = 11613
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.007 | TNS=-0.007 | WHS=N/A    | THS=N/A    |
+
+Phase 16.1.1 Delay CleanUp | Checksum: 24f33cf4e
+
+Time (s): cpu = 00:54:49 ; elapsed = 00:11:27 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3947 ; free virtual = 11611
+Phase 16.1 TNS Cleanup | Checksum: 24f33cf4e
+
+Time (s): cpu = 00:54:49 ; elapsed = 00:11:27 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3947 ; free virtual = 11611
+
+Phase 16.2 Clock Skew Optimization
+Phase 16.2 Clock Skew Optimization | Checksum: 24f33cf4e
+
+Time (s): cpu = 00:54:49 ; elapsed = 00:11:27 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3947 ; free virtual = 11611
+Phase 16 Delay and Skew Optimization | Checksum: 24f33cf4e
+
+Time (s): cpu = 00:54:49 ; elapsed = 00:11:27 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3947 ; free virtual = 11611
+
+Phase 17 Post Hold Fix
+
+Phase 17.1 Hold Fix Iter
+
+Phase 17.1.1 Update Timing
+Phase 17.1.1 Update Timing | Checksum: 251ec24b4
+
+Time (s): cpu = 00:54:57 ; elapsed = 00:11:29 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3947 ; free virtual = 11611
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.007 | TNS=-0.007 | WHS=0.031  | THS=0.000  |
+
+Phase 17.1 Hold Fix Iter | Checksum: 215210a31
+
+Time (s): cpu = 00:54:57 ; elapsed = 00:11:29 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3947 ; free virtual = 11611
+Phase 17 Post Hold Fix | Checksum: 215210a31
+
+Time (s): cpu = 00:54:57 ; elapsed = 00:11:30 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3947 ; free virtual = 11611
+
+Phase 18 Timing Verification
+
+Phase 18.1 Update Timing
+Phase 18.1 Update Timing | Checksum: 1b8e805b1
+
+Time (s): cpu = 00:55:17 ; elapsed = 00:11:33 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3946 ; free virtual = 11610
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.007 | TNS=-0.007 | WHS=N/A    | THS=N/A    |
+
+Phase 18 Timing Verification | Checksum: 1b8e805b1
+
+Time (s): cpu = 00:55:17 ; elapsed = 00:11:33 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3946 ; free virtual = 11610
+
+Phase 19 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 31.8711 %
+  Global Horizontal Routing Utilization  = 38.1732 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Congestion Report
+North Dir 2x2 Area, Max Cong = 90.0901%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X38Y70 -> INT_R_X39Y71
+   INT_L_X38Y66 -> INT_R_X39Y67
+   INT_L_X40Y64 -> INT_R_X41Y65
+   INT_L_X38Y62 -> INT_R_X39Y63
+   INT_L_X40Y62 -> INT_R_X41Y63
+South Dir 4x4 Area, Max Cong = 85.5293%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X40Y46 -> INT_R_X43Y49
+East Dir 16x16 Area, Max Cong = 87.6321%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X16Y22 -> INT_R_X31Y37
+   INT_L_X32Y22 -> INT_R_X47Y37
+   INT_L_X16Y6 -> INT_R_X31Y21
+   INT_L_X32Y6 -> INT_R_X47Y21
+West Dir 8x8 Area, Max Cong = 85.1333%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X16Y38 -> INT_R_X23Y45
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 1
+Effective congestion level: 3 Aspect Ratio: 0.75 Sparse Ratio: 0.5625
+Direction: South
+----------------
+Congested clusters found at Level 2
+Effective congestion level: 2 Aspect Ratio: 1 Sparse Ratio: 1
+Direction: East
+----------------
+Congested clusters found at Level 4
+Effective congestion level: 5 Aspect Ratio: 1 Sparse Ratio: 1
+Direction: West
+----------------
+Congested clusters found at Level 2
+Effective congestion level: 4 Aspect Ratio: 0.555556 Sparse Ratio: 1.625
+
+Phase 19 Route finalize | Checksum: 1b8e805b1
+
+Time (s): cpu = 00:55:19 ; elapsed = 00:11:33 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3945 ; free virtual = 11609
+
+Phase 20 Verifying routed nets
+
+ Verification completed successfully
+Phase 20 Verifying routed nets | Checksum: 1b8e805b1
+
+Time (s): cpu = 00:55:19 ; elapsed = 00:11:34 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3944 ; free virtual = 11608
+
+Phase 21 Depositing Routes
+Phase 21 Depositing Routes | Checksum: 226e10359
+
+Time (s): cpu = 00:55:23 ; elapsed = 00:11:37 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3945 ; free virtual = 11609
+
+Phase 22 Post Router Timing
+INFO: [Route 35-20] Post Routing Timing Summary | WNS=0.000  | TNS=0.000  | WHS=0.032  | THS=0.000  |
+
+INFO: [Route 35-61] The design met the timing requirement.
+Phase 22 Post Router Timing | Checksum: 27dc81c51
+
+Time (s): cpu = 00:56:09 ; elapsed = 00:11:46 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 3986 ; free virtual = 11650
+INFO: [Route 35-16] Router Completed Successfully
+
+Time (s): cpu = 00:56:10 ; elapsed = 00:11:46 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4153 ; free virtual = 11817
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+114 Infos, 22 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:56:20 ; elapsed = 00:11:51 . Memory (MB): peak = 2868.234 ; gain = 0.000 ; free physical = 4153 ; free virtual = 11817
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:13 ; elapsed = 00:00:04 . Memory (MB): peak = 2897.242 ; gain = 0.000 ; free physical = 4046 ; free virtual = 11806
+INFO: [Common 17-1381] The checkpoint '/home/floran/Vivado/aivotta/aivotta.runs/impl_1/toplevel_wrapper_routed.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:23 ; elapsed = 00:00:16 . Memory (MB): peak = 2897.242 ; gain = 29.008 ; free physical = 4124 ; free virtual = 11813
+INFO: [runtcl-4] Executing : report_drc -file toplevel_wrapper_drc_routed.rpt -pb toplevel_wrapper_drc_routed.pb -rpx toplevel_wrapper_drc_routed.rpx
+Command: report_drc -file toplevel_wrapper_drc_routed.rpt -pb toplevel_wrapper_drc_routed.pb -rpx toplevel_wrapper_drc_routed.rpx
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Coretcl 2-168] The results of DRC are in file /home/floran/Vivado/aivotta/aivotta.runs/impl_1/toplevel_wrapper_drc_routed.rpt.
+report_drc completed successfully
+report_drc: Time (s): cpu = 00:00:23 ; elapsed = 00:00:07 . Memory (MB): peak = 2985.285 ; gain = 88.043 ; free physical = 4115 ; free virtual = 11803
+INFO: [runtcl-4] Executing : report_methodology -file toplevel_wrapper_methodology_drc_routed.rpt -pb toplevel_wrapper_methodology_drc_routed.pb -rpx toplevel_wrapper_methodology_drc_routed.rpx
+Command: report_methodology -file toplevel_wrapper_methodology_drc_routed.rpt -pb toplevel_wrapper_methodology_drc_routed.pb -rpx toplevel_wrapper_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 8 threads
+INFO: [Coretcl 2-1520] The results of Report Methodology are in file /home/floran/Vivado/aivotta/aivotta.runs/impl_1/toplevel_wrapper_methodology_drc_routed.rpt.
+report_methodology completed successfully
+report_methodology: Time (s): cpu = 00:01:05 ; elapsed = 00:00:14 . Memory (MB): peak = 2985.285 ; gain = 0.000 ; free physical = 3924 ; free virtual = 11613
+INFO: [runtcl-4] Executing : report_power -file toplevel_wrapper_power_routed.rpt -pb toplevel_wrapper_power_summary_routed.pb -rpx toplevel_wrapper_power_routed.rpx
+Command: report_power -file toplevel_wrapper_power_routed.rpt -pb toplevel_wrapper_power_summary_routed.pb -rpx toplevel_wrapper_power_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
+Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.
+126 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+report_power: Time (s): cpu = 00:00:38 ; elapsed = 00:00:16 . Memory (MB): peak = 2985.285 ; gain = 0.000 ; free physical = 3893 ; free virtual = 11591
+INFO: [runtcl-4] Executing : report_route_status -file toplevel_wrapper_route_status.rpt -pb toplevel_wrapper_route_status.pb
+INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -file toplevel_wrapper_timing_summary_routed.rpt -pb toplevel_wrapper_timing_summary_routed.pb -rpx toplevel_wrapper_timing_summary_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max, Timing Stage: Requireds.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [runtcl-4] Executing : report_incremental_reuse -file toplevel_wrapper_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-545] No incremental reuse to report, no incremental placement and routing data was found.
+INFO: [runtcl-4] Executing : report_clock_utilization -file toplevel_wrapper_clock_utilization_routed.rpt
+INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file toplevel_wrapper_bus_skew_routed.rpt -pb toplevel_wrapper_bus_skew_routed.pb -rpx toplevel_wrapper_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max, Timing Stage: Requireds.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+Command: phys_opt_design -directive Explore
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Vivado_Tcl 4-241] Physical synthesis in post route mode ( 100.0% nets are fully routed)
+INFO: [Vivado_Tcl 4-137] Directive used for phys_opt_design is: Explore
+INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. Skipping all physical synthesis optimizations.
+INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
+INFO: [Common 17-83] Releasing license: Implementation
+142 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:12 ; elapsed = 00:00:04 . Memory (MB): peak = 2985.285 ; gain = 0.000 ; free physical = 3768 ; free virtual = 11561
+INFO: [Common 17-1381] The checkpoint '/home/floran/Vivado/aivotta/aivotta.runs/impl_1/toplevel_wrapper_postroute_physopt.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:23 ; elapsed = 00:00:17 . Memory (MB): peak = 2985.285 ; gain = 0.000 ; free physical = 3852 ; free virtual = 11575
+INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -warn_on_violation -file toplevel_wrapper_timing_summary_postroute_physopted.rpt -pb toplevel_wrapper_timing_summary_postroute_physopted.pb -rpx toplevel_wrapper_timing_summary_postroute_physopted.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max, Timing Stage: Requireds.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file toplevel_wrapper_bus_skew_postroute_physopted.rpt -pb toplevel_wrapper_bus_skew_postroute_physopted.pb -rpx toplevel_wrapper_bus_skew_postroute_physopted.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max, Timing Stage: Requireds.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Common 17-206] Exiting Vivado at Thu Sep  5 20:16:49 2019...
+
+*** Running vivado
+    with args -log toplevel_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source toplevel_wrapper.tcl -notrace
+
+
+****** Vivado v2018.2 (64-bit)
+  **** SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+  **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source toplevel_wrapper.tcl -notrace
+Command: open_checkpoint toplevel_wrapper_postroute_physopt.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.07 . Memory (MB): peak = 1155.457 ; gain = 0.000 ; free physical = 3615 ; free virtual = 12088
+INFO: [Netlist 29-17] Analyzing 2252 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2158.129 ; gain = 44.070 ; free physical = 2697 ; free virtual = 11172
+Restored from archive | CPU: 3.050000 secs | Memory: 61.187790 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2158.129 ; gain = 44.070 ; free physical = 2697 ; free virtual = 11172
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 179 instances were transformed.
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 83 instances
+  RAM64M => RAM64M (RAMD64E, RAMD64E, RAMD64E, RAMD64E): 80 instances
+  RAM64X1D => RAM64X1D (RAMD64E, RAMD64E): 16 instances
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2018.2 (64-bit) build 2258646
+open_checkpoint: Time (s): cpu = 00:00:31 ; elapsed = 00:00:52 . Memory (MB): peak = 2158.129 ; gain = 1002.672 ; free physical = 2714 ; free virtual = 11188
+INFO: [Memdata 28-167] Found XPM memory block toplevel_i/axi_smc_1/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the toplevel_i/axi_smc_1/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block toplevel_i/axi_smc_1/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the toplevel_i/axi_smc_1/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block toplevel_i/axi_smc_1/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the toplevel_i/axi_smc_1/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block toplevel_i/axi_smc_1/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the toplevel_i/axi_smc_1/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block toplevel_i/axi_smc/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the toplevel_i/axi_smc/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block toplevel_i/axi_smc/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the toplevel_i/axi_smc/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block toplevel_i/axi_smc/inst/s00_nodes/s00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the toplevel_i/axi_smc/inst/s00_nodes/s00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block toplevel_i/axi_smc/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the toplevel_i/axi_smc/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block toplevel_i/axi_smc/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the toplevel_i/axi_smc/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+Command: write_bitstream -force toplevel_wrapper.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2018.2/data/ip'.
+INFO: [DRC 23-27] Running DRC with 8 threads
+WARNING: [DRC CHECK-3] Report rule limit reached: REQP-1839 rule limit reached: 20 violations have been found.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1 input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1 input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+INFO: [Common 17-14] Message 'DRC DPIP-1' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp output toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0 output toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1 output toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[13] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[11]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_bpcc_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/active_load_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/destination_sel_r_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/lock_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_channel/data_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_cmd_in_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_command_fifo/write_ready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/write_cmd_in_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/write_command_fifo/write_ready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/a_aready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/a_live_read_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/a_rdata_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_aready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_live_read_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_rdata_valid_r_reg_replica) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_bpcc_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_bppc_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_bppc_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_forcebp_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_wait_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+INFO: [Vivado 12-3199] DRC finished with 0 Errors, 193 Warnings
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+INFO: [Designutils 20-2272] Running write_bitstream with 8 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Writing bitstream ./toplevel_wrapper.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Project 1-120] WebTalk data collection is mandatory when using a WebPACK part without a full Vivado license. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
+INFO: [Common 17-186] '/home/floran/Vivado/aivotta/aivotta.runs/impl_1/usage_statistics_webtalk.xml' has been successfully sent to Xilinx on Fri Sep  6 12:33:49 2019. For additional details about this file, please refer to the WebTalk help file at /opt/Xilinx/Vivado/2018.2/doc/webtalk_introduction.html.
+INFO: [Common 17-83] Releasing license: Implementation
+33 Infos, 191 Warnings, 0 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:01:24 ; elapsed = 00:00:35 . Memory (MB): peak = 2734.145 ; gain = 576.016 ; free physical = 2578 ; free virtual = 11057
+INFO: [Common 17-206] Exiting Vivado at Fri Sep  6 12:33:49 2019...

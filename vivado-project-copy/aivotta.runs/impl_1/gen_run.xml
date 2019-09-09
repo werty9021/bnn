@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7z020clg400-1" LaunchTime="1567705776">
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="BG-DRC" Name="toplevel_wrapper.drc"/>
+  <File Type="BG-BGN" Name="toplevel_wrapper.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="toplevel_wrapper.sysdef"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="toplevel_wrapper.ltx"/>
+  <File Type="BITSTR-MMI" Name="toplevel_wrapper.mmi"/>
+  <File Type="BITSTR-BMM" Name="toplevel_wrapper_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="toplevel_wrapper.nky"/>
+  <File Type="BITSTR-RBT" Name="toplevel_wrapper.rbt"/>
+  <File Type="BITSTR-MSK" Name="toplevel_wrapper.msk"/>
+  <File Type="BG-BIN" Name="toplevel_wrapper.bin"/>
+  <File Type="BG-BIT" Name="toplevel_wrapper.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="toplevel_wrapper_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="toplevel_wrapper_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="toplevel_wrapper_bus_skew_postroute_physopted.rpt"/>
+  <File Type="RDI-RDI" Name="toplevel_wrapper.vdi"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="toplevel_wrapper_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="toplevel_wrapper_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="toplevel_wrapper_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="toplevel_wrapper_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="toplevel_wrapper_postroute_physopt.dcp"/>
+  <File Type="ROUTE-BUS-SKEW" Name="toplevel_wrapper_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="toplevel_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="toplevel_wrapper_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-TIMING-RPX" Name="toplevel_wrapper_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-TIMING-PB" Name="toplevel_wrapper_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="toplevel_wrapper_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="toplevel_wrapper_route_status.pb"/>
+  <File Type="ROUTE-STATUS" Name="toplevel_wrapper_route_status.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="toplevel_wrapper_power_routed.rpx"/>
+  <File Type="ROUTE-PWR-SUM" Name="toplevel_wrapper_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="toplevel_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="toplevel_wrapper_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="toplevel_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="toplevel_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="toplevel_wrapper_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-PB" Name="toplevel_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="toplevel_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="toplevel_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-DCP" Name="toplevel_wrapper_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="toplevel_wrapper_routed_error.dcp"/>
+  <File Type="PHYSOPT-TIMING" Name="toplevel_wrapper_timing_summary_physopted.rpt"/>
+  <File Type="PHYSOPT-DRC" Name="toplevel_wrapper_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="toplevel_wrapper_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="toplevel_wrapper_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="toplevel_wrapper_postplace_pwropt.dcp"/>
+  <File Type="PLACE-TIMING" Name="toplevel_wrapper_timing_summary_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="toplevel_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="toplevel_wrapper_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="toplevel_wrapper_control_sets_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="toplevel_wrapper_utilization_placed.pb"/>
+  <File Type="PLACE-UTIL" Name="toplevel_wrapper_utilization_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="toplevel_wrapper_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-IO" Name="toplevel_wrapper_io_placed.rpt"/>
+  <File Type="PLACE-DCP" Name="toplevel_wrapper_placed.dcp"/>
+  <File Type="PWROPT-TIMING" Name="toplevel_wrapper_timing_summary_pwropted.rpt"/>
+  <File Type="PWROPT-DRC" Name="toplevel_wrapper_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="toplevel_wrapper_pwropt.dcp"/>
+  <File Type="OPT-TIMING" Name="toplevel_wrapper_timing_summary_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="toplevel_wrapper.hwdef"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="toplevel_wrapper_methodology_drc_opted.rpt"/>
+  <File Type="OPT-DRC" Name="toplevel_wrapper_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="toplevel_wrapper_opt.dcp"/>
+  <File Type="INIT-TIMING" Name="toplevel_wrapper_timing_summary_init.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="toplevel_wrapper_bus_skew_routed.rpx"/>
+  <File Type="REPORTS-TCL" Name="toplevel_wrapper_reports.tcl"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="toplevel_wrapper_bus_skew_routed.pb"/>
+  <File Type="PA-TCL" Name="toplevel_wrapper.tcl"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/add.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/util_pkg.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/add_and_eq_gt_gtu_ior_shl_shr_shru_sub_sxhw_sxqw_xor.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/add_mul_sub.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/tce_util_pkg.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/almaif_axi_expander.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/almaif_decoder.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/almaif_mc_arbiter.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/axi4_master.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/block_copier_fu.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/registers-pkg.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/dbregbank.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/dbsm-entity.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/dbsm-rtl.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/debugger.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/tta_core_imem_mau_pkg.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/tta_core_globals_pkg.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/gcu_opcodes_pkg.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/decoder.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/dual_port_fifo.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/fu_fma_act.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/fu_vops.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/ic.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/idecompressor.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/ifetch.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_1.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_11.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_2.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_3.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_4.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_7.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_8.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/membus_splitter.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/rf_1wr_1rd_always_1_guarded_0.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/tta-axislave.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/tta-accel.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/tta_core_params_pkg.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/tta_core.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/tta_core_toplevel_params_pkg.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/vhdl/vec_lsu_1024_2.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/xilinx_dp_blockram.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/platform/tta_core_toplevel.vhdl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/toplevel/toplevel.bd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/toplevel/hdl/toplevel_wrapper.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Documents/TCE/aivotta/proge-output/gcu_ic/datapath_gate.vhdl">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="toplevel_wrapper"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Performance_ExplorePostRoutePhysOpt" Flow="Vivado Implementation 2018">
+      <Desc>Similar to Peformance_Explore, but enables the physical optimization step (phys_opt_design) with the Explore directive after routing.</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design">
+      <Option Id="Directive">0</Option>
+    </Step>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design">
+      <Option Id="Directive">0</Option>
+    </Step>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design" EnableStepBool="1">
+      <Option Id="Directive">0</Option>
+    </Step>
+    <Step Id="route_design">
+      <Option Id="Directive">0</Option>
+      <Option Id="MoreOptsStr"><![CDATA[-tns_cleanup]]></Option>
+    </Step>
+    <Step Id="post_route_phys_opt_design" EnableStepBool="1">
+      <Option Id="Directive">0</Option>
+    </Step>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="toplevel_tta_core_toplevel_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="toplevel_axi_smc_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="toplevel_axi_smc_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="toplevel_rst_ps7_0_100M_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="toplevel_processing_system7_0_0"/>
+</GenRun>

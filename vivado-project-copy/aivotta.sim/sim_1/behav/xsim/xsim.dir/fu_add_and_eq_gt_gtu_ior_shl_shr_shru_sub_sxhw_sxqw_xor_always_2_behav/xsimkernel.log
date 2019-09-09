@@ -1,0 +1,7 @@
+Running: xsim.dir/fu_add_and_eq_gt_gtu_ior_shl_shr_shru_sub_sxhw_sxqw_xor_always_2_behav/xsimk -simmode gui -wdb fu_add_and_eq_gt_gtu_ior_shl_shr_shru_sub_sxhw_sxqw_xor_always_2_behav.wdb -simrunnum 0 -socket 57749
+Design successfully loaded
+Design Loading Memory Usage: 32648 KB (Peak: 32700 KB)
+Design Loading CPU Usage: 0 ms
+Simulation completed
+Simulation Memory Usage: 122584 KB (Peak: 179920 KB)
+Simulation CPU Usage: 10 ms

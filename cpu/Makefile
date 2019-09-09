@@ -11,7 +11,7 @@ SRC = $(call rwildcard, $(SRC_DIR), *.c *.h)#$(wildcard $(SRC_DIR)/*.c)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 CPPFLAGS += -I$(INCL_DIR)# -I is a preprocessor flag, not a compiler flag
-CFLAGS += -O0 -Wall -Werror -Wextra -pedantic -std=c11 -g 
+CFLAGS += -O0 -Wall -Werror -Wextra -pedantic -std=c11 -g -mavx512f -mfma
 LDFLAGS += # -L is a linker flag
 LDLIBS += # Left empty if no libs are needed
 

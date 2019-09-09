@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<adf-implementation>
+
+  <ic-decoder-plugin>
+    <name>DefaultICDecoder</name>
+    <file>tce:DefaultICDecoderPlugin.so</file>
+    <parameter name="debugger">
+      <value>external</value>
+    </parameter>
+  </ic-decoder-plugin>
+
+  <fu-generate name="vBNN_OPS">
+    <operation name="xnorpopcountacc32x32">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>1</operation-id>
+    </operation>
+  </fu-generate>
+
+  <fu-generate name="vOPS">
+    <operation name="vbcast16x32">
+      <hdb-file>tce:generate_base_simd.hdb</hdb-file>
+      <operation-id>46</operation-id>
+    </operation>
+    <operation name="vbcast32x32">
+      <hdb-file>tce:generate_base_simd.hdb</hdb-file>
+      <operation-id>41</operation-id>
+    </operation>
+    <operation name="extractelem16x32">
+      <hdb-file>tce:generate_base_simd.hdb</hdb-file>
+      <operation-id>64</operation-id>
+    </operation>
+    <operation name="extractelem32x32">
+      <hdb-file>tce:generate_base_simd.hdb</hdb-file>
+      <operation-id>59</operation-id>
+    </operation>
+    <operation name="insertelem16x32">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>6</operation-id>
+    </operation>
+    <operation name="insertelem32x32">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>7</operation-id>
+    </operation>
+  </fu-generate>
+
+  <fu-generate name="vALU">
+    <operation name="geu16x32to32x1">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>4</operation-id>
+    </operation>
+    <operation name="shlsame16x32">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>9</operation-id>
+    </operation>
+    <operation name="max16x32">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>8</operation-id>
+    </operation>
+    <operation name="mac16x32to32x32">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>5</operation-id>
+    </operation>
+  </fu-generate>
+
+  <fu-generate name="vALU2">
+    <operation name="ge32x32to32x1">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>3</operation-id>
+    </operation>
+    <operation name="shlsame32x32">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>10</operation-id>
+    </operation>
+    <operation name="vreduce32x32">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>2</operation-id>
+    </operation>
+    <operation name="truncwh32x32">
+      <hdb-file>hdb/new.hdb</hdb-file>
+      <operation-id>11</operation-id>
+    </operation>
+  </fu-generate>
+
+  <fu name="vLSU1_32b">
+    <hdb-file>almaif_simd.hdb</hdb-file>
+    <fu-id>5</fu-id>
+  </fu>
+
+  <fu name="vLSU1_16b">
+    <hdb-file>almaif_simd.hdb</hdb-file>
+    <fu-id>20</fu-id>
+  </fu>
+
+  <fu name="vLSU2_32b">
+    <hdb-file>almaif_simd.hdb</hdb-file>
+    <fu-id>5</fu-id>
+  </fu>
+
+  <fu name="vLSU2_16b">
+    <hdb-file>almaif_simd.hdb</hdb-file>
+    <fu-id>20</fu-id>
+  </fu>
+
+  <fu name="LSU2">
+    <hdb-file>tce:almaif.hdb</hdb-file>
+    <fu-id>9</fu-id>
+  </fu>
+
+  <fu name="LSU1">
+    <hdb-file>tce:almaif.hdb</hdb-file>
+    <fu-id>9</fu-id>
+  </fu>
+
+  <fu name="add_mul_sub">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>273</fu-id>
+  </fu>
+
+  <fu name="ALU">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>379</fu-id>
+  </fu>
+
+  <fu name="add">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>140</fu-id>
+  </fu>
+
+  <rf name="RF32B">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>958</rf-id>
+  </rf>
+
+  <rf name="vRF1024">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>958</rf-id>
+  </rf>
+
+  <rf name="vRF512">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>96</rf-id>
+  </rf>
+
+  <rf name="RF32A">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>958</rf-id>
+  </rf>
+
+  <rf name="RF_BOOL">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>96</rf-id>
+  </rf>
+
+  <iu name="IMM">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>96</rf-id>
+  </iu>
+
+</adf-implementation>

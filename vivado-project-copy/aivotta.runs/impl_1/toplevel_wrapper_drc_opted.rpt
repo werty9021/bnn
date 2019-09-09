@@ -1,0 +1,1005 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
+| Date         : Thu Sep  5 20:00:26 2019
+| Host         : floran-HP-ZBook-Studio-G5 running 64-bit Ubuntu 19.04
+| Command      : report_drc -file toplevel_wrapper_drc_opted.rpt -pb toplevel_wrapper_drc_opted.pb -rpx toplevel_wrapper_drc_opted.rpx
+| Design       : toplevel_wrapper
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 193
++-----------+----------+----------------------------+------------+
+| Rule      | Severity | Description                | Violations |
++-----------+----------+----------------------------+------------+
+| CHECK-3   | Warning  | Report rule limit reached  | 1          |
+| DPIP-1    | Warning  | Input pipelining           | 102        |
+| DPOP-1    | Warning  | PREG Output pipelining     | 35         |
+| DPOP-2    | Warning  | MREG Output pipelining     | 35         |
+| REQP-1839 | Warning  | RAMB36 async control check | 20         |
++-----------+----------+----------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+CHECK-3#1 Warning
+Report rule limit reached  
+REQP-1839 rule limit reached: 20 violations have been found.
+Related violations: <none>
+
+DPIP-1#1 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#2 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#3 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#4 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#5 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1 input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#6 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1 input toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#7 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#8 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#9 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#10 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#11 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#12 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#13 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#14 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#15 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#16 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#17 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#18 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#19 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#20 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#21 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#22 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#23 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#24 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#25 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#26 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#27 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#28 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#29 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#30 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#31 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#32 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#33 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#34 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#35 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#36 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#37 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#38 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#39 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#40 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#41 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#42 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#43 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#44 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#45 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#46 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#47 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#48 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#49 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#50 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#51 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#52 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#53 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#54 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#55 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#56 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#57 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#58 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#59 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#60 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#61 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#62 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#63 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#64 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#65 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#66 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#67 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#68 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#69 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#70 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#71 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#72 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#73 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#74 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#75 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#76 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#77 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#78 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#79 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#80 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#81 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#82 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#83 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#84 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#85 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#86 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#87 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#88 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#89 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#90 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#91 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#92 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#93 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#94 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#95 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#96 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#97 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#98 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#99 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#100 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#101 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#102 Warning
+Input pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9 input toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPOP-1#1 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp output toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#2 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0 output toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#3 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1 output toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#4 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#5 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#6 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#7 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#8 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#9 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#10 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#11 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#12 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#13 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#14 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#15 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#16 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#17 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#18 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#19 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#20 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#21 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#22 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#23 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#24 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#25 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#26 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#27 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#28 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#29 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#30 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#31 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#32 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#33 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#34 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#35 Warning
+PREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9 output toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-2#1 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#2 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#3 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_add_mul_sub/fu_arch/multOp__1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#4 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#5 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#6 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#7 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__10/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#8 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__11/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#9 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__12/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#10 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__13/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#11 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__14/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#12 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__15/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#13 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__16/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#14 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__17/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#15 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__18/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#16 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__19/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#17 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#18 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__20/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#19 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__21/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#20 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__22/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#21 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__23/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#22 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__24/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#23 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__25/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#24 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__26/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#25 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__27/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#26 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__28/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#27 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__29/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#28 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__3/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#29 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__30/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#30 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__4/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#31 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__5/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#32 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__6/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#33 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__7/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#34 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__8/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#35 Warning
+MREG Output pipelining  
+DSP toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9 multiplier stage toplevel_i/tta_core_toplevel_0/U0/core/fu_fma_act_generated/data_out1_cycle_0_r0__9/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+REQP-1839#1 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[13] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[11]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_channel/data_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#2 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/active_load_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#3 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/destination_sel_r_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#4 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/lock_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#5 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_channel/data_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#6 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_cmd_in_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#7 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/read_command_fifo/write_ready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#8 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/write_cmd_in_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#9 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/core/fu_DMA/write_command_fifo/write_ready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#10 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/a_aready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#11 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/a_live_read_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#12 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/a_rdata_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#13 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_aready_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#14 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_live_read_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#15 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/onchip_mem_data/a_rdata_valid_r_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#16 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_bpcc_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#17 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_bppc_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#18 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_bppc_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#19 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_forcebp_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#20 Warning
+RAMB36 async control check  
+The RAMB36E1 toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0 has an input control pin toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/RAM_ARR_reg_0_0/ADDRARDADDR[14] (net: toplevel_i/tta_core_toplevel_0/U0/onchip_mem_INSTR/ADDRARDADDR[12]) which is driven by a register (toplevel_i/tta_core_toplevel_0/U0/tta_accel_0/dbg_gen[0].debugger_i/dbsm_1/lockrq_wait_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+

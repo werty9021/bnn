@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/util_pkg.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/add_and_eq_gt_gtu_ior_shl_shr_shru_sub_sxhw_sxqw_xor.vhdl" \
+
+# Do not sort compile order
+nosort

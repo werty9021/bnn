@@ -5,6 +5,8 @@
 #include "types.h"
 #include "tensor_utils.h"
 
+#include <immintrin.h>
+
 // void conv2d(int Do, int Di, int Dy, int Dx, int Ky, int Kx, float input[Di][(Dy - 1) + Ky][(Dx - 1) + Kx], float weights[Do][Di][Ky][Kx], float output[Do][Dy][Dx]){
 void conv2d_pad(int H, int W, int Do, int Di, int Dy, int Dx, int Ky, int Kx, int Py, int Px, float *input, float *weights, float *output){
     // Pad the input array
@@ -59,6 +61,91 @@ void conv2d_skip(int H, int W, int Do, int Di, int Dy, int Dx, int Ky, int Kx, i
     }
 }
 
+
+struct IntTensor* conv2d(struct Int16Tensor *input, struct Int16Tensor *weights, struct Dim2d *kernel_size, struct Dim2d *padding_size){
+    // Short variable names
+    const int H = input->H, W = input->W; // Input size
+    const int Ky = kernel_size->y, Kx = kernel_size->x; // Kernel size
+    const int Py = padding_size->y, Px = padding_size->x; // Padding size
+    const int Do = weights->N, Di = input->C; // Output/Input channels
+    // Compute output size
+    const int Dy = (H - Ky + 2*Py) + 1, Dx = (W - Kx + 2*Px) + 1; // Stride=1
+
+    // Create output
+    struct IntTensor* output = inttensor_init(1, Do, Dy, Dx, 1);
+
+    int l_start, l_end, k_start, k_end;
+    for(int y = 0; y < Dy; y++) {
+        for(int x = 0; x < Dx; x++) {
+            k_start = (y < Py) ? (Py - y) : 0;
+            k_end = (y >= Dy - Py) ? (Ky - Py - 1 + Dy - y) : Ky;
+            for(int k = k_start; k < k_end; k++) {
+                l_start = (x < Px) ? (Px - x) : 0;
+                l_end = (x >= Dx - Px) ? (Kx - Px -1 + Dx -x) : Kx;
+                for(int l = l_start; l < l_end; l++) {
+                    for(int i = 0; i < Di; i++) {
+                        for(int z = 0; z < Do; z++){
+                            *IND3T(output, y, x, z) += *IND3T(input, (y - Py + k), (x - Px + l), i) * *IND4T(weights, k, l, i, z);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    free_int16tensor(input);
+    free_int16tensor(weights);
+
+    return output;
+}
+
+struct FloatTensor* conv2d_skip1(struct FloatTensor *input, struct FloatTensor *weights, struct Dim2d *kernel_size, struct Dim2d *padding_size){
+    // Short variable names
+    const int H = input->H, W = input->W; // Input size
+    const int Ky = kernel_size->y, Kx = kernel_size->x; // Kernel size
+    const int Py = padding_size->y, Px = padding_size->x; // Padding size
+    const int Do = weights->N, Di = input->C; // Output/Input channels
+    // Compute output size
+    const int Dy = (H - Ky + 2*Py) + 1, Dx = (W - Kx + 2*Px) + 1; // Stride=1
+
+    // Create output
+    struct FloatTensor* output = floattensor_init(1, Do, Dy, Dx, 1);
+
+    
+    int l_start, l_end, k_start, k_end;
+    
+    for(int y = 0; y < Dy; y++) {
+        for(int x = 0; x < Dx; x++) {
+            k_start = (y < Py) ? (Py - y) : 0;
+            k_end = (y >= Dy - Py) ? (Ky - Py - 1 + Dy - y) : Ky;
+            for(int k = k_start; k < k_end; k++) {
+                l_start = (x < Px) ? (Px - x) : 0;
+                l_end = (x >= Dx - Px) ? (Kx - Px -1 + Dx -x) : Kx;
+                for(int l = l_start; l < l_end; l++) {
+                    for(int i = 0; i < Di; i++) {
+                        __m256 vinput =_mm256_broadcast_ss(IND2(input, (y - Py + k), (x - Px + l)));
+                        for(int z = 0; z < Do; z+=8){
+                            // *(output.data + z*Dy*Dx + y*Dx + x) += *(input->data + i*H*W + (y - Py + k)*W + (x - Px + l)) * *(weights->data + z*Di*Ky*Kx + i*Ky*Kx + k*Kx + l);
+                            // *IND3(output, z, y, x) += *IND3(input, i, (y - Py + k), (x - Px + l)) * *IND4(weights, z, i, k, l);
+                            // *IND3T(output, y, x, z) += *IND3(input, i, (y - Py + k), (x - Px + l)) * *IND4T(weights, k, l, i, z);
+                            
+                            __m256 vweights = _mm256_load_ps(IND4T(weights, k, l, i, z));
+                            __m256 voutput = _mm256_load_ps(IND3T(output, y, x, z));
+                            voutput = _mm256_fmadd_ps(vinput, vweights, voutput);
+                             _mm256_store_ps(IND3T(output, y, x, z), voutput);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    free_floattensor(input);
+    free_floattensor(weights);
+
+    return output;
+}
+
 struct FloatTensor* conv2d_skip2(struct FloatTensor *input, struct FloatTensor *weights, struct Dim2d *kernel_size, struct Dim2d *padding_size){
     // Short variable names
     const int H = input->H, W = input->W; // Input size
@@ -73,18 +160,20 @@ struct FloatTensor* conv2d_skip2(struct FloatTensor *input, struct FloatTensor *
 
     
     int l_start, l_end, k_start, k_end;
-    for(int z = 0; z < Do; z++){
-        for(int i = 0; i < Di; i++) {
-            for(int y = 0; y < Dy; y++) {
-                for(int x = 0; x < Dx; x++) {
-                    k_start = (y < Py) ? (Py - y) : 0;
-                    k_end = (y >= Dy - Py) ? (Ky - Py - 1 + Dy - y) : Ky;
-                    for(int k = k_start; k < k_end; k++) {
-                        l_start = (x < Px) ? (Px - x) : 0;
-                        l_end = (x >= Dx - Px) ? (Kx - Px -1 + Dx -x) : Kx;
-                        for(int l = l_start; l < l_end; l++) {
+    
+    for(int y = 0; y < Dy; y++) {
+        for(int x = 0; x < Dx; x++) {
+            k_start = (y < Py) ? (Py - y) : 0;
+            k_end = (y >= Dy - Py) ? (Ky - Py - 1 + Dy - y) : Ky;
+            for(int k = k_start; k < k_end; k++) {
+                l_start = (x < Px) ? (Px - x) : 0;
+                l_end = (x >= Dx - Px) ? (Kx - Px -1 + Dx -x) : Kx;
+                for(int l = l_start; l < l_end; l++) {
+                    for(int i = 0; i < Di; i++) {
+                        for(int z = 0; z < Do; z++){
                             // *(output.data + z*Dy*Dx + y*Dx + x) += *(input->data + i*H*W + (y - Py + k)*W + (x - Px + l)) * *(weights->data + z*Di*Ky*Kx + i*Ky*Kx + k*Kx + l);
-                            *IND3(output, z, y, x) += *IND3(input, i, (y - Py + k), (x - Px + l)) * *IND4(weights, z, i, k, l);
+                            // *IND3(output, z, y, x) += *IND3(input, i, (y - Py + k), (x - Px + l)) * *IND4(weights, z, i, k, l);
+                            *IND3T(output, y, x, z) += *IND3T(input, (y - Py + k), (x - Px + l), i) * *IND4T(weights, k, l, i, z);
                         }
                     }
                 }
@@ -111,22 +200,17 @@ struct UIntTensor* binconv2d_skip(struct UIntTensor *input, struct UIntTensor *w
     struct UIntTensor *output = uinttensor_init(1, Do, Dy, Dx, 1);
     
     int l_start, l_end, k_start, k_end;
-    for(int z = 0; z < Do; z++){
-        for(int i = 0; i < Di; i++) {
-            for(int y = 0; y < Dy; y++) {
-                for(int x = 0; x < Dx; x++) {
-                    k_start = (y < Py) ? (Py - y) : 0;
-                    k_end = (y >= Dy - Py) ? (Ky - Py - 1 + Dy - y) : Ky;
-                    for(int k = k_start; k < k_end; k++) {
-                        l_start = (x < Px) ? (Px - x) : 0;
-                        l_end = (x >= Dx - Px) ? (Kx - Px -1 + Dx -x) : Kx;
-                        for(int l = l_start; l < l_end; l++) {
-                            // if (z==0 && x==0 && y==0) {
-                            //     int popcnt = __builtin_popcount(~(*IND3((*input), i, (y - Py + k), (x - Px + l)) ^ *IND4((*weights), z, i, k, l)));
-                            //     printf("%u \n", popcnt);
-                            // }
-                            
-                            *IND3(output, z, y, x) += __builtin_popcount(~(*IND3(input, i, (y - Py + k), (x - Px + l)) ^ *IND4(weights, z, i, k, l)));
+    for(int y = 0; y < Dy; y++) {
+        for(int x = 0; x < Dx; x++) {
+            k_start = (y < Py) ? (Py - y) : 0;
+            k_end = (y >= Dy - Py) ? (Ky - Py - 1 + Dy - y) : Ky;
+            for(int k = k_start; k < k_end; k++) {
+                l_start = (x < Px) ? (Px - x) : 0;
+                l_end = (x >= Dx - Px) ? (Kx - Px -1 + Dx -x) : Kx;
+                for(int l = l_start; l < l_end; l++) {
+                    for(int i = 0; i < Di; i++) {
+                        for(int z = 0; z < Do; z++){
+                            *IND3T(output, y, x, z) += __builtin_popcount(~(*IND3T(input, (y - Py + k), (x - Px + l), i) ^ *IND4T(weights, k, l, i, z)));
                         }
                     }
                 }

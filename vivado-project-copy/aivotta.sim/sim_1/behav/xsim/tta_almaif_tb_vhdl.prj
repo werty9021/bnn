@@ -1,0 +1,42 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/util_pkg.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/add_and_eq_gt_gtu_ior_shl_shr_shru_sub_sxhw_sxqw_xor.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/tce_util_pkg.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/almaif_axi_expander.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/almaif_decoder.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/almaif_mc_arbiter.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/registers-pkg.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/dbregbank.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/dbsm-entity.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/dbsm-rtl.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/debugger.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/tta_core_imem_mau_pkg.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/tta_core_globals_pkg.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/gcu_opcodes_pkg.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/decoder.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/fu_valu.vhd" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/ic.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/idecompressor.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/ifetch.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_1.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_2.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_3.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_5.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_6.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/gcu_ic/input_mux_7.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/membus_splitter.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/rf_1wr_1rd_always_1_guarded_0.vhd" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/s7_rf_1wr_1rd.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/tta-axislave.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/tta-accel.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/tta_core_toplevel_params_pkg.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/tta_core_toplevel.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/tta_core_params_pkg.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/tta_core.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/vhdl/vec_lsu_1024.vhdl" \
+"../../../../../../Documents/TCE/aivotta/proge-output/platform/xilinx_dp_blockram.vhdl" \
+"../../../../../../Documents/TCE/aivotta/tb/tta-almaif-tb.vhdl" \
+
+# Do not sort compile order
+nosort

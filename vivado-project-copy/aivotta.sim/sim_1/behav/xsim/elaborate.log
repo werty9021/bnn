@@ -1,0 +1,76 @@
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /opt/Xilinx/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 07cabcc0346f4a5a85228754198c7d93 --incr --debug typical --relax --mt 8 --include ../../../../aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_0_1/bd_0/ip/ip_0/sysc --include ../../../../aivotta.srcs/sources_1/bd/toplevel/ip/toplevel_axi_smc_0_1/bd_0/ip/ip_0/sim -L xil_defaultlib -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tta_almaif_tb_behav xil_defaultlib.tta_almaif_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package ieee.math_real
+Compiling package xil_defaultlib.tta_core_imem_mau
+Compiling package xil_defaultlib.tta_core_globals
+Compiling package xil_defaultlib.register_pkg
+Compiling package xil_defaultlib.tce_util
+Compiling package ieee.std_logic_textio
+Compiling package xil_defaultlib.tta_core_toplevel_params
+Compiling package ieee.std_logic_arith
+Compiling package xil_defaultlib.tta_core_params
+Compiling package xil_defaultlib.tta_core_gcu_opcodes
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling package xil_defaultlib.opcodes_add_and_eq_gt_gtu_ior_sh...
+Compiling package xil_defaultlib.util
+Compiling package xil_defaultlib.shl_shr_shru_pkg
+Compiling module xil_defaultlib.glbl
+Compiling architecture rtl_andor of entity xil_defaultlib.tta_core_ifetch [\tta_core_ifetch(sync_reset_g=tr...]
+Compiling architecture structural of entity xil_defaultlib.tta_core_decompressor [tta_core_decompressor_default]
+Compiling architecture rtl_andor of entity xil_defaultlib.tta_core_decoder [tta_core_decoder_default]
+Compiling architecture rtl of entity xil_defaultlib.fu_valu [fu_valu_default]
+Compiling architecture comb of entity xil_defaultlib.add_and_eq_gt_gtu_ior_shl_shr_shru_sub_sxhw_sxqw_xor_arith [add_and_eq_gt_gtu_ior_shl_shr_sh...]
+Compiling architecture rtl of entity xil_defaultlib.fu_add_and_eq_gt_gtu_ior_shl_shr_shru_sub_sxhw_sxqw_xor_always_1 [\fu_add_and_eq_gt_gtu_ior_shl_sh...]
+Compiling architecture rtl of entity xil_defaultlib.fu_lsu_simd_32 [\fu_lsu_simd_32(addrw_g=14)\]
+Compiling architecture rtl of entity xil_defaultlib.s7_rf_1wr_1rd [\s7_rf_1wr_1rd(width_g=1024,dept...]
+Compiling architecture rtl of entity xil_defaultlib.s7_rf_1wr_1rd [\s7_rf_1wr_1rd(width_g=512,depth...]
+Compiling architecture rtl of entity xil_defaultlib.s7_rf_1wr_1rd [\s7_rf_1wr_1rd(width_g=32,depth_...]
+Compiling architecture rtl of entity xil_defaultlib.rf_1wr_1rd_always_1_guarded_0 [\rf_1wr_1rd_always_1_guarded_0(d...]
+Compiling architecture rtl of entity xil_defaultlib.rf_1wr_1rd_always_1_guarded_0 [\rf_1wr_1rd_always_1_guarded_0(r...]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_3 [tta_core_input_mux_3_default]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_3 [\tta_core_input_mux_3(dataw=14)\]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_5 [\tta_core_input_mux_5(busw_0=102...]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_1 [\tta_core_input_mux_1(dataw=1)\]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_1 [\tta_core_input_mux_1(dataw=12)\]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_2 [\tta_core_input_mux_2(busw_0=512...]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_3 [\tta_core_input_mux_3(busw_0=512...]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_1 [\tta_core_input_mux_1(busw_0=102...]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_1 [\tta_core_input_mux_1(busw_0=512...]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_6 [\tta_core_input_mux_6(busw_1=102...]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_7 [\tta_core_input_mux_7(busw_2=1,b...]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_5 [\tta_core_input_mux_5(busw_4=7)\]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_3 [\tta_core_input_mux_3(busw_0=102...]
+Compiling architecture rtl of entity xil_defaultlib.tta_core_input_mux_3 [\tta_core_input_mux_3(busw_0=102...]
+Compiling architecture comb_andor of entity xil_defaultlib.tta_core_interconn [tta_core_interconn_default]
+Compiling architecture structural of entity xil_defaultlib.tta_core [tta_core_default]
+Compiling architecture rtl of entity xil_defaultlib.status_register [\status_register(reg_width_g=6)\]
+Compiling architecture rtl of entity xil_defaultlib.status_register [\status_register(reg_width_g=12)...]
+Compiling architecture rtl of entity xil_defaultlib.status_register [status_register_default]
+Compiling architecture rtl of entity xil_defaultlib.control_register [\control_register(reg_width_g=12...]
+Compiling architecture rtl of entity xil_defaultlib.control_register [\control_register(reset_val_g=0)...]
+Compiling architecture rtl of entity xil_defaultlib.control_register [\control_register(reg_width_g=1,...]
+Compiling architecture rtl of entity xil_defaultlib.dbregbank [\dbregbank(imem_data_width_g=79,...]
+Compiling architecture rtl of entity xil_defaultlib.dbsm [\dbsm(pc_width_g=12)\]
+Compiling architecture struct of entity xil_defaultlib.debugger [\debugger(axi_addr_width_g=18,im...]
+Compiling architecture rtl of entity xil_defaultlib.almaif_axi_expander [\almaif_axi_expander(mem_dataw_g...]
+Compiling architecture rtl of entity xil_defaultlib.tta_axislave [\tta_axislave(axi_addrw_g=18,axi...]
+Compiling architecture rtl of entity xil_defaultlib.membus_splitter [\membus_splitter(core_count_g=1,...]
+Compiling architecture rtl of entity xil_defaultlib.almaif_axi_expander [\almaif_axi_expander(mem_dataw_g...]
+Compiling architecture rtl of entity xil_defaultlib.tta_accel [\tta_accel(core_count_g=1,axi_ad...]
+Compiling architecture rtl of entity xil_defaultlib.xilinx_dp_blockram [\xilinx_dp_blockram(addrw_g=12,d...]
+Compiling architecture rtl of entity xil_defaultlib.xilinx_dp_blockram [\xilinx_dp_blockram(addrw_g=7,da...]
+Compiling architecture structural of entity xil_defaultlib.tta_core_toplevel [\tta_core_toplevel(axi_id_width_...]
+Compiling architecture testbench of entity xil_defaultlib.tta_almaif_tb
+Built simulation snapshot tta_almaif_tb_behav

@@ -74,7 +74,7 @@ void printFloatTensor(struct FloatTensor *tensor){
     char *sep = "";
     char *sep2 = "";
     char *sep3 = "";
-    char *sep4 = "";
+    // char *sep4 = "";
     for(int l = 0; l < tensor->N; l++){
         if (tensor->N > 1)
             printf("%s[", sep);
@@ -86,11 +86,11 @@ void printFloatTensor(struct FloatTensor *tensor){
             for(int j = 0; j < tensor->H; j++){
                 if (tensor->H > 1)
                     printf("%s[", sep3);
-                sep4 = "";
-                for(int i = 0; i < tensor->W; i++){
-                    printf("%s%f", sep4, *IND4(tensor, l, k, j, i));
-                    sep4 = ", ";
-                }
+                // sep4 = "";
+                // for(int i = 0; i < tensor->W; i++){
+                //     printf("%s%f", sep4, *IND4(tensor, l, k, j, i));
+                //     sep4 = ", ";
+                // }
                 if (tensor->H > 1)
                     printf("]");
                 sep3 = ",\n   ";

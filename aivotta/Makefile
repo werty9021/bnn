@@ -2,27 +2,31 @@
 rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter $(subst *,%,$2),$d))
 # Executable name
 EXE = main.tpef
-# Directoies
+ADF = new.adf
+IDF = impl_new.idf
+# Directories
+PROGE = proge-output
 SRC_DIR = src
 OBJ_DIR = obj
 INCL_DIR = $(sort $(dir $(wildcard include/*/)))
 
 SRC = $(call rwildcard, $(SRC_DIR), *.c *.h)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJ2 = $(foreach f,$(OBJ),$(f).bc)
 
 CC = tcecc
-TCEFLAGS += -a basic.adf
+TCEFLAGS += -a $(ADF)
 CPPFLAGS += $(foreach dir,$(INCL_DIR),-I$(dir))# -I is a preprocessor flag, not a compiler flag
-CFLAGS += -O0 --std=c11
+CFLAGS += -O0 -Wall --std=c11 
 LDFLAGS += # -L is a linker flag
 LDLIBS += # Left empty if no libs are needed
 
-.PHONY: all clean compare simulate
+.PHONY: all clean compare simulate proc bits
 
 all: $(EXE)
 
 $(EXE): $(OBJ)
-	$(CC) $(TCEFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
+	$(CC) $(TCEFLAGS) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(TCEFLAGS) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
@@ -31,17 +35,18 @@ compare:
 	python3 ../compare.py
 
 simulate:
-	ttasim -a basic.adf -p main.tpef -e "\
-	load_data /a inputdata input_data ../data/input/5x5.bin;\
-	load_data /a inputdata l0_weights ../data/weights/conv0.bin;\
-	load_data /a inputdata conv1_weights ../data/weights/conv1.bin;\
-	load_data /a inputdata act1_thresholds ../data/thresholds/act1.bin;\
+	ttasim -a $(ADF) -p $(EXE) -e "\
 	run;\
-	x /a inputdata /u w /n 6400 /f ../data/output/conv0.bin conv0_output;\
-	x /a inputdata /u w /n 200 /f ../data/output/act0.bin act0_output;\
-	x /a inputdata /u w /n 6400 /f ../data/output/conv1.bin conv1_output;\
-	x /a inputdata /u w /n 200 /f ../data/output/act1.bin act1_output;\
-	quit;"
+	puts [info proc cycles];\
+	"
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(OBJ2) $(EXE)
+
+proc:
+	rm -rf $(PROGE)
+	generateprocessor --sync-reset -c 100000000 -d onchip -f onchip -e tta_core -i $(IDF) -g AlmaIFIntegrator -o $(PROGE) -p $(EXE) $(ADF)
+	generatebits -e tta_core -d -w 4 -p $(EXE) -x $(PROGE) $(ADF)
+
+bits:
+	generatebits -e tta_core -d -w 4 -p $(EXE) -x TMPTMP $(ADF)

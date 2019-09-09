@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<adf-implementation>
+
+  <ic-decoder-plugin>
+    <name>DefaultICDecoder</name>
+    <file>tce:DefaultICDecoderPlugin.so</file>
+    <parameter name="debugger">
+      <value>external</value>
+    </parameter>
+    <parameter name="fpga-optimized">
+      <value>yes</value>
+    </parameter>
+    <parameter name="synchronous-reset">
+      <value>yes</value>
+    </parameter>
+  </ic-decoder-plugin>
+
+  <fu-generate name="vOPS">
+    <operation name="vreduce32x32">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>10</operation-id>
+    </operation>
+    <operation name="truncwh32x32">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>9</operation-id>
+    </operation>
+    <operation name="insertelem16x32">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>3</operation-id>
+    </operation>
+    <operation name="shlsame16x32">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>7</operation-id>
+    </operation>
+    <operation name="vbcast16x32">
+      <hdb-file>tce:generate_base_simd.hdb</hdb-file>
+      <operation-id>46</operation-id>
+    </operation>
+  </fu-generate>
+
+  <fu-generate name="FMA_ACT">
+    <operation name="mac16x32to32x32">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>5</operation-id>
+    </operation>
+    <operation name="xnorpopcountacc32x32">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>11</operation-id>
+    </operation>
+    <operation name="ge32x32to32x1">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>1</operation-id>
+    </operation>
+    <operation name="geu16x32to32x1">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>2</operation-id>
+    </operation>
+    <operation name="max16x32">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>6</operation-id>
+    </operation>
+  </fu-generate>
+
+  <fu name="DMA">
+    <hdb-file>tce:bc.hdb</hdb-file>
+    <fu-id>1</fu-id>
+  </fu>
+
+  <fu name="dmem_LSU">
+    <hdb-file>hdb/vec_lsu_1024.hdb</hdb-file>
+    <fu-id>2</fu-id>
+  </fu>
+
+  <fu name="add_mul_sub">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>274</fu-id>
+  </fu>
+
+  <fu name="add">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>5</fu-id>
+  </fu>
+
+  <fu name="ALU">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>380</fu-id>
+  </fu>
+
+  <rf name="vRF1024">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>96</rf-id>
+  </rf>
+
+  <rf name="RF32A">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>96</rf-id>
+  </rf>
+
+  <rf name="RF_BOOL">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>96</rf-id>
+  </rf>
+
+  <rf name="RF32B">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>96</rf-id>
+  </rf>
+
+  <iu name="IMM">
+    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>96</rf-id>
+  </iu>
+
+</adf-implementation>

@@ -1,0 +1,26 @@
+digraph _start_1 {
+	{
+		node [shape=plaintext];
+		"cycle 0" -> "cycle 1" -> "cycle 2" -> "cycle 3" -> "cycle 4" -> "cycle 5"; 
+	}
+	{ rank = same; "cycle 0"; n777; n780; n785; }
+	{ rank = same; "cycle 3"; n776; }
+	{ rank = same; "cycle 4"; n778; n779; }
+	n776 [label="3 LSU.out1 -> ALU.in1t.sub Bus: B1_2",color="#ec75e7",shape=box]; 
+	n777 [label="0 1024 -> ALU.in2 Bus: B1_1",color="#d8c81b",shape=box]; 
+	n778 [label="4 ALU.out1 -> RF.0 Bus: B1_2",color="#d8c81b",shape=box]; 
+	n779 [label="4 ALU.out1 -> LSU.in1t.st32 Bus: B1_1",color="#d8c81b",shape=box]; 
+	n780 [label="0 gcu.ra -> LSU.in2 Bus: B1",color="#d8c81b",shape=box]; 
+	n781 [label="main -> universal_gcu.call.1",color="#b4dce9",shape=ellipse]; 
+	n785 [label="0 0 -> LSU.in1t.ld32 Bus: B1_2",color="#ec75e7",shape=box]; 
+	n776 -> n778[label="O:SUB:1",weight=10];
+	n777 -> n778[label="O:SUB:0",weight=10];
+	n778 -> n781[label="R_raw_HP:RF.0",weight=1];
+	n780 -> n781[color="red", label="RA_war:RA",weight=0.3];
+	n785 -> n781[color="red", label="M_war_HP:",weight=0.15];
+	n785 -> n776[label="O:LD32:3",weight=10];
+	n776 -> n779[label="O:SUB:1",weight=10];
+	n777 -> n779[label="O:SUB:0",weight=10];
+	n777 -> n776[label="T", weight=10.0];
+	n780 -> n779[label="T", weight=10.0];
+}

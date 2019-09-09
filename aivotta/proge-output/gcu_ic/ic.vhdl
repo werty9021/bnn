@@ -2,133 +2,131 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_arith.ext;
 use IEEE.std_logic_arith.sxt;
-use IEEE.numeric_std.all;
-use IEEE.math_real.all;
-use STD.textio.all;
-use IEEE.std_logic_textio.all;
-use work.tta0_globals.all;
+use work.tta_core_globals.all;
 use work.tce_util.all;
 
-entity tta0_interconn is
+entity tta_core_interconn is
 
   port (
     clk : in std_logic;
     rstx : in std_logic;
     glock : in std_logic;
-    socket_RF_i1_data : out std_logic_vector(31 downto 0);
-    socket_RF_i1_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_RF_o1_data0 : in std_logic_vector(31 downto 0);
-    socket_RF_o1_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_bool_i1_data : out std_logic_vector(0 downto 0);
-    socket_bool_i1_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_bool_o1_data0 : in std_logic_vector(0 downto 0);
-    socket_bool_o1_bus_cntrl : in std_logic_vector(2 downto 0);
+    socket_ALU_i1_data : out std_logic_vector(31 downto 0);
+    socket_ALU_i1_bus_cntrl : in std_logic_vector(0 downto 0);
+    socket_ALU_i2_data : out std_logic_vector(31 downto 0);
+    socket_ALU_i2_bus_cntrl : in std_logic_vector(0 downto 0);
+    socket_LSU1_i1_data : out std_logic_vector(12 downto 0);
+    socket_LSU1_i1_bus_cntrl : in std_logic_vector(1 downto 0);
+    socket_LSU1_i2_data : out std_logic_vector(1023 downto 0);
+    socket_LSU1_i2_bus_cntrl : in std_logic_vector(1 downto 0);
+    socket_RF_BOOL_i1_data : out std_logic_vector(0 downto 0);
+    socket_RF32A_i1_data : out std_logic_vector(31 downto 0);
+    socket_RF32A_i1_bus_cntrl : in std_logic_vector(1 downto 0);
+    socket_vRF1024_i1_data : out std_logic_vector(1023 downto 0);
+    socket_vRF1024_i1_bus_cntrl : in std_logic_vector(0 downto 0);
     socket_gcu_i1_data : out std_logic_vector(IMEMADDRWIDTH-1 downto 0);
-    socket_gcu_i1_bus_cntrl : in std_logic_vector(1 downto 0);
     socket_gcu_i2_data : out std_logic_vector(IMEMADDRWIDTH-1 downto 0);
-    socket_gcu_i2_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_gcu_o1_data0 : in std_logic_vector(IMEMADDRWIDTH-1 downto 0);
-    socket_gcu_o1_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i1_data : out std_logic_vector(31 downto 0);
-    socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i1_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i2_data : out std_logic_vector(31 downto 0);
-    socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i2_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i3_data : out std_logic_vector(31 downto 0);
-    socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i3_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_data0 : in std_logic_vector(31 downto 0);
-    socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_LSU_i1_data : out std_logic_vector(29 downto 0);
-    socket_LSU_i1_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_LSU_o1_data0 : in std_logic_vector(31 downto 0);
-    socket_LSU_o1_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_LSU_i2_data : out std_logic_vector(31 downto 0);
-    socket_LSU_i2_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_LSU_inp_i1_data : out std_logic_vector(23 downto 0);
-    socket_LSU_inp_i1_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_LSU_inp_o1_data0 : in std_logic_vector(31 downto 0);
-    socket_LSU_inp_o1_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_LSU_inp_i2_data : out std_logic_vector(31 downto 0);
-    socket_LSU_inp_i2_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_ALU_i3_data : out std_logic_vector(31 downto 0);
-    socket_ALU_i3_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_ALU_o2_data0 : in std_logic_vector(31 downto 0);
-    socket_ALU_o2_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_ALU_i4_data : out std_logic_vector(31 downto 0);
-    socket_ALU_i4_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_STREAM_i2_data : out std_logic_vector(7 downto 0);
-    socket_STREAM_i2_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_cfi_cfiu_cif_cifu_i1_data : out std_logic_vector(31 downto 0);
-    socket_cfi_cfiu_cif_cifu_i1_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_cfi_cfiu_cif_cifu_o1_data0 : in std_logic_vector(31 downto 0);
-    socket_cfi_cfiu_cif_cifu_o1_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_divf_i1_data : out std_logic_vector(31 downto 0);
-    socket_divf_i1_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_divf_i2_data : out std_logic_vector(31 downto 0);
-    socket_divf_i2_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_divf_o1_data0 : in std_logic_vector(31 downto 0);
-    socket_divf_o1_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_IMM1_o1_data0 : in std_logic_vector(31 downto 0);
-    socket_IMM1_o1_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_popcount_popcountacc_xnorpopcntacc_set_bit_i1_data : out std_logic_vector(31 downto 0);
-    socket_popcount_popcountacc_xnorpopcntacc_set_bit_i1_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_popcount_popcountacc_xnorpopcntacc_set_bit_o1_data0 : in std_logic_vector(31 downto 0);
-    socket_popcount_popcountacc_xnorpopcntacc_set_bit_o1_bus_cntrl : in std_logic_vector(2 downto 0);
-    socket_popcount_popcountacc_xnorpopcntacc_set_bit_i2_data : out std_logic_vector(31 downto 0);
-    socket_popcount_popcountacc_xnorpopcntacc_set_bit_i2_bus_cntrl : in std_logic_vector(1 downto 0);
-    socket_popcount_popcountacc_xnorpopcntacc_set_bit_i3_data : out std_logic_vector(31 downto 0);
-    socket_popcount_popcountacc_xnorpopcntacc_set_bit_i3_bus_cntrl : in std_logic_vector(1 downto 0);
-    simm_B1 : in std_logic_vector(31 downto 0);
+    socket_dma_i1_data : out std_logic_vector(31 downto 0);
+    socket_dma_i2_data : out std_logic_vector(31 downto 0);
+    socket_dma_i3_data : out std_logic_vector(31 downto 0);
+    socket_add_mul_sub_i1_data : out std_logic_vector(31 downto 0);
+    socket_add_mul_sub_i1_bus_cntrl : in std_logic_vector(1 downto 0);
+    socket_add_mul_sub_i2_data : out std_logic_vector(31 downto 0);
+    socket_add_i1_data : out std_logic_vector(31 downto 0);
+    socket_add_i1_bus_cntrl : in std_logic_vector(0 downto 0);
+    socket_add_i2_data : out std_logic_vector(31 downto 0);
+    socket_RF32B_i1_data : out std_logic_vector(31 downto 0);
+    socket_RF32B_i1_bus_cntrl : in std_logic_vector(1 downto 0);
+    socket_FMA_i1_data : out std_logic_vector(1023 downto 0);
+    socket_FMA_i1_bus_cntrl : in std_logic_vector(0 downto 0);
+    socket_FMA_i2_data : out std_logic_vector(1023 downto 0);
+    socket_FMA_i3_data : out std_logic_vector(1023 downto 0);
+    socket_vOPS_i1_data : out std_logic_vector(1023 downto 0);
+    socket_vOPS_i1_bus_cntrl : in std_logic_vector(0 downto 0);
+    socket_vOPS_i2_data : out std_logic_vector(1023 downto 0);
+    socket_vOPS_i2_bus_cntrl : in std_logic_vector(0 downto 0);
+    socket_vOPS_i3_data : out std_logic_vector(31 downto 0);
+    B1_mux_ctrl_in : in std_logic_vector(2 downto 0);
+    B1_data_0_in : in std_logic_vector(31 downto 0);
+    B1_data_1_in : in std_logic_vector(31 downto 0);
+    B1_data_2_in : in std_logic_vector(31 downto 0);
+    B1_data_3_in : in std_logic_vector(31 downto 0);
+    B1_data_4_in : in std_logic_vector(31 downto 0);
+    B1_data_5_in : in std_logic_vector(31 downto 0);
+    B1_data_6_in : in std_logic_vector(1023 downto 0);
+    B2_mux_ctrl_in : in std_logic_vector(3 downto 0);
+    B2_data_0_in : in std_logic_vector(31 downto 0);
+    B2_data_1_in : in std_logic_vector(31 downto 0);
+    B2_data_2_in : in std_logic_vector(0 downto 0);
+    B2_data_3_in : in std_logic_vector(31 downto 0);
+    B2_data_4_in : in std_logic_vector(IMEMADDRWIDTH-1 downto 0);
+    B2_data_5_in : in std_logic_vector(31 downto 0);
+    B2_data_6_in : in std_logic_vector(31 downto 0);
+    B2_data_7_in : in std_logic_vector(31 downto 0);
+    B2_data_8_in : in std_logic_vector(31 downto 0);
+    B2_data_9_in : in std_logic_vector(1023 downto 0);
+    B3_mux_ctrl_in : in std_logic_vector(2 downto 0);
+    B3_data_0_in : in std_logic_vector(31 downto 0);
+    B3_data_1_in : in std_logic_vector(31 downto 0);
+    B3_data_2_in : in std_logic_vector(31 downto 0);
+    B3_data_3_in : in std_logic_vector(31 downto 0);
+    B3_data_4_in : in std_logic_vector(31 downto 0);
+    B3_data_5_in : in std_logic_vector(31 downto 0);
+    B4_data_0_in : in std_logic_vector(31 downto 0);
+    B5_mux_ctrl_in : in std_logic_vector(1 downto 0);
+    B5_data_0_in : in std_logic_vector(31 downto 0);
+    B5_data_1_in : in std_logic_vector(31 downto 0);
+    B5_data_2_in : in std_logic_vector(31 downto 0);
+    vB1024B_mux_ctrl_in : in std_logic_vector(1 downto 0);
+    vB1024B_data_0_in : in std_logic_vector(1023 downto 0);
+    vB1024B_data_1_in : in std_logic_vector(1023 downto 0);
+    vB1024B_data_2_in : in std_logic_vector(1023 downto 0);
+    vB1024c_mux_ctrl_in : in std_logic_vector(1 downto 0);
+    vB1024c_data_0_in : in std_logic_vector(1023 downto 0);
+    vB1024c_data_1_in : in std_logic_vector(1023 downto 0);
+    vB1024c_data_2_in : in std_logic_vector(1023 downto 0);
+    simm_B1 : in std_logic_vector(19 downto 0);
     simm_cntrl_B1 : in std_logic_vector(0 downto 0);
-    simm_B1_1 : in std_logic_vector(31 downto 0);
-    simm_cntrl_B1_1 : in std_logic_vector(0 downto 0);
-    simm_B1_2 : in std_logic_vector(31 downto 0);
-    simm_cntrl_B1_2 : in std_logic_vector(0 downto 0));
+    simm_B2 : in std_logic_vector(3 downto 0);
+    simm_cntrl_B2 : in std_logic_vector(0 downto 0);
+    simm_B3 : in std_logic_vector(6 downto 0);
+    simm_cntrl_B3 : in std_logic_vector(0 downto 0);
+    db_bustraces : out std_logic_vector(BUSTRACE_WIDTH-1 downto 0));
 
-end tta0_interconn;
+end tta_core_interconn;
 
-architecture comb_andor of tta0_interconn is
+architecture comb_andor of tta_core_interconn is
 
   signal databus_B1 : std_logic_vector(31 downto 0);
-  signal databus_B1_alt0 : std_logic_vector(31 downto 0);
-  signal databus_B1_alt1 : std_logic_vector(31 downto 0);
-  signal databus_B1_alt2 : std_logic_vector(31 downto 0);
-  signal databus_B1_alt3 : std_logic_vector(31 downto 0);
-  signal databus_B1_alt4 : std_logic_vector(31 downto 0);
-  signal databus_B1_alt5 : std_logic_vector(0 downto 0);
-  signal databus_B1_alt6 : std_logic_vector(31 downto 0);
-  signal databus_B1_alt7 : std_logic_vector(31 downto 0);
-  signal databus_B1_alt8 : std_logic_vector(31 downto 0);
-  signal databus_B1_alt9 : std_logic_vector(31 downto 0);
-  signal databus_B1_alt10 : std_logic_vector(31 downto 0);
-  signal databus_B1_simm : std_logic_vector(31 downto 0);
-  signal databus_B1_1 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_alt0 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_alt1 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_alt2 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_alt3 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_alt4 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_alt5 : std_logic_vector(0 downto 0);
-  signal databus_B1_1_alt6 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_alt7 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_alt8 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_alt9 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_alt10 : std_logic_vector(31 downto 0);
-  signal databus_B1_1_simm : std_logic_vector(31 downto 0);
-  signal databus_B1_2 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_alt0 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_alt1 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_alt2 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_alt3 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_alt4 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_alt5 : std_logic_vector(0 downto 0);
-  signal databus_B1_2_alt6 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_alt7 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_alt8 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_alt9 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_alt10 : std_logic_vector(31 downto 0);
-  signal databus_B1_2_simm : std_logic_vector(31 downto 0);
+  signal databus_B2 : std_logic_vector(31 downto 0);
+  signal databus_B3 : std_logic_vector(31 downto 0);
+  signal databus_B4 : std_logic_vector(31 downto 0);
+  signal databus_B5 : std_logic_vector(31 downto 0);
+  signal databus_vB1024B : std_logic_vector(1023 downto 0);
+  signal databus_vB1024c : std_logic_vector(1023 downto 0);
 
-  component tta0_input_mux_3
+  component tta_core_input_mux_1
+    generic (
+      BUSW_0 : integer := 32;
+      DATAW : integer := 32);
+    port (
+      databus0 : in std_logic_vector(BUSW_0-1 downto 0);
+      data : out std_logic_vector(DATAW-1 downto 0));
+  end component;
+
+  component tta_core_input_mux_2
+    generic (
+      BUSW_0 : integer := 32;
+      BUSW_1 : integer := 32;
+      DATAW : integer := 32);
+    port (
+      databus0 : in std_logic_vector(BUSW_0-1 downto 0);
+      databus1 : in std_logic_vector(BUSW_1-1 downto 0);
+      data : out std_logic_vector(DATAW-1 downto 0);
+      databus_cntrl : in std_logic_vector(0 downto 0));
+  end component;
+
+  component tta_core_input_mux_3
     generic (
       BUSW_0 : integer := 32;
       BUSW_1 : integer := 32;
@@ -142,149 +140,200 @@ architecture comb_andor of tta0_interconn is
       databus_cntrl : in std_logic_vector(1 downto 0));
   end component;
 
-  component tta0_output_socket_cons_1_1
-    generic (
-      BUSW_0 : integer := 32;
-      DATAW_0 : integer := 32);
-    port (
-      databus0_alt : out std_logic_vector(BUSW_0-1 downto 0);
-      data0 : in std_logic_vector(DATAW_0-1 downto 0);
-      databus_cntrl : in std_logic_vector(0 downto 0));
-  end component;
-
-  component tta0_output_socket_cons_3_1
+  component tta_core_input_mux_4
     generic (
       BUSW_0 : integer := 32;
       BUSW_1 : integer := 32;
       BUSW_2 : integer := 32;
-      DATAW_0 : integer := 32);
+      BUSW_3 : integer := 32;
+      DATAW : integer := 32);
     port (
-      databus0_alt : out std_logic_vector(BUSW_0-1 downto 0);
-      databus1_alt : out std_logic_vector(BUSW_1-1 downto 0);
-      databus2_alt : out std_logic_vector(BUSW_2-1 downto 0);
-      data0 : in std_logic_vector(DATAW_0-1 downto 0);
+      databus0 : in std_logic_vector(BUSW_0-1 downto 0);
+      databus1 : in std_logic_vector(BUSW_1-1 downto 0);
+      databus2 : in std_logic_vector(BUSW_2-1 downto 0);
+      databus3 : in std_logic_vector(BUSW_3-1 downto 0);
+      data : out std_logic_vector(DATAW-1 downto 0);
+      databus_cntrl : in std_logic_vector(1 downto 0));
+  end component;
+
+  component tta_core_input_mux_7
+    generic (
+      BUSW_0 : integer := 32;
+      BUSW_1 : integer := 32;
+      BUSW_2 : integer := 32;
+      BUSW_3 : integer := 32;
+      BUSW_4 : integer := 32;
+      BUSW_5 : integer := 32;
+      BUSW_6 : integer := 32;
+      DATAW : integer := 32);
+    port (
+      databus0 : in std_logic_vector(BUSW_0-1 downto 0);
+      databus1 : in std_logic_vector(BUSW_1-1 downto 0);
+      databus2 : in std_logic_vector(BUSW_2-1 downto 0);
+      databus3 : in std_logic_vector(BUSW_3-1 downto 0);
+      databus4 : in std_logic_vector(BUSW_4-1 downto 0);
+      databus5 : in std_logic_vector(BUSW_5-1 downto 0);
+      databus6 : in std_logic_vector(BUSW_6-1 downto 0);
+      data : out std_logic_vector(DATAW-1 downto 0);
       databus_cntrl : in std_logic_vector(2 downto 0));
+  end component;
+
+  component tta_core_input_mux_8
+    generic (
+      BUSW_0 : integer := 32;
+      BUSW_1 : integer := 32;
+      BUSW_2 : integer := 32;
+      BUSW_3 : integer := 32;
+      BUSW_4 : integer := 32;
+      BUSW_5 : integer := 32;
+      BUSW_6 : integer := 32;
+      BUSW_7 : integer := 32;
+      DATAW : integer := 32);
+    port (
+      databus0 : in std_logic_vector(BUSW_0-1 downto 0);
+      databus1 : in std_logic_vector(BUSW_1-1 downto 0);
+      databus2 : in std_logic_vector(BUSW_2-1 downto 0);
+      databus3 : in std_logic_vector(BUSW_3-1 downto 0);
+      databus4 : in std_logic_vector(BUSW_4-1 downto 0);
+      databus5 : in std_logic_vector(BUSW_5-1 downto 0);
+      databus6 : in std_logic_vector(BUSW_6-1 downto 0);
+      databus7 : in std_logic_vector(BUSW_7-1 downto 0);
+      data : out std_logic_vector(DATAW-1 downto 0);
+      databus_cntrl : in std_logic_vector(2 downto 0));
+  end component;
+
+  component tta_core_input_mux_11
+    generic (
+      BUSW_0 : integer := 32;
+      BUSW_1 : integer := 32;
+      BUSW_2 : integer := 32;
+      BUSW_3 : integer := 32;
+      BUSW_4 : integer := 32;
+      BUSW_5 : integer := 32;
+      BUSW_6 : integer := 32;
+      BUSW_7 : integer := 32;
+      BUSW_8 : integer := 32;
+      BUSW_9 : integer := 32;
+      BUSW_10 : integer := 32;
+      DATAW : integer := 32);
+    port (
+      databus0 : in std_logic_vector(BUSW_0-1 downto 0);
+      databus1 : in std_logic_vector(BUSW_1-1 downto 0);
+      databus2 : in std_logic_vector(BUSW_2-1 downto 0);
+      databus3 : in std_logic_vector(BUSW_3-1 downto 0);
+      databus4 : in std_logic_vector(BUSW_4-1 downto 0);
+      databus5 : in std_logic_vector(BUSW_5-1 downto 0);
+      databus6 : in std_logic_vector(BUSW_6-1 downto 0);
+      databus7 : in std_logic_vector(BUSW_7-1 downto 0);
+      databus8 : in std_logic_vector(BUSW_8-1 downto 0);
+      databus9 : in std_logic_vector(BUSW_9-1 downto 0);
+      databus10 : in std_logic_vector(BUSW_10-1 downto 0);
+      data : out std_logic_vector(DATAW-1 downto 0);
+      databus_cntrl : in std_logic_vector(3 downto 0));
   end component;
 
 
 begin -- comb_andor
 
-  -- Dump the value on the buses into a file once in clock cycle
-  -- setting DUMP false will disable dumping
+  db_bustraces <= 
+    databus_vB1024c & databus_vB1024B & databus_B5 & databus_B4 & 
+    databus_B3 & databus_B2 & databus_B1;
 
-  -- Do not synthesize this process!
-  -- pragma synthesis_off
-  -- pragma translate_off
-  file_output : process
+  ALU_i1 : tta_core_input_mux_2
+    generic map (
+      BUSW_0 => 32,
+      BUSW_1 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B1,
+      databus1 => databus_B3,
+      data => socket_ALU_i1_data,
+      databus_cntrl => socket_ALU_i1_bus_cntrl);
 
-    file regularfileout : text;
-    file executionfileout : text;
+  ALU_i2 : tta_core_input_mux_2
+    generic map (
+      BUSW_0 => 32,
+      BUSW_1 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B2,
+      databus1 => databus_B3,
+      data => socket_ALU_i2_data,
+      databus_cntrl => socket_ALU_i2_bus_cntrl);
 
-    variable lineout : line;
-    variable start : boolean := true;
-    variable cyclecount : integer := 0;
-    variable executioncount : integer := 0;
+  FMA_i1 : tta_core_input_mux_2
+    generic map (
+      BUSW_0 => 1024,
+      BUSW_1 => 32,
+      DATAW => 1024)
+    port map (
+      databus0 => databus_vB1024B,
+      databus1 => databus_B1,
+      data => socket_FMA_i1_data,
+      databus_cntrl => socket_FMA_i1_bus_cntrl);
 
-    constant DUMP : boolean := true;
-    constant REGULARDUMPFILE : string := "bus.dump";
-    constant EXECUTIONDUMPFILE : string := "execbus.dump";
+  FMA_i2 : tta_core_input_mux_1
+    generic map (
+      BUSW_0 => 1024,
+      DATAW => 1024)
+    port map (
+      databus0 => databus_vB1024B,
+      data => socket_FMA_i2_data);
 
-    -- Rounds integer up to next multiple of four.
-    function ceil4 (
-      constant val : natural)
-      return natural is
-    begin  -- function ceil4
-      return natural(ceil(real(val)/real(4)))*4;
-    end function ceil4;
+  FMA_i3 : tta_core_input_mux_1
+    generic map (
+      BUSW_0 => 1024,
+      DATAW => 1024)
+    port map (
+      databus0 => databus_vB1024c,
+      data => socket_FMA_i3_data);
 
-   -- Extends std_logic_vector to multiple of four.
-   function ext_to_multiple_of_4 (
-     constant slv : std_logic_vector)
-     return std_logic_vector is
-    begin
-      return std_logic_vector(resize(
-        unsigned(slv), ceil4(slv'length)));
-    end function ext_to_multiple_of_4;
+  LSU1_i1 : tta_core_input_mux_4
+    generic map (
+      BUSW_0 => 32,
+      BUSW_1 => 32,
+      BUSW_2 => 32,
+      BUSW_3 => 32,
+      DATAW => 13)
+    port map (
+      databus0 => databus_B5,
+      databus1 => databus_B3,
+      databus2 => databus_B2,
+      databus3 => databus_B1,
+      data => socket_LSU1_i1_data,
+      databus_cntrl => socket_LSU1_i1_bus_cntrl);
 
-    function to_unsigned_hex (
-      constant slv : std_logic_vector) return string is
-      variable resized_slv : std_logic_vector(ceil4(slv'length)-1 downto 0);
-      variable result      : string(1 to ceil4(slv'length)/4)
-        := (others => ' ');
-      subtype digit_t is std_logic_vector(3 downto 0);
-      variable digit : digit_t := "0000";
-    begin
-      resized_slv := ext_to_multiple_of_4(slv);
-      for i in result'range loop
-        digit := resized_slv(
-          resized_slv'length-((i-1)*4)-1 downto resized_slv'length-(i*4));
-        case digit is
-          when "0000" => result(i) := '0';
-          when "0001" => result(i) := '1';
-          when "0010" => result(i) := '2';
-          when "0011" => result(i) := '3';
-          when "0100" => result(i) := '4';
-          when "0101" => result(i) := '5';
-          when "0110" => result(i) := '6';
-          when "0111" => result(i) := '7';
-          when "1000" => result(i) := '8';
-          when "1001" => result(i) := '9';
-          when "1010" => result(i) := 'a';
-          when "1011" => result(i) := 'b';
-          when "1100" => result(i) := 'c';
-          when "1101" => result(i) := 'd';
-          when "1110" => result(i) := 'e';
-          when "1111" => result(i) := 'f';
+  LSU1_i2 : tta_core_input_mux_4
+    generic map (
+      BUSW_0 => 1024,
+      BUSW_1 => 32,
+      BUSW_2 => 32,
+      BUSW_3 => 32,
+      DATAW => 1024)
+    port map (
+      databus0 => databus_vB1024c,
+      databus1 => databus_B2,
+      databus2 => databus_B1,
+      databus3 => databus_B3,
+      data => socket_LSU1_i2_data,
+      databus_cntrl => socket_LSU1_i2_bus_cntrl);
 
-          -- For TTAsim bustrace compatibility
-          when others => 
-            result := (others => '0');
-            return result;
-        end case;
-      end loop;  -- i in result'range
-      return result;
-    end function to_unsigned_hex;
+  RF32A_i1 : tta_core_input_mux_4
+    generic map (
+      BUSW_0 => 32,
+      BUSW_1 => 32,
+      BUSW_2 => 32,
+      BUSW_3 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B3,
+      databus1 => databus_B2,
+      databus2 => databus_B1,
+      databus3 => databus_B5,
+      data => socket_RF32A_i1_data,
+      databus_cntrl => socket_RF32A_i1_bus_cntrl);
 
-  begin
-    if DUMP = true then
-      if start = true then
-        file_open(regularfileout, REGULARDUMPFILE, write_mode);
-        file_open(executionfileout, EXECUTIONDUMPFILE, write_mode);
-        start := false;
-      end if;
-
-      -- wait until rising edge of clock
-      wait on clk until clk = '1' and clk'last_value = '0';
-      if (cyclecount > 4) then
-        write(lineout, cyclecount-5);
-        write(lineout, string'(","));
-        write(lineout, to_unsigned_hex(databus_B1));
-        write(lineout, string'(","));
-        write(lineout, to_unsigned_hex(databus_B1_1));
-        write(lineout, string'(","));
-        write(lineout, to_unsigned_hex(databus_B1_2));
-
-        writeline(regularfileout, lineout);
-        if glock = '0' then
-          write(lineout, executioncount);
-          write(lineout, string'(","));
-          write(lineout, to_unsigned_hex(databus_B1));
-          write(lineout, string'(","));
-          write(lineout, to_unsigned_hex(databus_B1_1));
-          write(lineout, string'(","));
-          write(lineout, to_unsigned_hex(databus_B1_2));
-
-          writeline(executionfileout, lineout);
-          executioncount := executioncount + 1;
-        end if;
-      end if;
-      cyclecount := cyclecount + 1;
-    end if;
-  end process file_output;
-  -- pragma translate_on
-  -- pragma synthesis_on
-
-  ALU_i3 : tta0_input_mux_3
+  RF32B_i1 : tta_core_input_mux_3
     generic map (
       BUSW_0 => 32,
       BUSW_1 => 32,
@@ -292,430 +341,252 @@ begin -- comb_andor
       DATAW => 32)
     port map (
       databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_ALU_i3_data,
-      databus_cntrl => socket_ALU_i3_bus_cntrl);
+      databus1 => databus_B2,
+      databus2 => databus_B3,
+      data => socket_RF32B_i1_data,
+      databus_cntrl => socket_RF32B_i1_bus_cntrl);
 
-  ALU_i4 : tta0_input_mux_3
+  RF_BOOL_i1 : tta_core_input_mux_1
     generic map (
       BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_ALU_i4_data,
-      databus_cntrl => socket_ALU_i4_bus_cntrl);
-
-  ALU_o2 : tta0_output_socket_cons_3_1
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_alt0,
-      databus1_alt => databus_B1_1_alt0,
-      databus2_alt => databus_B1_2_alt0,
-      data0 => socket_ALU_o2_data0,
-      databus_cntrl => socket_ALU_o2_bus_cntrl);
-
-  IMM1_o1 : tta0_output_socket_cons_3_1
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_alt1,
-      databus1_alt => databus_B1_1_alt1,
-      databus2_alt => databus_B1_2_alt1,
-      data0 => socket_IMM1_o1_data0,
-      databus_cntrl => socket_IMM1_o1_bus_cntrl);
-
-  LSU_i1 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 30)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_LSU_i1_data,
-      databus_cntrl => socket_LSU_i1_bus_cntrl);
-
-  LSU_i2 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_LSU_i2_data,
-      databus_cntrl => socket_LSU_i2_bus_cntrl);
-
-  LSU_inp_i1 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 24)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_LSU_inp_i1_data,
-      databus_cntrl => socket_LSU_inp_i1_bus_cntrl);
-
-  LSU_inp_i2 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_LSU_inp_i2_data,
-      databus_cntrl => socket_LSU_inp_i2_bus_cntrl);
-
-  LSU_inp_o1 : tta0_output_socket_cons_3_1
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_alt2,
-      databus1_alt => databus_B1_1_alt2,
-      databus2_alt => databus_B1_2_alt2,
-      data0 => socket_LSU_inp_o1_data0,
-      databus_cntrl => socket_LSU_inp_o1_bus_cntrl);
-
-  LSU_o1 : tta0_output_socket_cons_3_1
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_alt3,
-      databus1_alt => databus_B1_1_alt3,
-      databus2_alt => databus_B1_2_alt3,
-      data0 => socket_LSU_o1_data0,
-      databus_cntrl => socket_LSU_o1_bus_cntrl);
-
-  RF_i1 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_RF_i1_data,
-      databus_cntrl => socket_RF_i1_bus_cntrl);
-
-  RF_o1 : tta0_output_socket_cons_3_1
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_alt4,
-      databus1_alt => databus_B1_1_alt4,
-      databus2_alt => databus_B1_2_alt4,
-      data0 => socket_RF_o1_data0,
-      databus_cntrl => socket_RF_o1_bus_cntrl);
-
-  STREAM_i2 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 8)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_STREAM_i2_data,
-      databus_cntrl => socket_STREAM_i2_bus_cntrl);
-
-  bool_i1 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
       DATAW => 1)
     port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_bool_i1_data,
-      databus_cntrl => socket_bool_i1_bus_cntrl);
+      databus0 => databus_B2,
+      data => socket_RF_BOOL_i1_data);
 
-  bool_o1 : tta0_output_socket_cons_3_1
+  add_i1 : tta_core_input_mux_2
     generic map (
-      BUSW_0 => 1,
-      BUSW_1 => 1,
+      BUSW_0 => 32,
+      BUSW_1 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B1,
+      databus1 => databus_B4,
+      data => socket_add_i1_data,
+      databus_cntrl => socket_add_i1_bus_cntrl);
+
+  add_i2 : tta_core_input_mux_1
+    generic map (
+      BUSW_0 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B2,
+      data => socket_add_i2_data);
+
+  add_mul_sub_i1 : tta_core_input_mux_3
+    generic map (
+      BUSW_0 => 32,
+      BUSW_1 => 32,
+      BUSW_2 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B3,
+      databus1 => databus_B2,
+      databus2 => databus_B4,
+      data => socket_add_mul_sub_i1_data,
+      databus_cntrl => socket_add_mul_sub_i1_bus_cntrl);
+
+  add_mul_sub_i2 : tta_core_input_mux_1
+    generic map (
+      BUSW_0 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B1,
+      data => socket_add_mul_sub_i2_data);
+
+  dma_i1 : tta_core_input_mux_1
+    generic map (
+      BUSW_0 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B5,
+      data => socket_dma_i1_data);
+
+  dma_i2 : tta_core_input_mux_1
+    generic map (
+      BUSW_0 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B2,
+      data => socket_dma_i2_data);
+
+  dma_i3 : tta_core_input_mux_1
+    generic map (
+      BUSW_0 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B3,
+      data => socket_dma_i3_data);
+
+  gcu_i1 : tta_core_input_mux_1
+    generic map (
+      BUSW_0 => 32,
+      DATAW => IMEMADDRWIDTH)
+    port map (
+      databus0 => databus_B1,
+      data => socket_gcu_i1_data);
+
+  gcu_i2 : tta_core_input_mux_1
+    generic map (
+      BUSW_0 => 32,
+      DATAW => IMEMADDRWIDTH)
+    port map (
+      databus0 => databus_B2,
+      data => socket_gcu_i2_data);
+
+  vOPS_i1 : tta_core_input_mux_2
+    generic map (
+      BUSW_0 => 32,
+      BUSW_1 => 1024,
+      DATAW => 1024)
+    port map (
+      databus0 => databus_B2,
+      databus1 => databus_vB1024B,
+      data => socket_vOPS_i1_data,
+      databus_cntrl => socket_vOPS_i1_bus_cntrl);
+
+  vOPS_i2 : tta_core_input_mux_2
+    generic map (
+      BUSW_0 => 32,
+      BUSW_1 => 1024,
+      DATAW => 1024)
+    port map (
+      databus0 => databus_B1,
+      databus1 => databus_vB1024c,
+      data => socket_vOPS_i2_data,
+      databus_cntrl => socket_vOPS_i2_bus_cntrl);
+
+  vOPS_i3 : tta_core_input_mux_1
+    generic map (
+      BUSW_0 => 32,
+      DATAW => 32)
+    port map (
+      databus0 => databus_B3,
+      data => socket_vOPS_i3_data);
+
+  vRF1024_i1 : tta_core_input_mux_2
+    generic map (
+      BUSW_0 => 1024,
+      BUSW_1 => 1024,
+      DATAW => 1024)
+    port map (
+      databus0 => databus_vB1024B,
+      databus1 => databus_vB1024c,
+      data => socket_vRF1024_i1_data,
+      databus_cntrl => socket_vRF1024_i1_bus_cntrl);
+
+  B1_bus_mux_inst : tta_core_input_mux_8
+    generic map (
+      BUSW_0 => 32,
+      BUSW_1 => 32,
+      BUSW_2 => 32,
+      BUSW_3 => 32,
+      BUSW_4 => 32,
+      BUSW_5 => 32,
+      BUSW_6 => 1024,
+      BUSW_7 => 20,
+      DATAW => 32)
+    port map (
+      databus0 => B1_data_0_in,
+      databus1 => B1_data_1_in,
+      databus2 => B1_data_2_in,
+      databus3 => B1_data_3_in,
+      databus4 => B1_data_4_in,
+      databus5 => B1_data_5_in,
+      databus6 => B1_data_6_in,
+      databus7 => simm_B1,
+      data => databus_B1,
+      databus_cntrl => B1_mux_ctrl_in);
+
+  B2_bus_mux_inst : tta_core_input_mux_11
+    generic map (
+      BUSW_0 => 32,
+      BUSW_1 => 32,
       BUSW_2 => 1,
-      DATAW_0 => 1)
+      BUSW_3 => 32,
+      BUSW_4 => IMEMADDRWIDTH,
+      BUSW_5 => 32,
+      BUSW_6 => 32,
+      BUSW_7 => 32,
+      BUSW_8 => 32,
+      BUSW_9 => 1024,
+      BUSW_10 => 4,
+      DATAW => 32)
     port map (
-      databus0_alt => databus_B1_alt5,
-      databus1_alt => databus_B1_1_alt5,
-      databus2_alt => databus_B1_2_alt5,
-      data0 => socket_bool_o1_data0,
-      databus_cntrl => socket_bool_o1_bus_cntrl);
+      databus0 => B2_data_0_in,
+      databus1 => B2_data_1_in,
+      databus2 => B2_data_2_in,
+      databus3 => B2_data_3_in,
+      databus4 => B2_data_4_in,
+      databus5 => B2_data_5_in,
+      databus6 => B2_data_6_in,
+      databus7 => B2_data_7_in,
+      databus8 => B2_data_8_in,
+      databus9 => B2_data_9_in,
+      databus10 => simm_B2,
+      data => databus_B2,
+      databus_cntrl => B2_mux_ctrl_in);
 
-  cfi_cfiu_cif_cifu_i1 : tta0_input_mux_3
+  B3_bus_mux_inst : tta_core_input_mux_7
+    generic map (
+      BUSW_0 => 32,
+      BUSW_1 => 32,
+      BUSW_2 => 32,
+      BUSW_3 => 32,
+      BUSW_4 => 32,
+      BUSW_5 => 32,
+      BUSW_6 => 7,
+      DATAW => 32)
+    port map (
+      databus0 => B3_data_0_in,
+      databus1 => B3_data_1_in,
+      databus2 => B3_data_2_in,
+      databus3 => B3_data_3_in,
+      databus4 => B3_data_4_in,
+      databus5 => B3_data_5_in,
+      databus6 => simm_B3,
+      data => databus_B3,
+      databus_cntrl => B3_mux_ctrl_in);
+
+  databus_B4 <= tce_ext(B4_data_0_in, databus_B4'length);
+  B5_bus_mux_inst : tta_core_input_mux_3
     generic map (
       BUSW_0 => 32,
       BUSW_1 => 32,
       BUSW_2 => 32,
       DATAW => 32)
     port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_cfi_cfiu_cif_cifu_i1_data,
-      databus_cntrl => socket_cfi_cfiu_cif_cifu_i1_bus_cntrl);
+      databus0 => B5_data_0_in,
+      databus1 => B5_data_1_in,
+      databus2 => B5_data_2_in,
+      data => databus_B5,
+      databus_cntrl => B5_mux_ctrl_in);
 
-  cfi_cfiu_cif_cifu_o1 : tta0_output_socket_cons_3_1
+  vB1024B_bus_mux_inst : tta_core_input_mux_3
     generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW_0 => 32)
+      BUSW_0 => 1024,
+      BUSW_1 => 1024,
+      BUSW_2 => 1024,
+      DATAW => 1024)
     port map (
-      databus0_alt => databus_B1_alt6,
-      databus1_alt => databus_B1_1_alt6,
-      databus2_alt => databus_B1_2_alt6,
-      data0 => socket_cfi_cfiu_cif_cifu_o1_data0,
-      databus_cntrl => socket_cfi_cfiu_cif_cifu_o1_bus_cntrl);
+      databus0 => vB1024B_data_0_in,
+      databus1 => vB1024B_data_1_in,
+      databus2 => vB1024B_data_2_in,
+      data => databus_vB1024B,
+      databus_cntrl => vB1024B_mux_ctrl_in);
 
-  divf_i1 : tta0_input_mux_3
+  vB1024c_bus_mux_inst : tta_core_input_mux_3
     generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
+      BUSW_0 => 1024,
+      BUSW_1 => 1024,
+      BUSW_2 => 1024,
+      DATAW => 1024)
     port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_divf_i1_data,
-      databus_cntrl => socket_divf_i1_bus_cntrl);
+      databus0 => vB1024c_data_0_in,
+      databus1 => vB1024c_data_1_in,
+      databus2 => vB1024c_data_2_in,
+      data => databus_vB1024c,
+      databus_cntrl => vB1024c_mux_ctrl_in);
 
-  divf_i2 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_divf_i2_data,
-      databus_cntrl => socket_divf_i2_bus_cntrl);
-
-  divf_o1 : tta0_output_socket_cons_3_1
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_alt7,
-      databus1_alt => databus_B1_1_alt7,
-      databus2_alt => databus_B1_2_alt7,
-      data0 => socket_divf_o1_data0,
-      databus_cntrl => socket_divf_o1_bus_cntrl);
-
-  gcu_i1 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => IMEMADDRWIDTH)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_gcu_i1_data,
-      databus_cntrl => socket_gcu_i1_bus_cntrl);
-
-  gcu_i2 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => IMEMADDRWIDTH)
-    port map (
-      databus0 => databus_B1_1,
-      databus1 => databus_B1_2,
-      databus2 => databus_B1,
-      data => socket_gcu_i2_data,
-      databus_cntrl => socket_gcu_i2_bus_cntrl);
-
-  gcu_o1 : tta0_output_socket_cons_3_1
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW_0 => IMEMADDRWIDTH)
-    port map (
-      databus0_alt => databus_B1_alt8,
-      databus1_alt => databus_B1_1_alt8,
-      databus2_alt => databus_B1_2_alt8,
-      data0 => socket_gcu_o1_data0,
-      databus_cntrl => socket_gcu_o1_bus_cntrl);
-
-  macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i1 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i1_data,
-      databus_cntrl => socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i1_bus_cntrl);
-
-  macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i2 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i2_data,
-      databus_cntrl => socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i2_bus_cntrl);
-
-  macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i3 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i3_data,
-      databus_cntrl => socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_i3_bus_cntrl);
-
-  macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1 : tta0_output_socket_cons_3_1
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_alt9,
-      databus1_alt => databus_B1_1_alt9,
-      databus2_alt => databus_B1_2_alt9,
-      data0 => socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_data0,
-      databus_cntrl => socket_macf_addf_subf_mulf_eqf_shr_shl_gtf_ltf_add_mul_mac_sub_eq_gt_lt_o1_bus_cntrl);
-
-  popcount_popcountacc_xnorpopcntacc_set_bit_i1 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_popcount_popcountacc_xnorpopcntacc_set_bit_i1_data,
-      databus_cntrl => socket_popcount_popcountacc_xnorpopcntacc_set_bit_i1_bus_cntrl);
-
-  popcount_popcountacc_xnorpopcntacc_set_bit_i2 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_popcount_popcountacc_xnorpopcntacc_set_bit_i2_data,
-      databus_cntrl => socket_popcount_popcountacc_xnorpopcntacc_set_bit_i2_bus_cntrl);
-
-  popcount_popcountacc_xnorpopcntacc_set_bit_i3 : tta0_input_mux_3
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW => 32)
-    port map (
-      databus0 => databus_B1,
-      databus1 => databus_B1_1,
-      databus2 => databus_B1_2,
-      data => socket_popcount_popcountacc_xnorpopcntacc_set_bit_i3_data,
-      databus_cntrl => socket_popcount_popcountacc_xnorpopcntacc_set_bit_i3_bus_cntrl);
-
-  popcount_popcountacc_xnorpopcntacc_set_bit_o1 : tta0_output_socket_cons_3_1
-    generic map (
-      BUSW_0 => 32,
-      BUSW_1 => 32,
-      BUSW_2 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_alt10,
-      databus1_alt => databus_B1_1_alt10,
-      databus2_alt => databus_B1_2_alt10,
-      data0 => socket_popcount_popcountacc_xnorpopcntacc_set_bit_o1_data0,
-      databus_cntrl => socket_popcount_popcountacc_xnorpopcntacc_set_bit_o1_bus_cntrl);
-
-  simm_socket_B1 : tta0_output_socket_cons_1_1
-    generic map (
-      BUSW_0 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_simm,
-      data0 => simm_B1,
-      databus_cntrl => simm_cntrl_B1);
-
-  simm_socket_B1_1 : tta0_output_socket_cons_1_1
-    generic map (
-      BUSW_0 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_1_simm,
-      data0 => simm_B1_1,
-      databus_cntrl => simm_cntrl_B1_1);
-
-  simm_socket_B1_2 : tta0_output_socket_cons_1_1
-    generic map (
-      BUSW_0 => 32,
-      DATAW_0 => 32)
-    port map (
-      databus0_alt => databus_B1_2_simm,
-      data0 => simm_B1_2,
-      databus_cntrl => simm_cntrl_B1_2);
-
-  databus_B1 <= tce_ext(databus_B1_alt0, databus_B1'length) or tce_ext(databus_B1_alt1, databus_B1'length) or tce_ext(databus_B1_alt2, databus_B1'length) or tce_ext(databus_B1_alt3, databus_B1'length) or tce_ext(databus_B1_alt4, databus_B1'length) or tce_ext(databus_B1_alt5, databus_B1'length) or tce_ext(databus_B1_alt6, databus_B1'length) or tce_ext(databus_B1_alt7, databus_B1'length) or tce_ext(databus_B1_alt8, databus_B1'length) or tce_ext(databus_B1_alt9, databus_B1'length) or tce_ext(databus_B1_alt10, databus_B1'length) or tce_ext(databus_B1_simm, databus_B1'length);
-  databus_B1_1 <= tce_ext(databus_B1_1_alt0, databus_B1_1'length) or tce_ext(databus_B1_1_alt1, databus_B1_1'length) or tce_ext(databus_B1_1_alt2, databus_B1_1'length) or tce_ext(databus_B1_1_alt3, databus_B1_1'length) or tce_ext(databus_B1_1_alt4, databus_B1_1'length) or tce_ext(databus_B1_1_alt5, databus_B1_1'length) or tce_ext(databus_B1_1_alt6, databus_B1_1'length) or tce_ext(databus_B1_1_alt7, databus_B1_1'length) or tce_ext(databus_B1_1_alt8, databus_B1_1'length) or tce_ext(databus_B1_1_alt9, databus_B1_1'length) or tce_ext(databus_B1_1_alt10, databus_B1_1'length) or tce_ext(databus_B1_1_simm, databus_B1_1'length);
-  databus_B1_2 <= tce_ext(databus_B1_2_alt0, databus_B1_2'length) or tce_ext(databus_B1_2_alt1, databus_B1_2'length) or tce_ext(databus_B1_2_alt2, databus_B1_2'length) or tce_ext(databus_B1_2_alt3, databus_B1_2'length) or tce_ext(databus_B1_2_alt4, databus_B1_2'length) or tce_ext(databus_B1_2_alt5, databus_B1_2'length) or tce_ext(databus_B1_2_alt6, databus_B1_2'length) or tce_ext(databus_B1_2_alt7, databus_B1_2'length) or tce_ext(databus_B1_2_alt8, databus_B1_2'length) or tce_ext(databus_B1_2_alt9, databus_B1_2'length) or tce_ext(databus_B1_2_alt10, databus_B1_2'length) or tce_ext(databus_B1_2_simm, databus_B1_2'length);
 
 end comb_andor;

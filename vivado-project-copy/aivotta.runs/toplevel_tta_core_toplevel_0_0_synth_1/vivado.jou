@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Sep  5 19:49:39 2019
+# Process ID: 29188
+# Current directory: /home/floran/Vivado/aivotta/aivotta.runs/toplevel_tta_core_toplevel_0_0_synth_1
+# Command line: vivado -log toplevel_tta_core_toplevel_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source toplevel_tta_core_toplevel_0_0.tcl
+# Log file: /home/floran/Vivado/aivotta/aivotta.runs/toplevel_tta_core_toplevel_0_0_synth_1/toplevel_tta_core_toplevel_0_0.vds
+# Journal file: /home/floran/Vivado/aivotta/aivotta.runs/toplevel_tta_core_toplevel_0_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source toplevel_tta_core_toplevel_0_0.tcl -notrace
