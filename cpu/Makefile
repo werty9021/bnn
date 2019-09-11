@@ -29,7 +29,7 @@ run:
 	./$(EXE)
 
 compare:
-	pipenv run python ../compare.py
+	pipenv run python ../compare_cpu.py
 
 clean:
 	$(RM) $(OBJ)

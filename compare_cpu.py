@@ -11,7 +11,7 @@ for filename in sorted(os.listdir('../data/output/')):
         out_dtype = np.float32
     elif 'conv' in suffix:
         ref_dtype = np.float32
-        out_dtype = np.uint16
+        out_dtype = np.uint32
     else:
         ref_dtype = out_dtype = np.uint32
 

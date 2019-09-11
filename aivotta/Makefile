@@ -17,7 +17,7 @@ OBJ2 = $(foreach f,$(OBJ),$(f).bc)
 CC = tcecc
 TCEFLAGS += -a $(ADF)
 CPPFLAGS += $(foreach dir,$(INCL_DIR),-I$(dir))# -I is a preprocessor flag, not a compiler flag
-CFLAGS += -O0 -Wall --std=c11 
+CFLAGS += -O3 -Wall --std=c11 
 LDFLAGS += # -L is a linker flag
 LDLIBS += # Left empty if no libs are needed
 
@@ -36,8 +36,11 @@ compare:
 
 simulate:
 	ttasim -a $(ADF) -p $(EXE) -e "\
+	load_data 0x20000000 ../data/ref/48x32/act0.bin;\
+	load_data 0x21000000 ../data/weights/conv1.bin;\
 	run;\
 	puts [info proc cycles];\
+	x /u w /n 196608 /f ../data/output/conv1.bin 0x22000000;\
 	"
 
 clean:

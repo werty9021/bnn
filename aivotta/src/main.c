@@ -5,7 +5,8 @@
 
 // #define _global __attribute__((address_space(1))) // AXI
 
-#define DMEM_OFFSET 0x43C40000
+// #define DMEM_OFFSET 0x43C40000
+#define DMEM_OFFSET 0x0
 
 // global
 const int O_y = 48; // Output map height
@@ -535,7 +536,12 @@ void conv1(unsigned output_ptr, unsigned input_ptr, unsigned weight_ptr){
 // }
 
 volatile unsigned MMAP[67];
+
 int main(){
+    //conv1
+    MMAP[3] = 0x20000000; // input
+    MMAP[4] = 0x21000000; // weights
+    MMAP[5] = 0x22000000; // output
     // volatile unsigned* l0_input_ptr = (volatile unsigned*) 0;
     // volatile unsigned* l0_weight_ptr = (volatile unsigned*) 4;
     // volatile unsigned* l0_output_ptr = (volatile unsigned*) 8;
