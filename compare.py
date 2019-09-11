@@ -11,7 +11,7 @@ for filename in sorted(os.listdir('../data/output/')):
         out_dtype = np.float32
     elif 'conv' in suffix:
         ref_dtype = np.float32
-        out_dtype = np.uint16
+        out_dtype = np.uint32
     else:
         ref_dtype = out_dtype = np.uint32
 
@@ -73,15 +73,15 @@ for filename in sorted(os.listdir('../data/output/')):
         #     # mean = (ref-out2).mean()
     elif suffix in ['conv0']:
         ref = np.fromfile('../data/ref/{}x{}/{}.bin'.format(size[0], size[1], suffix), dtype=ref_dtype)
-        out = np.fromfile('../data/output/{}.bin'.format(suffix), dtype=out_dtype)*2**-28
+        out = np.fromfile('../data/output/{}.bin'.format(suffix), dtype=out_dtype)#*2**-28
         print(ref[:10])
         print(out[:10])
         mean = (ref-out).mean()
     else:
         ref = np.fromfile('../data/ref/{}x{}/{}.bin'.format(size[0], size[1], suffix), dtype=ref_dtype)
         out = np.fromfile('../data/output/{}.bin'.format(suffix), dtype=out_dtype)
-        print(ref[:10])
-        print(out[:10])
+        print(ref[:20])
+        print(out[:20])
         mean = (ref-out).mean()
     print("{} mean diff: {}\n".format(suffix, mean))
 
