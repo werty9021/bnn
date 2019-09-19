@@ -11,9 +11,9 @@ package tta_core_globals is
   -- clock period
   constant PERIOD : time := 10 ns;
   -- number of busses.
-  constant BUSTRACE_WIDTH : positive := 2208;
+  constant BUSTRACE_WIDTH : positive := 2176;
   -- number of cores
   constant CORECOUNT : positive := 1;
   -- instruction width
-  constant INSTRUCTIONWIDTH : positive := 85;
+  constant INSTRUCTIONWIDTH : positive := 82;
 end tta_core_globals;

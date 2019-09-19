@@ -17,12 +17,50 @@
       </simple-expr>
     </guard>
     <guard>
+      <simple-expr>
+        <bool>
+          <name>RF_BOOL</name>
+          <index>1</index>
+        </bool>
+      </simple-expr>
+    </guard>
+    <guard>
       <inverted-expr>
         <bool>
           <name>RF_BOOL</name>
           <index>0</index>
         </bool>
       </inverted-expr>
+    </guard>
+    <guard>
+      <inverted-expr>
+        <bool>
+          <name>RF_BOOL</name>
+          <index>1</index>
+        </bool>
+      </inverted-expr>
+    </guard>
+    <segment name="seg1">
+      <writes-to/>
+    </segment>
+    <short-immediate>
+      <extension>sign</extension>
+      <width>12</width>
+    </short-immediate>
+  </bus>
+
+  <bus name="B2">
+    <width>32</width>
+    <guard>
+      <always-true/>
+    </guard>
+    <guard>
+      <simple-expr>
+        <bool>
+          <name>RF_BOOL</name>
+          <index>0</index>
+        </bool>
+      </simple-expr>
     </guard>
     <guard>
       <simple-expr>
@@ -36,6 +74,14 @@
       <inverted-expr>
         <bool>
           <name>RF_BOOL</name>
+          <index>0</index>
+        </bool>
+      </inverted-expr>
+    </guard>
+    <guard>
+      <inverted-expr>
+        <bool>
+          <name>RF_BOOL</name>
           <index>1</index>
         </bool>
       </inverted-expr>
@@ -44,22 +90,8 @@
       <writes-to/>
     </segment>
     <short-immediate>
-      <extension>zero</extension>
-      <width>20</width>
-    </short-immediate>
-  </bus>
-
-  <bus name="B2">
-    <width>32</width>
-    <guard>
-      <always-true/>
-    </guard>
-    <segment name="seg1">
-      <writes-to/>
-    </segment>
-    <short-immediate>
-      <extension>zero</extension>
-      <width>4</width>
+      <extension>sign</extension>
+      <width>8</width>
     </short-immediate>
   </bus>
 
@@ -73,7 +105,7 @@
     </segment>
     <short-immediate>
       <extension>zero</extension>
-      <width>7</width>
+      <width>4</width>
     </short-immediate>
   </bus>
 
@@ -91,10 +123,26 @@
     </short-immediate>
   </bus>
 
-  <bus name="B5">
-    <width>32</width>
+  <bus name="vB1024A">
+    <width>1024</width>
     <guard>
       <always-true/>
+    </guard>
+    <guard>
+      <simple-expr>
+        <bool>
+          <name>RF_BOOL</name>
+          <index>0</index>
+        </bool>
+      </simple-expr>
+    </guard>
+    <guard>
+      <inverted-expr>
+        <bool>
+          <name>RF_BOOL</name>
+          <index>0</index>
+        </bool>
+      </inverted-expr>
     </guard>
     <segment name="seg1">
       <writes-to/>
@@ -119,79 +167,49 @@
     </short-immediate>
   </bus>
 
-  <bus name="vB1024c">
-    <width>1024</width>
-    <guard>
-      <always-true/>
-    </guard>
-    <segment name="seg1">
-      <writes-to/>
-    </segment>
-    <short-immediate>
-      <extension>zero</extension>
-      <width>0</width>
-    </short-immediate>
-  </bus>
-
   <socket name="ALU_i1">
     <reads-from>
-      <bus>B1</bus>
+      <bus>B3</bus>
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B3</bus>
+      <bus>B1</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="ALU_o1">
     <writes-to>
-      <bus>B1</bus>
+      <bus>B3</bus>
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
       <bus>B2</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
-      <bus>B3</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
 
   <socket name="ALU_i2">
     <reads-from>
-      <bus>B2</bus>
+      <bus>B3</bus>
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B3</bus>
+      <bus>B2</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="LSU1_i1">
     <reads-from>
-      <bus>B5</bus>
-      <segment>seg1</segment>
-    </reads-from>
-    <reads-from>
       <bus>B3</bus>
-      <segment>seg1</segment>
-    </reads-from>
-    <reads-from>
-      <bus>B2</bus>
-      <segment>seg1</segment>
-    </reads-from>
-    <reads-from>
-      <bus>B1</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="LSU1_i2">
     <reads-from>
-      <bus>vB1024c</bus>
+      <bus>B1</bus>
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
@@ -199,35 +217,23 @@
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B1</bus>
-      <segment>seg1</segment>
-    </reads-from>
-    <reads-from>
-      <bus>B3</bus>
+      <bus>vB1024B</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="LSU1_o1">
     <writes-to>
-      <bus>vB1024B</bus>
+      <bus>vB1024A</bus>
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
-      <bus>vB1024c</bus>
+      <bus>vB1024B</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
 
   <socket name="IMM_o1">
-    <writes-to>
-      <bus>B4</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
-      <bus>B3</bus>
-      <segment>seg1</segment>
-    </writes-to>
     <writes-to>
       <bus>B2</bus>
       <segment>seg1</segment>
@@ -240,40 +246,22 @@
 
   <socket name="RF_BOOL_o1">
     <writes-to>
+      <bus>vB1024A</bus>
+      <segment>seg1</segment>
+    </writes-to>
+    <writes-to>
       <bus>B2</bus>
+      <segment>seg1</segment>
+    </writes-to>
+    <writes-to>
+      <bus>B1</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
 
   <socket name="RF_BOOL_i1">
     <reads-from>
-      <bus>B2</bus>
-      <segment>seg1</segment>
-    </reads-from>
-  </socket>
-
-  <socket name="RF32A_o1">
-    <writes-to>
-      <bus>B3</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
-      <bus>B2</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
-      <bus>B1</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
-      <bus>B5</bus>
-      <segment>seg1</segment>
-    </writes-to>
-  </socket>
-
-  <socket name="RF32A_i1">
-    <reads-from>
-      <bus>B3</bus>
+      <bus>vB1024A</bus>
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
@@ -282,32 +270,28 @@
     </reads-from>
     <reads-from>
       <bus>B1</bus>
-      <segment>seg1</segment>
-    </reads-from>
-    <reads-from>
-      <bus>B5</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="vRF1024_o1">
     <writes-to>
-      <bus>vB1024B</bus>
+      <bus>vB1024A</bus>
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
-      <bus>vB1024c</bus>
+      <bus>vB1024B</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
 
   <socket name="vRF1024_i1">
     <reads-from>
-      <bus>vB1024B</bus>
+      <bus>vB1024A</bus>
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>vB1024c</bus>
+      <bus>vB1024B</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
@@ -335,10 +319,6 @@
 
   <socket name="LSU1_o2">
     <writes-to>
-      <bus>B3</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
       <bus>B2</bus>
       <segment>seg1</segment>
     </writes-to>
@@ -350,21 +330,21 @@
 
   <socket name="dma_i1">
     <reads-from>
-      <bus>B5</bus>
+      <bus>B1</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="dma_i2">
     <reads-from>
-      <bus>B2</bus>
+      <bus>B3</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="dma_i3">
     <reads-from>
-      <bus>B3</bus>
+      <bus>B4</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
@@ -374,17 +354,9 @@
       <bus>B2</bus>
       <segment>seg1</segment>
     </writes-to>
-    <writes-to>
-      <bus>B1</bus>
-      <segment>seg1</segment>
-    </writes-to>
   </socket>
 
   <socket name="add_mul_sub_i1">
-    <reads-from>
-      <bus>B3</bus>
-      <segment>seg1</segment>
-    </reads-from>
     <reads-from>
       <bus>B2</bus>
       <segment>seg1</segment>
@@ -393,11 +365,19 @@
       <bus>B4</bus>
       <segment>seg1</segment>
     </reads-from>
+    <reads-from>
+      <bus>B3</bus>
+      <segment>seg1</segment>
+    </reads-from>
   </socket>
 
   <socket name="add_mul_sub_i2">
     <reads-from>
       <bus>B1</bus>
+      <segment>seg1</segment>
+    </reads-from>
+    <reads-from>
+      <bus>B4</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
@@ -408,36 +388,7 @@
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
-      <bus>B5</bus>
-      <segment>seg1</segment>
-    </writes-to>
-  </socket>
-
-  <socket name="add_i1">
-    <reads-from>
-      <bus>B1</bus>
-      <segment>seg1</segment>
-    </reads-from>
-    <reads-from>
-      <bus>B4</bus>
-      <segment>seg1</segment>
-    </reads-from>
-  </socket>
-
-  <socket name="add_i2">
-    <reads-from>
-      <bus>B2</bus>
-      <segment>seg1</segment>
-    </reads-from>
-  </socket>
-
-  <socket name="add_o1">
-    <writes-to>
       <bus>B3</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
-      <bus>B5</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
@@ -455,6 +406,10 @@
       <bus>B3</bus>
       <segment>seg1</segment>
     </writes-to>
+    <writes-to>
+      <bus>B4</bus>
+      <segment>seg1</segment>
+    </writes-to>
   </socket>
 
   <socket name="RF32B_i1">
@@ -468,6 +423,10 @@
     </reads-from>
     <reads-from>
       <bus>B3</bus>
+      <segment>seg1</segment>
+    </reads-from>
+    <reads-from>
+      <bus>B4</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
@@ -485,67 +444,145 @@
 
   <socket name="FMA_i2">
     <reads-from>
-      <bus>vB1024B</bus>
+      <bus>vB1024A</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="FMA_i3">
     <reads-from>
-      <bus>vB1024c</bus>
+      <bus>vB1024B</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="FMA_o1">
     <writes-to>
-      <bus>vB1024c</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
-      <bus>B1</bus>
+      <bus>vB1024B</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
 
   <socket name="vOPS_i1">
     <reads-from>
-      <bus>B2</bus>
+      <bus>vB1024B</bus>
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>vB1024B</bus>
+      <bus>B1</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="vOPS_i2">
     <reads-from>
-      <bus>B1</bus>
+      <bus>vB1024B</bus>
       <segment>seg1</segment>
     </reads-from>
-    <reads-from>
-      <bus>vB1024c</bus>
-      <segment>seg1</segment>
-    </reads-from>
-  </socket>
-
-  <socket name="vOPS_i3">
     <reads-from>
       <bus>B3</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
+  <socket name="vOPS_i3">
+    <reads-from>
+      <bus>B1</bus>
+      <segment>seg1</segment>
+    </reads-from>
+  </socket>
+
   <socket name="vOPS_o1">
     <writes-to>
-      <bus>B2</bus>
+      <bus>vB1024B</bus>
+      <segment>seg1</segment>
+    </writes-to>
+    <writes-to>
+      <bus>B1</bus>
+      <segment>seg1</segment>
+    </writes-to>
+  </socket>
+
+  <socket name="LSU2_i2">
+    <reads-from>
+      <bus>B4</bus>
+      <segment>seg1</segment>
+    </reads-from>
+    <reads-from>
+      <bus>B3</bus>
+      <segment>seg1</segment>
+    </reads-from>
+    <reads-from>
+      <bus>vB1024B</bus>
+      <segment>seg1</segment>
+    </reads-from>
+  </socket>
+
+  <socket name="LSU2_i1">
+    <reads-from>
+      <bus>B4</bus>
+      <segment>seg1</segment>
+    </reads-from>
+  </socket>
+
+  <socket name="LSU2_o1">
+    <writes-to>
+      <bus>vB1024A</bus>
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
       <bus>vB1024B</bus>
       <segment>seg1</segment>
     </writes-to>
+  </socket>
+
+  <socket name="LSU2_o2">
+    <writes-to>
+      <bus>B3</bus>
+      <segment>seg1</segment>
+    </writes-to>
+    <writes-to>
+      <bus>B2</bus>
+      <segment>seg1</segment>
+    </writes-to>
+  </socket>
+
+  <socket name="RF32A_o1">
+    <writes-to>
+      <bus>B1</bus>
+      <segment>seg1</segment>
+    </writes-to>
+    <writes-to>
+      <bus>B2</bus>
+      <segment>seg1</segment>
+    </writes-to>
+    <writes-to>
+      <bus>B3</bus>
+      <segment>seg1</segment>
+    </writes-to>
+    <writes-to>
+      <bus>B4</bus>
+      <segment>seg1</segment>
+    </writes-to>
+  </socket>
+
+  <socket name="RF32A_i1">
+    <reads-from>
+      <bus>B1</bus>
+      <segment>seg1</segment>
+    </reads-from>
+    <reads-from>
+      <bus>B2</bus>
+      <segment>seg1</segment>
+    </reads-from>
+    <reads-from>
+      <bus>B3</bus>
+      <segment>seg1</segment>
+    </reads-from>
+    <reads-from>
+      <bus>B4</bus>
+      <segment>seg1</segment>
+    </reads-from>
   </socket>
 
   <function-unit name="ALU">
@@ -816,7 +853,7 @@
     <address-space/>
   </function-unit>
 
-  <function-unit name="FMA_ACT">
+  <function-unit name="FMA">
     <port name="in1t">
       <connects-to>FMA_i1</connects-to>
       <width>1024</width>
@@ -880,66 +917,6 @@
           <cycles>1</cycles>
         </reads>
         <writes name="4">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </writes>
-      </pipeline>
-    </operation>
-    <operation>
-      <name>ge32x32to32x1</name>
-      <bind name="1">in1t</bind>
-      <bind name="2">in2</bind>
-      <bind name="3">out1</bind>
-      <pipeline>
-        <reads name="1">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <reads name="2">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <writes name="3">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </writes>
-      </pipeline>
-    </operation>
-    <operation>
-      <name>geu16x32to32x1</name>
-      <bind name="1">in1t</bind>
-      <bind name="2">in2</bind>
-      <bind name="3">out1</bind>
-      <pipeline>
-        <reads name="1">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <reads name="2">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <writes name="3">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </writes>
-      </pipeline>
-    </operation>
-    <operation>
-      <name>max16x32</name>
-      <bind name="1">in1t</bind>
-      <bind name="2">in2</bind>
-      <bind name="3">out1</bind>
-      <pipeline>
-        <reads name="1">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <reads name="2">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <writes name="3">
           <start-cycle>0</start-cycle>
           <cycles>1</cycles>
         </writes>
@@ -1057,6 +1034,86 @@
         </writes>
       </pipeline>
     </operation>
+    <operation>
+      <name>extractelem16x32</name>
+      <bind name="1">in1t</bind>
+      <bind name="2">in2</bind>
+      <bind name="3">out1</bind>
+      <pipeline>
+        <reads name="1">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <reads name="2">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <writes name="3">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </writes>
+      </pipeline>
+    </operation>
+    <operation>
+      <name>geu16x32to32x1</name>
+      <bind name="1">in1t</bind>
+      <bind name="2">in2</bind>
+      <bind name="3">out1</bind>
+      <pipeline>
+        <reads name="1">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <reads name="2">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <writes name="3">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </writes>
+      </pipeline>
+    </operation>
+    <operation>
+      <name>ge32x32to32x1</name>
+      <bind name="1">in1t</bind>
+      <bind name="2">in2</bind>
+      <bind name="3">out1</bind>
+      <pipeline>
+        <reads name="1">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <reads name="2">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <writes name="3">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </writes>
+      </pipeline>
+    </operation>
+    <operation>
+      <name>max16x32</name>
+      <bind name="1">in1t</bind>
+      <bind name="2">in2</bind>
+      <bind name="3">out1</bind>
+      <pipeline>
+        <reads name="1">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <reads name="2">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <writes name="3">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </writes>
+      </pipeline>
+    </operation>
     <address-space/>
   </function-unit>
 
@@ -1079,21 +1136,6 @@
       <connects-to>LSU1_i2</connects-to>
       <width>1024</width>
     </port>
-    <operation>
-      <name>ld1024</name>
-      <bind name="1">in1t</bind>
-      <bind name="2">out1</bind>
-      <pipeline>
-        <reads name="1">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <writes name="2">
-          <start-cycle>3</start-cycle>
-          <cycles>1</cycles>
-        </writes>
-      </pipeline>
-    </operation>
     <operation>
       <name>ld512</name>
       <bind name="1">in1t</bind>
@@ -1216,6 +1258,58 @@
     </operation>
     <operation>
       <name>st8</name>
+      <bind name="1">in1t</bind>
+      <bind name="2">in2</bind>
+      <pipeline>
+        <reads name="1">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <reads name="2">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+      </pipeline>
+    </operation>
+    <address-space>data</address-space>
+  </function-unit>
+
+  <function-unit name="pmem_LSU">
+    <port name="in1t">
+      <connects-to>LSU2_i1</connects-to>
+      <width>32</width>
+      <triggers/>
+      <sets-opcode/>
+    </port>
+    <port name="out1">
+      <connects-to>LSU2_o1</connects-to>
+      <width>1024</width>
+    </port>
+    <port name="out2">
+      <connects-to>LSU2_o2</connects-to>
+      <width>32</width>
+    </port>
+    <port name="in2">
+      <connects-to>LSU2_i2</connects-to>
+      <width>1024</width>
+    </port>
+    <operation>
+      <name>ld1024</name>
+      <bind name="1">in1t</bind>
+      <bind name="2">out1</bind>
+      <pipeline>
+        <reads name="1">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <writes name="2">
+          <start-cycle>3</start-cycle>
+          <cycles>1</cycles>
+        </writes>
+      </pipeline>
+    </operation>
+    <operation>
+      <name>st1024</name>
       <bind name="1">in1t</bind>
       <bind name="2">in2</bind>
       <pipeline>
@@ -1367,44 +1461,6 @@
     <address-space/>
   </function-unit>
 
-  <function-unit name="add">
-    <port name="in1t">
-      <connects-to>add_i1</connects-to>
-      <width>32</width>
-      <triggers/>
-      <sets-opcode/>
-    </port>
-    <port name="in2">
-      <connects-to>add_i2</connects-to>
-      <width>32</width>
-    </port>
-    <port name="out1">
-      <connects-to>add_o1</connects-to>
-      <width>32</width>
-    </port>
-    <operation>
-      <name>add</name>
-      <bind name="1">in1t</bind>
-      <bind name="2">in2</bind>
-      <bind name="3">out1</bind>
-      <pipeline>
-        <reads name="1">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <reads name="2">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <writes name="3">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </writes>
-      </pipeline>
-    </operation>
-    <address-space/>
-  </function-unit>
-
   <register-file name="RF_BOOL">
     <type>normal</type>
     <size>2</size>
@@ -1421,7 +1477,7 @@
 
   <register-file name="RF32A">
     <type>normal</type>
-    <size>8</size>
+    <size>16</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -1529,7 +1585,19 @@
     <template name="limm32">
       <slot>
         <name>B1</name>
-        <width>32</width>
+        <width>8</width>
+      </slot>
+      <slot>
+        <name>B3</name>
+        <width>8</width>
+      </slot>
+      <slot>
+        <name>B4</name>
+        <width>8</width>
+      </slot>
+      <slot>
+        <name>vB1024A</name>
+        <width>8</width>
       </slot>
     </template>
   </immediate-unit>

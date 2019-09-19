@@ -30,6 +30,7 @@ for filename in sorted(os.listdir('../data/output/')):
         for i in range(5):
             print(bin(out[i]), " ", end='')
         print("\n")
+        print((ref==out).mean())
         mean = np.bitwise_xor(ref, out).mean()
 
     elif 'conv' in suffix and suffix not in ['conv0', 'conv16']:
@@ -48,8 +49,8 @@ for filename in sorted(os.listdir('../data/output/')):
                     if ((j==0 and i==0) or (j==size[0]-1 and i==0) or (j==0 and i==size[1]-1) or (j==size[0]-1 and i==size[1]-1)):
                         T += 1*64;
                     out2[j,i,k] = 2*out[j,i,k] - T
-        print(ref[:,:,63])
-        print(out2[:,:,63])
+        print(ref[:,:,0])
+        print(out2[:,:,0])
         print((ref==out2).mean())
         mean = (ref-out2).mean()
     # else:

@@ -15,7 +15,34 @@
     </parameter>
   </ic-decoder-plugin>
 
+  <fu-generate name="DBG">
+    <operation name="lcc">
+      <hdb-file>tce:almaif.hdb</hdb-file>
+      <operation-id>1</operation-id>
+    </operation>
+    <operation name="ecc">
+      <hdb-file>tce:almaif.hdb</hdb-file>
+      <operation-id>2</operation-id>
+    </operation>
+  </fu-generate>
+
   <fu-generate name="vOPS">
+    <operation name="extractelem16x32">
+      <hdb-file>tce:generate_base_simd.hdb</hdb-file>
+      <operation-id>64</operation-id>
+    </operation>
+    <operation name="ge32x32to32x1">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>1</operation-id>
+    </operation>
+    <operation name="geu16x32to32x1">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>2</operation-id>
+    </operation>
+    <operation name="max16x32">
+      <hdb-file>hdb/fugen.hdb</hdb-file>
+      <operation-id>6</operation-id>
+    </operation>
     <operation name="vreduce32x32">
       <hdb-file>hdb/fugen.hdb</hdb-file>
       <operation-id>10</operation-id>
@@ -38,7 +65,7 @@
     </operation>
   </fu-generate>
 
-  <fu-generate name="FMA_ACT">
+  <fu-generate name="FMA">
     <operation name="mac16x32to32x32">
       <hdb-file>hdb/fugen.hdb</hdb-file>
       <operation-id>5</operation-id>
@@ -46,18 +73,6 @@
     <operation name="xnorpopcountacc32x32">
       <hdb-file>hdb/fugen.hdb</hdb-file>
       <operation-id>11</operation-id>
-    </operation>
-    <operation name="ge32x32to32x1">
-      <hdb-file>hdb/fugen.hdb</hdb-file>
-      <operation-id>1</operation-id>
-    </operation>
-    <operation name="geu16x32to32x1">
-      <hdb-file>hdb/fugen.hdb</hdb-file>
-      <operation-id>2</operation-id>
-    </operation>
-    <operation name="max16x32">
-      <hdb-file>hdb/fugen.hdb</hdb-file>
-      <operation-id>6</operation-id>
     </operation>
   </fu-generate>
 
@@ -76,14 +91,14 @@
     <fu-id>274</fu-id>
   </fu>
 
-  <fu name="add">
-    <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
-    <fu-id>5</fu-id>
-  </fu>
-
   <fu name="ALU">
     <hdb-file>tce:asic_130nm_1.5V.hdb</hdb-file>
     <fu-id>380</fu-id>
+  </fu>
+
+  <fu name="pmem_LSU">
+    <hdb-file>hdb/vec_lsu_1024.hdb</hdb-file>
+    <fu-id>2</fu-id>
   </fu>
 
   <rf name="vRF1024">

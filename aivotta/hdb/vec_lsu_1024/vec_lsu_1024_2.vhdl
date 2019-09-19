@@ -223,6 +223,7 @@ begin
             aaddr_r  <= t1_address_in(t1_address_in'high downto 7);
             opcode   := to_integer(unsigned(t1_opcode_in));
             addr_low := t1_address_in(7 - 1 downto 0);
+            astrb_r <= (others => '0');
             case opcode is
               when OPC_LD1024 =>
                 pipeline_r(0)  <= (LOAD, W_1024, addr_low);

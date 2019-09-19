@@ -55,6 +55,15 @@ entity tta_core is
     fu_dmem_LSU_rvalid_in : in std_logic_vector(0 downto 0);
     fu_dmem_LSU_rready_out : out std_logic_vector(0 downto 0);
     fu_dmem_LSU_rdata_in : in std_logic_vector(1023 downto 0);
+    fu_pmem_LSU_avalid_out : out std_logic_vector(0 downto 0);
+    fu_pmem_LSU_aready_in : in std_logic_vector(0 downto 0);
+    fu_pmem_LSU_aaddr_out : out std_logic_vector(fu_pmem_LSU_addrw_g-7-1 downto 0);
+    fu_pmem_LSU_awren_out : out std_logic_vector(0 downto 0);
+    fu_pmem_LSU_astrb_out : out std_logic_vector(127 downto 0);
+    fu_pmem_LSU_adata_out : out std_logic_vector(1023 downto 0);
+    fu_pmem_LSU_rvalid_in : in std_logic_vector(0 downto 0);
+    fu_pmem_LSU_rready_out : out std_logic_vector(0 downto 0);
+    fu_pmem_LSU_rdata_in : in std_logic_vector(1023 downto 0);
     db_tta_nreset : in std_logic;
     db_lockcnt : out std_logic_vector(63 downto 0);
     db_cyclecnt : out std_logic_vector(63 downto 0);
@@ -62,7 +71,9 @@ entity tta_core is
     db_lockrq : in std_logic;
     db_pc_start : in std_logic_vector(IMEMADDRWIDTH-1 downto 0);
     db_bustraces : out std_logic_vector(BUSTRACE_WIDTH-1 downto 0);
-    db_pc_next : out std_logic_vector(IMEMADDRWIDTH-1 downto 0));
+    db_pc_next : out std_logic_vector(IMEMADDRWIDTH-1 downto 0);
+    fu_DBG_debug_lock_count_in : in std_logic_vector(63 downto 0);
+    fu_DBG_debug_cycle_count_in : in std_logic_vector(63 downto 0));
 
 end tta_core;
 
@@ -98,12 +109,12 @@ architecture structural of tta_core is
   signal fu_add_mul_sub_r1data_wire : std_logic_vector(31 downto 0);
   signal fu_add_mul_sub_t1opcode_wire : std_logic_vector(1 downto 0);
   signal fu_add_mul_sub_glock_wire : std_logic;
-  signal fu_add_t1data_wire : std_logic_vector(31 downto 0);
-  signal fu_add_t1load_wire : std_logic;
-  signal fu_add_o1data_wire : std_logic_vector(31 downto 0);
-  signal fu_add_o1load_wire : std_logic;
-  signal fu_add_r1data_wire : std_logic_vector(31 downto 0);
-  signal fu_add_glock_wire : std_logic;
+  signal fu_dbg_generated_glock_in_wire : std_logic;
+  signal fu_dbg_generated_operation_in_wire : std_logic_vector(1-1 downto 0);
+  signal fu_dbg_generated_glockreq_out_wire : std_logic;
+  signal fu_dbg_generated_data_in1t_in_wire : std_logic_vector(32-1 downto 0);
+  signal fu_dbg_generated_load_in1t_in_wire : std_logic;
+  signal fu_dbg_generated_data_out1_out_wire : std_logic_vector(32-1 downto 0);
   signal fu_dmem_LSU_t1_address_in_wire : std_logic_vector(12 downto 0);
   signal fu_dmem_LSU_t1_load_in_wire : std_logic;
   signal fu_dmem_LSU_r1_data_out_wire : std_logic_vector(1023 downto 0);
@@ -113,18 +124,27 @@ architecture structural of tta_core is
   signal fu_dmem_LSU_t1_opcode_in_wire : std_logic_vector(3 downto 0);
   signal fu_dmem_LSU_glock_in_wire : std_logic;
   signal fu_dmem_LSU_glockreq_out_wire : std_logic;
-  signal fu_fma_act_generated_glock_in_wire : std_logic;
-  signal fu_fma_act_generated_operation_in_wire : std_logic_vector(3-1 downto 0);
-  signal fu_fma_act_generated_glockreq_out_wire : std_logic;
-  signal fu_fma_act_generated_data_in1t_in_wire : std_logic_vector(1024-1 downto 0);
-  signal fu_fma_act_generated_load_in1t_in_wire : std_logic;
-  signal fu_fma_act_generated_data_in2_in_wire : std_logic_vector(1024-1 downto 0);
-  signal fu_fma_act_generated_load_in2_in_wire : std_logic;
-  signal fu_fma_act_generated_data_in3_in_wire : std_logic_vector(1024-1 downto 0);
-  signal fu_fma_act_generated_load_in3_in_wire : std_logic;
-  signal fu_fma_act_generated_data_out1_out_wire : std_logic_vector(1024-1 downto 0);
+  signal fu_fma_generated_glock_in_wire : std_logic;
+  signal fu_fma_generated_operation_in_wire : std_logic_vector(1-1 downto 0);
+  signal fu_fma_generated_glockreq_out_wire : std_logic;
+  signal fu_fma_generated_data_in1t_in_wire : std_logic_vector(1024-1 downto 0);
+  signal fu_fma_generated_load_in1t_in_wire : std_logic;
+  signal fu_fma_generated_data_in2_in_wire : std_logic_vector(1024-1 downto 0);
+  signal fu_fma_generated_load_in2_in_wire : std_logic;
+  signal fu_fma_generated_data_in3_in_wire : std_logic_vector(1024-1 downto 0);
+  signal fu_fma_generated_load_in3_in_wire : std_logic;
+  signal fu_fma_generated_data_out1_out_wire : std_logic_vector(1024-1 downto 0);
+  signal fu_pmem_LSU_t1_address_in_wire : std_logic_vector(12 downto 0);
+  signal fu_pmem_LSU_t1_load_in_wire : std_logic;
+  signal fu_pmem_LSU_r1_data_out_wire : std_logic_vector(1023 downto 0);
+  signal fu_pmem_LSU_r2_data_out_wire : std_logic_vector(31 downto 0);
+  signal fu_pmem_LSU_o1_data_in_wire : std_logic_vector(1023 downto 0);
+  signal fu_pmem_LSU_o1_load_in_wire : std_logic;
+  signal fu_pmem_LSU_t1_opcode_in_wire : std_logic_vector(3 downto 0);
+  signal fu_pmem_LSU_glock_in_wire : std_logic;
+  signal fu_pmem_LSU_glockreq_out_wire : std_logic;
   signal fu_vops_generated_glock_in_wire : std_logic;
-  signal fu_vops_generated_operation_in_wire : std_logic_vector(3-1 downto 0);
+  signal fu_vops_generated_operation_in_wire : std_logic_vector(4-1 downto 0);
   signal fu_vops_generated_glockreq_out_wire : std_logic;
   signal fu_vops_generated_data_in1t_in_wire : std_logic_vector(1024-1 downto 0);
   signal fu_vops_generated_load_in1t_in_wire : std_logic;
@@ -139,12 +159,10 @@ architecture structural of tta_core is
   signal ic_socket_ALU_i2_data_wire : std_logic_vector(31 downto 0);
   signal ic_socket_ALU_i2_bus_cntrl_wire : std_logic_vector(0 downto 0);
   signal ic_socket_LSU1_i1_data_wire : std_logic_vector(12 downto 0);
-  signal ic_socket_LSU1_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal ic_socket_LSU1_i2_data_wire : std_logic_vector(1023 downto 0);
   signal ic_socket_LSU1_i2_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal ic_socket_RF_BOOL_i1_data_wire : std_logic_vector(0 downto 0);
-  signal ic_socket_RF32A_i1_data_wire : std_logic_vector(31 downto 0);
-  signal ic_socket_RF32A_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
+  signal ic_socket_RF_BOOL_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal ic_socket_vRF1024_i1_data_wire : std_logic_vector(1023 downto 0);
   signal ic_socket_vRF1024_i1_bus_cntrl_wire : std_logic_vector(0 downto 0);
   signal ic_socket_gcu_i1_data_wire : std_logic_vector(IMEMADDRWIDTH-1 downto 0);
@@ -155,9 +173,7 @@ architecture structural of tta_core is
   signal ic_socket_add_mul_sub_i1_data_wire : std_logic_vector(31 downto 0);
   signal ic_socket_add_mul_sub_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal ic_socket_add_mul_sub_i2_data_wire : std_logic_vector(31 downto 0);
-  signal ic_socket_add_i1_data_wire : std_logic_vector(31 downto 0);
-  signal ic_socket_add_i1_bus_cntrl_wire : std_logic_vector(0 downto 0);
-  signal ic_socket_add_i2_data_wire : std_logic_vector(31 downto 0);
+  signal ic_socket_add_mul_sub_i2_bus_cntrl_wire : std_logic_vector(0 downto 0);
   signal ic_socket_RF32B_i1_data_wire : std_logic_vector(31 downto 0);
   signal ic_socket_RF32B_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal ic_socket_FMA_i1_data_wire : std_logic_vector(1023 downto 0);
@@ -169,50 +185,56 @@ architecture structural of tta_core is
   signal ic_socket_vOPS_i2_data_wire : std_logic_vector(1023 downto 0);
   signal ic_socket_vOPS_i2_bus_cntrl_wire : std_logic_vector(0 downto 0);
   signal ic_socket_vOPS_i3_data_wire : std_logic_vector(31 downto 0);
+  signal ic_socket_LSU2_i2_data_wire : std_logic_vector(1023 downto 0);
+  signal ic_socket_LSU2_i2_bus_cntrl_wire : std_logic_vector(1 downto 0);
+  signal ic_socket_LSU2_i1_data_wire : std_logic_vector(12 downto 0);
+  signal ic_socket_RF32A_i1_data_wire : std_logic_vector(31 downto 0);
+  signal ic_socket_RF32A_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
+  signal ic_socket_DBG_i1_data_wire : std_logic_vector(31 downto 0);
   signal ic_B1_mux_ctrl_in_wire : std_logic_vector(2 downto 0);
   signal ic_B1_data_0_in_wire : std_logic_vector(31 downto 0);
-  signal ic_B1_data_1_in_wire : std_logic_vector(31 downto 0);
+  signal ic_B1_data_1_in_wire : std_logic_vector(0 downto 0);
   signal ic_B1_data_2_in_wire : std_logic_vector(31 downto 0);
   signal ic_B1_data_3_in_wire : std_logic_vector(31 downto 0);
-  signal ic_B1_data_4_in_wire : std_logic_vector(31 downto 0);
+  signal ic_B1_data_4_in_wire : std_logic_vector(1024-1 downto 0);
   signal ic_B1_data_5_in_wire : std_logic_vector(31 downto 0);
-  signal ic_B1_data_6_in_wire : std_logic_vector(1024-1 downto 0);
+  signal ic_B1_data_6_in_wire : std_logic_vector(32-1 downto 0);
   signal ic_B2_mux_ctrl_in_wire : std_logic_vector(3 downto 0);
   signal ic_B2_data_0_in_wire : std_logic_vector(31 downto 0);
   signal ic_B2_data_1_in_wire : std_logic_vector(31 downto 0);
   signal ic_B2_data_2_in_wire : std_logic_vector(0 downto 0);
-  signal ic_B2_data_3_in_wire : std_logic_vector(31 downto 0);
-  signal ic_B2_data_4_in_wire : std_logic_vector(IMEMADDRWIDTH-1 downto 0);
+  signal ic_B2_data_3_in_wire : std_logic_vector(IMEMADDRWIDTH-1 downto 0);
+  signal ic_B2_data_4_in_wire : std_logic_vector(31 downto 0);
   signal ic_B2_data_5_in_wire : std_logic_vector(31 downto 0);
   signal ic_B2_data_6_in_wire : std_logic_vector(31 downto 0);
   signal ic_B2_data_7_in_wire : std_logic_vector(31 downto 0);
   signal ic_B2_data_8_in_wire : std_logic_vector(31 downto 0);
-  signal ic_B2_data_9_in_wire : std_logic_vector(1024-1 downto 0);
+  signal ic_B2_data_9_in_wire : std_logic_vector(31 downto 0);
   signal ic_B3_mux_ctrl_in_wire : std_logic_vector(2 downto 0);
   signal ic_B3_data_0_in_wire : std_logic_vector(31 downto 0);
   signal ic_B3_data_1_in_wire : std_logic_vector(31 downto 0);
   signal ic_B3_data_2_in_wire : std_logic_vector(31 downto 0);
   signal ic_B3_data_3_in_wire : std_logic_vector(31 downto 0);
   signal ic_B3_data_4_in_wire : std_logic_vector(31 downto 0);
-  signal ic_B3_data_5_in_wire : std_logic_vector(31 downto 0);
+  signal ic_B4_mux_ctrl_in_wire : std_logic_vector(0 downto 0);
   signal ic_B4_data_0_in_wire : std_logic_vector(31 downto 0);
-  signal ic_B5_mux_ctrl_in_wire : std_logic_vector(1 downto 0);
-  signal ic_B5_data_0_in_wire : std_logic_vector(31 downto 0);
-  signal ic_B5_data_1_in_wire : std_logic_vector(31 downto 0);
-  signal ic_B5_data_2_in_wire : std_logic_vector(31 downto 0);
-  signal ic_vB1024B_mux_ctrl_in_wire : std_logic_vector(1 downto 0);
+  signal ic_B4_data_1_in_wire : std_logic_vector(31 downto 0);
+  signal ic_vB1024A_mux_ctrl_in_wire : std_logic_vector(1 downto 0);
+  signal ic_vB1024A_data_0_in_wire : std_logic_vector(1023 downto 0);
+  signal ic_vB1024A_data_1_in_wire : std_logic_vector(0 downto 0);
+  signal ic_vB1024A_data_2_in_wire : std_logic_vector(1023 downto 0);
+  signal ic_vB1024A_data_3_in_wire : std_logic_vector(1023 downto 0);
+  signal ic_vB1024B_mux_ctrl_in_wire : std_logic_vector(2 downto 0);
   signal ic_vB1024B_data_0_in_wire : std_logic_vector(1023 downto 0);
   signal ic_vB1024B_data_1_in_wire : std_logic_vector(1023 downto 0);
   signal ic_vB1024B_data_2_in_wire : std_logic_vector(1024-1 downto 0);
-  signal ic_vB1024c_mux_ctrl_in_wire : std_logic_vector(1 downto 0);
-  signal ic_vB1024c_data_0_in_wire : std_logic_vector(1023 downto 0);
-  signal ic_vB1024c_data_1_in_wire : std_logic_vector(1023 downto 0);
-  signal ic_vB1024c_data_2_in_wire : std_logic_vector(1024-1 downto 0);
-  signal ic_simm_B1_wire : std_logic_vector(19 downto 0);
+  signal ic_vB1024B_data_3_in_wire : std_logic_vector(1024-1 downto 0);
+  signal ic_vB1024B_data_4_in_wire : std_logic_vector(1023 downto 0);
+  signal ic_simm_B1_wire : std_logic_vector(31 downto 0);
   signal ic_simm_cntrl_B1_wire : std_logic_vector(0 downto 0);
-  signal ic_simm_B2_wire : std_logic_vector(3 downto 0);
+  signal ic_simm_B2_wire : std_logic_vector(31 downto 0);
   signal ic_simm_cntrl_B2_wire : std_logic_vector(0 downto 0);
-  signal ic_simm_B3_wire : std_logic_vector(6 downto 0);
+  signal ic_simm_B3_wire : std_logic_vector(3 downto 0);
   signal ic_simm_cntrl_B3_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_instructionword_wire : std_logic_vector(INSTRUCTIONWIDTH-1 downto 0);
   signal inst_decoder_pc_load_wire : std_logic;
@@ -220,41 +242,45 @@ architecture structural of tta_core is
   signal inst_decoder_pc_opcode_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_lock_wire : std_logic;
   signal inst_decoder_lock_r_wire : std_logic;
-  signal inst_decoder_simm_B1_wire : std_logic_vector(19 downto 0);
-  signal inst_decoder_simm_B2_wire : std_logic_vector(3 downto 0);
-  signal inst_decoder_simm_B3_wire : std_logic_vector(6 downto 0);
+  signal inst_decoder_simm_B1_wire : std_logic_vector(31 downto 0);
+  signal inst_decoder_simm_B2_wire : std_logic_vector(31 downto 0);
+  signal inst_decoder_simm_B3_wire : std_logic_vector(3 downto 0);
   signal inst_decoder_socket_ALU_i1_bus_cntrl_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_socket_ALU_i2_bus_cntrl_wire : std_logic_vector(0 downto 0);
-  signal inst_decoder_socket_LSU1_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal inst_decoder_socket_LSU1_i2_bus_cntrl_wire : std_logic_vector(1 downto 0);
-  signal inst_decoder_socket_RF32A_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
+  signal inst_decoder_socket_RF_BOOL_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal inst_decoder_socket_vRF1024_i1_bus_cntrl_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_socket_add_mul_sub_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
-  signal inst_decoder_socket_add_i1_bus_cntrl_wire : std_logic_vector(0 downto 0);
+  signal inst_decoder_socket_add_mul_sub_i2_bus_cntrl_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_socket_RF32B_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal inst_decoder_socket_FMA_i1_bus_cntrl_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_socket_vOPS_i1_bus_cntrl_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_socket_vOPS_i2_bus_cntrl_wire : std_logic_vector(0 downto 0);
+  signal inst_decoder_socket_LSU2_i2_bus_cntrl_wire : std_logic_vector(1 downto 0);
+  signal inst_decoder_socket_RF32A_i1_bus_cntrl_wire : std_logic_vector(1 downto 0);
   signal inst_decoder_B1_src_sel_wire : std_logic_vector(2 downto 0);
   signal inst_decoder_B2_src_sel_wire : std_logic_vector(3 downto 0);
   signal inst_decoder_B3_src_sel_wire : std_logic_vector(2 downto 0);
-  signal inst_decoder_B5_src_sel_wire : std_logic_vector(1 downto 0);
-  signal inst_decoder_vB1024B_src_sel_wire : std_logic_vector(1 downto 0);
-  signal inst_decoder_vB1024c_src_sel_wire : std_logic_vector(1 downto 0);
+  signal inst_decoder_B4_src_sel_wire : std_logic_vector(0 downto 0);
+  signal inst_decoder_vB1024A_src_sel_wire : std_logic_vector(1 downto 0);
+  signal inst_decoder_vB1024B_src_sel_wire : std_logic_vector(2 downto 0);
   signal inst_decoder_fu_ALU_in1t_load_wire : std_logic;
   signal inst_decoder_fu_ALU_in2_load_wire : std_logic;
   signal inst_decoder_fu_ALU_opc_wire : std_logic_vector(3 downto 0);
-  signal inst_decoder_fu_FMA_ACT_in1t_load_wire : std_logic;
-  signal inst_decoder_fu_FMA_ACT_in2_load_wire : std_logic;
-  signal inst_decoder_fu_FMA_ACT_in3_load_wire : std_logic;
-  signal inst_decoder_fu_FMA_ACT_opc_wire : std_logic_vector(2 downto 0);
+  signal inst_decoder_fu_FMA_in1t_load_wire : std_logic;
+  signal inst_decoder_fu_FMA_in2_load_wire : std_logic;
+  signal inst_decoder_fu_FMA_in3_load_wire : std_logic;
+  signal inst_decoder_fu_FMA_opc_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_fu_vOPS_in1t_load_wire : std_logic;
   signal inst_decoder_fu_vOPS_in2_load_wire : std_logic;
   signal inst_decoder_fu_vOPS_in3_load_wire : std_logic;
-  signal inst_decoder_fu_vOPS_opc_wire : std_logic_vector(2 downto 0);
+  signal inst_decoder_fu_vOPS_opc_wire : std_logic_vector(3 downto 0);
   signal inst_decoder_fu_dmem_LSU_in1t_load_wire : std_logic;
   signal inst_decoder_fu_dmem_LSU_in2_load_wire : std_logic;
   signal inst_decoder_fu_dmem_LSU_opc_wire : std_logic_vector(3 downto 0);
+  signal inst_decoder_fu_pmem_LSU_in1t_load_wire : std_logic;
+  signal inst_decoder_fu_pmem_LSU_in2_load_wire : std_logic;
+  signal inst_decoder_fu_pmem_LSU_opc_wire : std_logic_vector(3 downto 0);
   signal inst_decoder_fu_DMA_in1t_load_wire : std_logic;
   signal inst_decoder_fu_DMA_in2_load_wire : std_logic;
   signal inst_decoder_fu_DMA_in3_load_wire : std_logic;
@@ -262,16 +288,16 @@ architecture structural of tta_core is
   signal inst_decoder_fu_add_mul_sub_in1t_load_wire : std_logic;
   signal inst_decoder_fu_add_mul_sub_in2_load_wire : std_logic;
   signal inst_decoder_fu_add_mul_sub_opc_wire : std_logic_vector(1 downto 0);
-  signal inst_decoder_fu_add_in1t_load_wire : std_logic;
-  signal inst_decoder_fu_add_in2_load_wire : std_logic;
+  signal inst_decoder_fu_DBG_in1t_load_wire : std_logic;
+  signal inst_decoder_fu_DBG_opc_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_rf_RF_BOOL_rd_load_wire : std_logic;
   signal inst_decoder_rf_RF_BOOL_rd_opc_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_rf_RF_BOOL_wr_load_wire : std_logic;
   signal inst_decoder_rf_RF_BOOL_wr_opc_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_rf_RF32A_rd_load_wire : std_logic;
-  signal inst_decoder_rf_RF32A_rd_opc_wire : std_logic_vector(2 downto 0);
+  signal inst_decoder_rf_RF32A_rd_opc_wire : std_logic_vector(3 downto 0);
   signal inst_decoder_rf_RF32A_wr_load_wire : std_logic;
-  signal inst_decoder_rf_RF32A_wr_opc_wire : std_logic_vector(2 downto 0);
+  signal inst_decoder_rf_RF32A_wr_opc_wire : std_logic_vector(3 downto 0);
   signal inst_decoder_rf_RF32B_rd_load_wire : std_logic;
   signal inst_decoder_rf_RF32B_rd_opc_wire : std_logic_vector(3 downto 0);
   signal inst_decoder_rf_RF32B_wr_load_wire : std_logic;
@@ -287,8 +313,8 @@ architecture structural of tta_core is
   signal inst_decoder_iu_IMM_write_opc_wire : std_logic_vector(0 downto 0);
   signal inst_decoder_rf_guard_RF_BOOL_0_wire : std_logic;
   signal inst_decoder_rf_guard_RF_BOOL_1_wire : std_logic;
-  signal inst_decoder_lock_req_wire : std_logic_vector(4 downto 0);
-  signal inst_decoder_glock_wire : std_logic_vector(12 downto 0);
+  signal inst_decoder_lock_req_wire : std_logic_vector(6 downto 0);
+  signal inst_decoder_glock_wire : std_logic_vector(13 downto 0);
   signal inst_fetch_ra_out_wire : std_logic_vector(IMEMADDRWIDTH-1 downto 0);
   signal inst_fetch_ra_in_wire : std_logic_vector(IMEMADDRWIDTH-1 downto 0);
   signal inst_fetch_pc_in_wire : std_logic_vector(IMEMADDRWIDTH-1 downto 0);
@@ -308,11 +334,11 @@ architecture structural of tta_core is
   signal iu_IMM_glock_wire : std_logic;
   signal rf_RF32A_r1data_wire : std_logic_vector(31 downto 0);
   signal rf_RF32A_r1load_wire : std_logic;
-  signal rf_RF32A_r1opcode_wire : std_logic_vector(2 downto 0);
+  signal rf_RF32A_r1opcode_wire : std_logic_vector(3 downto 0);
   signal rf_RF32A_t1data_wire : std_logic_vector(31 downto 0);
   signal rf_RF32A_t1load_wire : std_logic;
-  signal rf_RF32A_t1opcode_wire : std_logic_vector(2 downto 0);
-  signal rf_RF32A_guard_wire : std_logic_vector(7 downto 0);
+  signal rf_RF32A_t1opcode_wire : std_logic_vector(3 downto 0);
+  signal rf_RF32A_guard_wire : std_logic_vector(15 downto 0);
   signal rf_RF32A_glock_wire : std_logic;
   signal rf_RF32B_r1data_wire : std_logic_vector(31 downto 0);
   signal rf_RF32B_r1load_wire : std_logic;
@@ -392,41 +418,45 @@ architecture structural of tta_core is
       clk : in std_logic;
       rstx : in std_logic;
       locked : out std_logic;
-      simm_B1 : out std_logic_vector(20-1 downto 0);
-      simm_B2 : out std_logic_vector(4-1 downto 0);
-      simm_B3 : out std_logic_vector(7-1 downto 0);
+      simm_B1 : out std_logic_vector(32-1 downto 0);
+      simm_B2 : out std_logic_vector(32-1 downto 0);
+      simm_B3 : out std_logic_vector(4-1 downto 0);
       socket_ALU_i1_bus_cntrl : out std_logic_vector(1-1 downto 0);
       socket_ALU_i2_bus_cntrl : out std_logic_vector(1-1 downto 0);
-      socket_LSU1_i1_bus_cntrl : out std_logic_vector(2-1 downto 0);
       socket_LSU1_i2_bus_cntrl : out std_logic_vector(2-1 downto 0);
-      socket_RF32A_i1_bus_cntrl : out std_logic_vector(2-1 downto 0);
+      socket_RF_BOOL_i1_bus_cntrl : out std_logic_vector(2-1 downto 0);
       socket_vRF1024_i1_bus_cntrl : out std_logic_vector(1-1 downto 0);
       socket_add_mul_sub_i1_bus_cntrl : out std_logic_vector(2-1 downto 0);
-      socket_add_i1_bus_cntrl : out std_logic_vector(1-1 downto 0);
+      socket_add_mul_sub_i2_bus_cntrl : out std_logic_vector(1-1 downto 0);
       socket_RF32B_i1_bus_cntrl : out std_logic_vector(2-1 downto 0);
       socket_FMA_i1_bus_cntrl : out std_logic_vector(1-1 downto 0);
       socket_vOPS_i1_bus_cntrl : out std_logic_vector(1-1 downto 0);
       socket_vOPS_i2_bus_cntrl : out std_logic_vector(1-1 downto 0);
+      socket_LSU2_i2_bus_cntrl : out std_logic_vector(2-1 downto 0);
+      socket_RF32A_i1_bus_cntrl : out std_logic_vector(2-1 downto 0);
       B1_src_sel : out std_logic_vector(3-1 downto 0);
       B2_src_sel : out std_logic_vector(4-1 downto 0);
       B3_src_sel : out std_logic_vector(3-1 downto 0);
-      B5_src_sel : out std_logic_vector(2-1 downto 0);
-      vB1024B_src_sel : out std_logic_vector(2-1 downto 0);
-      vB1024c_src_sel : out std_logic_vector(2-1 downto 0);
+      B4_src_sel : out std_logic_vector(1-1 downto 0);
+      vB1024A_src_sel : out std_logic_vector(2-1 downto 0);
+      vB1024B_src_sel : out std_logic_vector(3-1 downto 0);
       fu_ALU_in1t_load : out std_logic;
       fu_ALU_in2_load : out std_logic;
       fu_ALU_opc : out std_logic_vector(4-1 downto 0);
-      fu_FMA_ACT_in1t_load : out std_logic;
-      fu_FMA_ACT_in2_load : out std_logic;
-      fu_FMA_ACT_in3_load : out std_logic;
-      fu_FMA_ACT_opc : out std_logic_vector(3-1 downto 0);
+      fu_FMA_in1t_load : out std_logic;
+      fu_FMA_in2_load : out std_logic;
+      fu_FMA_in3_load : out std_logic;
+      fu_FMA_opc : out std_logic_vector(1-1 downto 0);
       fu_vOPS_in1t_load : out std_logic;
       fu_vOPS_in2_load : out std_logic;
       fu_vOPS_in3_load : out std_logic;
-      fu_vOPS_opc : out std_logic_vector(3-1 downto 0);
+      fu_vOPS_opc : out std_logic_vector(4-1 downto 0);
       fu_dmem_LSU_in1t_load : out std_logic;
       fu_dmem_LSU_in2_load : out std_logic;
       fu_dmem_LSU_opc : out std_logic_vector(4-1 downto 0);
+      fu_pmem_LSU_in1t_load : out std_logic;
+      fu_pmem_LSU_in2_load : out std_logic;
+      fu_pmem_LSU_opc : out std_logic_vector(4-1 downto 0);
       fu_DMA_in1t_load : out std_logic;
       fu_DMA_in2_load : out std_logic;
       fu_DMA_in3_load : out std_logic;
@@ -434,16 +464,16 @@ architecture structural of tta_core is
       fu_add_mul_sub_in1t_load : out std_logic;
       fu_add_mul_sub_in2_load : out std_logic;
       fu_add_mul_sub_opc : out std_logic_vector(2-1 downto 0);
-      fu_add_in1t_load : out std_logic;
-      fu_add_in2_load : out std_logic;
+      fu_DBG_in1t_load : out std_logic;
+      fu_DBG_opc : out std_logic_vector(1-1 downto 0);
       rf_RF_BOOL_rd_load : out std_logic;
       rf_RF_BOOL_rd_opc : out std_logic_vector(1-1 downto 0);
       rf_RF_BOOL_wr_load : out std_logic;
       rf_RF_BOOL_wr_opc : out std_logic_vector(1-1 downto 0);
       rf_RF32A_rd_load : out std_logic;
-      rf_RF32A_rd_opc : out std_logic_vector(3-1 downto 0);
+      rf_RF32A_rd_opc : out std_logic_vector(4-1 downto 0);
       rf_RF32A_wr_load : out std_logic;
-      rf_RF32A_wr_opc : out std_logic_vector(3-1 downto 0);
+      rf_RF32A_wr_opc : out std_logic_vector(4-1 downto 0);
       rf_RF32B_rd_load : out std_logic;
       rf_RF32B_rd_opc : out std_logic_vector(4-1 downto 0);
       rf_RF32B_wr_load : out std_logic;
@@ -459,9 +489,23 @@ architecture structural of tta_core is
       iu_IMM_write_opc : out std_logic_vector(0 downto 0);
       rf_guard_RF_BOOL_0 : in std_logic;
       rf_guard_RF_BOOL_1 : in std_logic;
-      lock_req : in std_logic_vector(5-1 downto 0);
-      glock : out std_logic_vector(13-1 downto 0);
+      lock_req : in std_logic_vector(7-1 downto 0);
+      glock : out std_logic_vector(14-1 downto 0);
       db_tta_nreset : in std_logic);
+  end component;
+
+  component fu_dbg
+    port (
+      clk : in std_logic;
+      rstx : in std_logic;
+      glock_in : in std_logic;
+      operation_in : in std_logic_vector(1-1 downto 0);
+      glockreq_out : out std_logic;
+      data_in1t_in : in std_logic_vector(32-1 downto 0);
+      load_in1t_in : in std_logic;
+      data_out1_out : out std_logic_vector(32-1 downto 0);
+      debug_lock_count_in : in std_logic_vector(64-1 downto 0);
+      debug_cycle_count_in : in std_logic_vector(64-1 downto 0));
   end component;
 
   component fu_vops
@@ -469,7 +513,7 @@ architecture structural of tta_core is
       clk : in std_logic;
       rstx : in std_logic;
       glock_in : in std_logic;
-      operation_in : in std_logic_vector(3-1 downto 0);
+      operation_in : in std_logic_vector(4-1 downto 0);
       glockreq_out : out std_logic;
       data_in1t_in : in std_logic_vector(1024-1 downto 0);
       load_in1t_in : in std_logic;
@@ -480,12 +524,12 @@ architecture structural of tta_core is
       data_out1_out : out std_logic_vector(1024-1 downto 0));
   end component;
 
-  component fu_fma_act
+  component fu_fma
     port (
       clk : in std_logic;
       rstx : in std_logic;
       glock_in : in std_logic;
-      operation_in : in std_logic_vector(3-1 downto 0);
+      operation_in : in std_logic_vector(1-1 downto 0);
       glockreq_out : out std_logic;
       data_in1t_in : in std_logic_vector(1024-1 downto 0);
       load_in1t_in : in std_logic;
@@ -585,21 +629,6 @@ architecture structural of tta_core is
       glock : in std_logic);
   end component;
 
-  component fu_add_always_1
-    generic (
-      dataw : integer;
-      busw : integer);
-    port (
-      t1data : in std_logic_vector(dataw-1 downto 0);
-      t1load : in std_logic;
-      o1data : in std_logic_vector(dataw-1 downto 0);
-      o1load : in std_logic;
-      r1data : out std_logic_vector(busw-1 downto 0);
-      clk : in std_logic;
-      rstx : in std_logic;
-      glock : in std_logic);
-  end component;
-
   component fu_add_and_eq_gt_gtu_ior_shl_shr_shru_sub_sxhw_sxqw_xor_always_2
     generic (
       dataw : integer;
@@ -643,12 +672,10 @@ architecture structural of tta_core is
       socket_ALU_i2_data : out std_logic_vector(32-1 downto 0);
       socket_ALU_i2_bus_cntrl : in std_logic_vector(1-1 downto 0);
       socket_LSU1_i1_data : out std_logic_vector(13-1 downto 0);
-      socket_LSU1_i1_bus_cntrl : in std_logic_vector(2-1 downto 0);
       socket_LSU1_i2_data : out std_logic_vector(1024-1 downto 0);
       socket_LSU1_i2_bus_cntrl : in std_logic_vector(2-1 downto 0);
       socket_RF_BOOL_i1_data : out std_logic_vector(1-1 downto 0);
-      socket_RF32A_i1_data : out std_logic_vector(32-1 downto 0);
-      socket_RF32A_i1_bus_cntrl : in std_logic_vector(2-1 downto 0);
+      socket_RF_BOOL_i1_bus_cntrl : in std_logic_vector(2-1 downto 0);
       socket_vRF1024_i1_data : out std_logic_vector(1024-1 downto 0);
       socket_vRF1024_i1_bus_cntrl : in std_logic_vector(1-1 downto 0);
       socket_gcu_i1_data : out std_logic_vector(IMEMADDRWIDTH-1 downto 0);
@@ -659,9 +686,7 @@ architecture structural of tta_core is
       socket_add_mul_sub_i1_data : out std_logic_vector(32-1 downto 0);
       socket_add_mul_sub_i1_bus_cntrl : in std_logic_vector(2-1 downto 0);
       socket_add_mul_sub_i2_data : out std_logic_vector(32-1 downto 0);
-      socket_add_i1_data : out std_logic_vector(32-1 downto 0);
-      socket_add_i1_bus_cntrl : in std_logic_vector(1-1 downto 0);
-      socket_add_i2_data : out std_logic_vector(32-1 downto 0);
+      socket_add_mul_sub_i2_bus_cntrl : in std_logic_vector(1-1 downto 0);
       socket_RF32B_i1_data : out std_logic_vector(32-1 downto 0);
       socket_RF32B_i1_bus_cntrl : in std_logic_vector(2-1 downto 0);
       socket_FMA_i1_data : out std_logic_vector(1024-1 downto 0);
@@ -673,50 +698,56 @@ architecture structural of tta_core is
       socket_vOPS_i2_data : out std_logic_vector(1024-1 downto 0);
       socket_vOPS_i2_bus_cntrl : in std_logic_vector(1-1 downto 0);
       socket_vOPS_i3_data : out std_logic_vector(32-1 downto 0);
+      socket_LSU2_i2_data : out std_logic_vector(1024-1 downto 0);
+      socket_LSU2_i2_bus_cntrl : in std_logic_vector(2-1 downto 0);
+      socket_LSU2_i1_data : out std_logic_vector(13-1 downto 0);
+      socket_RF32A_i1_data : out std_logic_vector(32-1 downto 0);
+      socket_RF32A_i1_bus_cntrl : in std_logic_vector(2-1 downto 0);
+      socket_DBG_i1_data : out std_logic_vector(32-1 downto 0);
       B1_mux_ctrl_in : in std_logic_vector(3-1 downto 0);
       B1_data_0_in : in std_logic_vector(32-1 downto 0);
-      B1_data_1_in : in std_logic_vector(32-1 downto 0);
+      B1_data_1_in : in std_logic_vector(1-1 downto 0);
       B1_data_2_in : in std_logic_vector(32-1 downto 0);
       B1_data_3_in : in std_logic_vector(32-1 downto 0);
-      B1_data_4_in : in std_logic_vector(32-1 downto 0);
+      B1_data_4_in : in std_logic_vector(1024-1 downto 0);
       B1_data_5_in : in std_logic_vector(32-1 downto 0);
-      B1_data_6_in : in std_logic_vector(1024-1 downto 0);
+      B1_data_6_in : in std_logic_vector(32-1 downto 0);
       B2_mux_ctrl_in : in std_logic_vector(4-1 downto 0);
       B2_data_0_in : in std_logic_vector(32-1 downto 0);
       B2_data_1_in : in std_logic_vector(32-1 downto 0);
       B2_data_2_in : in std_logic_vector(1-1 downto 0);
-      B2_data_3_in : in std_logic_vector(32-1 downto 0);
-      B2_data_4_in : in std_logic_vector(IMEMADDRWIDTH-1 downto 0);
+      B2_data_3_in : in std_logic_vector(IMEMADDRWIDTH-1 downto 0);
+      B2_data_4_in : in std_logic_vector(32-1 downto 0);
       B2_data_5_in : in std_logic_vector(32-1 downto 0);
       B2_data_6_in : in std_logic_vector(32-1 downto 0);
       B2_data_7_in : in std_logic_vector(32-1 downto 0);
       B2_data_8_in : in std_logic_vector(32-1 downto 0);
-      B2_data_9_in : in std_logic_vector(1024-1 downto 0);
+      B2_data_9_in : in std_logic_vector(32-1 downto 0);
       B3_mux_ctrl_in : in std_logic_vector(3-1 downto 0);
       B3_data_0_in : in std_logic_vector(32-1 downto 0);
       B3_data_1_in : in std_logic_vector(32-1 downto 0);
       B3_data_2_in : in std_logic_vector(32-1 downto 0);
       B3_data_3_in : in std_logic_vector(32-1 downto 0);
       B3_data_4_in : in std_logic_vector(32-1 downto 0);
-      B3_data_5_in : in std_logic_vector(32-1 downto 0);
+      B4_mux_ctrl_in : in std_logic_vector(1-1 downto 0);
       B4_data_0_in : in std_logic_vector(32-1 downto 0);
-      B5_mux_ctrl_in : in std_logic_vector(2-1 downto 0);
-      B5_data_0_in : in std_logic_vector(32-1 downto 0);
-      B5_data_1_in : in std_logic_vector(32-1 downto 0);
-      B5_data_2_in : in std_logic_vector(32-1 downto 0);
-      vB1024B_mux_ctrl_in : in std_logic_vector(2-1 downto 0);
+      B4_data_1_in : in std_logic_vector(32-1 downto 0);
+      vB1024A_mux_ctrl_in : in std_logic_vector(2-1 downto 0);
+      vB1024A_data_0_in : in std_logic_vector(1024-1 downto 0);
+      vB1024A_data_1_in : in std_logic_vector(1-1 downto 0);
+      vB1024A_data_2_in : in std_logic_vector(1024-1 downto 0);
+      vB1024A_data_3_in : in std_logic_vector(1024-1 downto 0);
+      vB1024B_mux_ctrl_in : in std_logic_vector(3-1 downto 0);
       vB1024B_data_0_in : in std_logic_vector(1024-1 downto 0);
       vB1024B_data_1_in : in std_logic_vector(1024-1 downto 0);
       vB1024B_data_2_in : in std_logic_vector(1024-1 downto 0);
-      vB1024c_mux_ctrl_in : in std_logic_vector(2-1 downto 0);
-      vB1024c_data_0_in : in std_logic_vector(1024-1 downto 0);
-      vB1024c_data_1_in : in std_logic_vector(1024-1 downto 0);
-      vB1024c_data_2_in : in std_logic_vector(1024-1 downto 0);
-      simm_B1 : in std_logic_vector(20-1 downto 0);
+      vB1024B_data_3_in : in std_logic_vector(1024-1 downto 0);
+      vB1024B_data_4_in : in std_logic_vector(1024-1 downto 0);
+      simm_B1 : in std_logic_vector(32-1 downto 0);
       simm_cntrl_B1 : in std_logic_vector(1-1 downto 0);
-      simm_B2 : in std_logic_vector(4-1 downto 0);
+      simm_B2 : in std_logic_vector(32-1 downto 0);
       simm_cntrl_B2 : in std_logic_vector(1-1 downto 0);
-      simm_B3 : in std_logic_vector(7-1 downto 0);
+      simm_B3 : in std_logic_vector(4-1 downto 0);
       simm_cntrl_B3 : in std_logic_vector(1-1 downto 0);
       db_bustraces : out std_logic_vector(BUSTRACE_WIDTH-1 downto 0));
   end component;
@@ -724,7 +755,7 @@ architecture structural of tta_core is
 
 begin
 
-  ic_B2_data_4_in_wire <= inst_fetch_ra_out_wire;
+  ic_B2_data_3_in_wire <= inst_fetch_ra_out_wire;
   inst_fetch_ra_in_wire <= ic_socket_gcu_i2_data_wire;
   inst_fetch_pc_in_wire <= ic_socket_gcu_i1_data_wire;
   inst_fetch_pc_load_wire <= inst_decoder_pc_load_wire;
@@ -741,29 +772,30 @@ begin
   ic_simm_B3_wire <= inst_decoder_simm_B3_wire;
   ic_socket_ALU_i1_bus_cntrl_wire <= inst_decoder_socket_ALU_i1_bus_cntrl_wire;
   ic_socket_ALU_i2_bus_cntrl_wire <= inst_decoder_socket_ALU_i2_bus_cntrl_wire;
-  ic_socket_LSU1_i1_bus_cntrl_wire <= inst_decoder_socket_LSU1_i1_bus_cntrl_wire;
   ic_socket_LSU1_i2_bus_cntrl_wire <= inst_decoder_socket_LSU1_i2_bus_cntrl_wire;
-  ic_socket_RF32A_i1_bus_cntrl_wire <= inst_decoder_socket_RF32A_i1_bus_cntrl_wire;
+  ic_socket_RF_BOOL_i1_bus_cntrl_wire <= inst_decoder_socket_RF_BOOL_i1_bus_cntrl_wire;
   ic_socket_vRF1024_i1_bus_cntrl_wire <= inst_decoder_socket_vRF1024_i1_bus_cntrl_wire;
   ic_socket_add_mul_sub_i1_bus_cntrl_wire <= inst_decoder_socket_add_mul_sub_i1_bus_cntrl_wire;
-  ic_socket_add_i1_bus_cntrl_wire <= inst_decoder_socket_add_i1_bus_cntrl_wire;
+  ic_socket_add_mul_sub_i2_bus_cntrl_wire <= inst_decoder_socket_add_mul_sub_i2_bus_cntrl_wire;
   ic_socket_RF32B_i1_bus_cntrl_wire <= inst_decoder_socket_RF32B_i1_bus_cntrl_wire;
   ic_socket_FMA_i1_bus_cntrl_wire <= inst_decoder_socket_FMA_i1_bus_cntrl_wire;
   ic_socket_vOPS_i1_bus_cntrl_wire <= inst_decoder_socket_vOPS_i1_bus_cntrl_wire;
   ic_socket_vOPS_i2_bus_cntrl_wire <= inst_decoder_socket_vOPS_i2_bus_cntrl_wire;
+  ic_socket_LSU2_i2_bus_cntrl_wire <= inst_decoder_socket_LSU2_i2_bus_cntrl_wire;
+  ic_socket_RF32A_i1_bus_cntrl_wire <= inst_decoder_socket_RF32A_i1_bus_cntrl_wire;
   ic_B1_mux_ctrl_in_wire <= inst_decoder_B1_src_sel_wire;
   ic_B2_mux_ctrl_in_wire <= inst_decoder_B2_src_sel_wire;
   ic_B3_mux_ctrl_in_wire <= inst_decoder_B3_src_sel_wire;
-  ic_B5_mux_ctrl_in_wire <= inst_decoder_B5_src_sel_wire;
+  ic_B4_mux_ctrl_in_wire <= inst_decoder_B4_src_sel_wire;
+  ic_vB1024A_mux_ctrl_in_wire <= inst_decoder_vB1024A_src_sel_wire;
   ic_vB1024B_mux_ctrl_in_wire <= inst_decoder_vB1024B_src_sel_wire;
-  ic_vB1024c_mux_ctrl_in_wire <= inst_decoder_vB1024c_src_sel_wire;
   fu_ALU_t1load_wire <= inst_decoder_fu_ALU_in1t_load_wire;
   fu_ALU_o1load_wire <= inst_decoder_fu_ALU_in2_load_wire;
   fu_ALU_t1opcode_wire <= inst_decoder_fu_ALU_opc_wire;
-  fu_fma_act_generated_load_in1t_in_wire <= inst_decoder_fu_FMA_ACT_in1t_load_wire;
-  fu_fma_act_generated_load_in2_in_wire <= inst_decoder_fu_FMA_ACT_in2_load_wire;
-  fu_fma_act_generated_load_in3_in_wire <= inst_decoder_fu_FMA_ACT_in3_load_wire;
-  fu_fma_act_generated_operation_in_wire <= inst_decoder_fu_FMA_ACT_opc_wire;
+  fu_fma_generated_load_in1t_in_wire <= inst_decoder_fu_FMA_in1t_load_wire;
+  fu_fma_generated_load_in2_in_wire <= inst_decoder_fu_FMA_in2_load_wire;
+  fu_fma_generated_load_in3_in_wire <= inst_decoder_fu_FMA_in3_load_wire;
+  fu_fma_generated_operation_in_wire <= inst_decoder_fu_FMA_opc_wire;
   fu_vops_generated_load_in1t_in_wire <= inst_decoder_fu_vOPS_in1t_load_wire;
   fu_vops_generated_load_in2_in_wire <= inst_decoder_fu_vOPS_in2_load_wire;
   fu_vops_generated_load_in3_in_wire <= inst_decoder_fu_vOPS_in3_load_wire;
@@ -771,6 +803,9 @@ begin
   fu_dmem_LSU_t1_load_in_wire <= inst_decoder_fu_dmem_LSU_in1t_load_wire;
   fu_dmem_LSU_o1_load_in_wire <= inst_decoder_fu_dmem_LSU_in2_load_wire;
   fu_dmem_LSU_t1_opcode_in_wire <= inst_decoder_fu_dmem_LSU_opc_wire;
+  fu_pmem_LSU_t1_load_in_wire <= inst_decoder_fu_pmem_LSU_in1t_load_wire;
+  fu_pmem_LSU_o1_load_in_wire <= inst_decoder_fu_pmem_LSU_in2_load_wire;
+  fu_pmem_LSU_t1_opcode_in_wire <= inst_decoder_fu_pmem_LSU_opc_wire;
   fu_DMA_t1load_wire <= inst_decoder_fu_DMA_in1t_load_wire;
   fu_DMA_o1load_wire <= inst_decoder_fu_DMA_in2_load_wire;
   fu_DMA_o2load_wire <= inst_decoder_fu_DMA_in3_load_wire;
@@ -778,8 +813,8 @@ begin
   fu_add_mul_sub_t1load_wire <= inst_decoder_fu_add_mul_sub_in1t_load_wire;
   fu_add_mul_sub_o1load_wire <= inst_decoder_fu_add_mul_sub_in2_load_wire;
   fu_add_mul_sub_t1opcode_wire <= inst_decoder_fu_add_mul_sub_opc_wire;
-  fu_add_t1load_wire <= inst_decoder_fu_add_in1t_load_wire;
-  fu_add_o1load_wire <= inst_decoder_fu_add_in2_load_wire;
+  fu_dbg_generated_load_in1t_in_wire <= inst_decoder_fu_DBG_in1t_load_wire;
+  fu_dbg_generated_operation_in_wire <= inst_decoder_fu_DBG_opc_wire;
   rf_RF_BOOL_r1load_wire <= inst_decoder_rf_RF_BOOL_rd_load_wire;
   rf_RF_BOOL_r1opcode_wire <= inst_decoder_rf_RF_BOOL_rd_opc_wire;
   rf_RF_BOOL_t1load_wire <= inst_decoder_rf_RF_BOOL_wr_load_wire;
@@ -803,77 +838,81 @@ begin
   iu_IMM_t1opcode_wire <= inst_decoder_iu_IMM_write_opc_wire;
   inst_decoder_rf_guard_RF_BOOL_0_wire <= rf_RF_BOOL_guard_wire(0);
   inst_decoder_rf_guard_RF_BOOL_1_wire <= rf_RF_BOOL_guard_wire(1);
-  inst_decoder_lock_req_wire(0) <= fu_fma_act_generated_glockreq_out_wire;
+  inst_decoder_lock_req_wire(0) <= fu_fma_generated_glockreq_out_wire;
   inst_decoder_lock_req_wire(1) <= fu_vops_generated_glockreq_out_wire;
   inst_decoder_lock_req_wire(2) <= fu_dmem_LSU_glockreq_out_wire;
-  inst_decoder_lock_req_wire(3) <= fu_DMA_lockreq_wire;
-  inst_decoder_lock_req_wire(4) <= db_lockrq;
+  inst_decoder_lock_req_wire(3) <= fu_pmem_LSU_glockreq_out_wire;
+  inst_decoder_lock_req_wire(4) <= fu_DMA_lockreq_wire;
+  inst_decoder_lock_req_wire(5) <= fu_dbg_generated_glockreq_out_wire;
+  inst_decoder_lock_req_wire(6) <= db_lockrq;
   fu_ALU_glock_wire <= inst_decoder_glock_wire(0);
-  fu_fma_act_generated_glock_in_wire <= inst_decoder_glock_wire(1);
+  fu_fma_generated_glock_in_wire <= inst_decoder_glock_wire(1);
   fu_vops_generated_glock_in_wire <= inst_decoder_glock_wire(2);
   fu_dmem_LSU_glock_in_wire <= inst_decoder_glock_wire(3);
-  fu_DMA_glock_wire <= inst_decoder_glock_wire(4);
-  fu_add_mul_sub_glock_wire <= inst_decoder_glock_wire(5);
-  fu_add_glock_wire <= inst_decoder_glock_wire(6);
-  rf_RF_BOOL_glock_wire <= inst_decoder_glock_wire(7);
-  rf_RF32A_glock_wire <= inst_decoder_glock_wire(8);
-  rf_RF32B_glock_wire <= inst_decoder_glock_wire(9);
-  rf_vRF1024_glock_wire <= inst_decoder_glock_wire(10);
-  iu_IMM_glock_wire <= inst_decoder_glock_wire(11);
-  ic_glock_wire <= inst_decoder_glock_wire(12);
+  fu_pmem_LSU_glock_in_wire <= inst_decoder_glock_wire(4);
+  fu_DMA_glock_wire <= inst_decoder_glock_wire(5);
+  fu_add_mul_sub_glock_wire <= inst_decoder_glock_wire(6);
+  fu_dbg_generated_glock_in_wire <= inst_decoder_glock_wire(7);
+  rf_RF_BOOL_glock_wire <= inst_decoder_glock_wire(8);
+  rf_RF32A_glock_wire <= inst_decoder_glock_wire(9);
+  rf_RF32B_glock_wire <= inst_decoder_glock_wire(10);
+  rf_vRF1024_glock_wire <= inst_decoder_glock_wire(11);
+  iu_IMM_glock_wire <= inst_decoder_glock_wire(12);
+  ic_glock_wire <= inst_decoder_glock_wire(13);
+  fu_dbg_generated_data_in1t_in_wire <= ic_socket_DBG_i1_data_wire;
+  ic_B1_data_6_in_wire <= fu_dbg_generated_data_out1_out_wire;
   fu_vops_generated_data_in1t_in_wire <= ic_socket_vOPS_i1_data_wire;
   fu_vops_generated_data_in2_in_wire <= ic_socket_vOPS_i2_data_wire;
   fu_vops_generated_data_in3_in_wire <= ic_socket_vOPS_i3_data_wire;
-  ic_B2_data_9_in_wire <= fu_vops_generated_data_out1_out_wire;
-  ic_vB1024B_data_2_in_wire <= fu_vops_generated_data_out1_out_wire;
-  fu_fma_act_generated_data_in1t_in_wire <= ic_socket_FMA_i1_data_wire;
-  fu_fma_act_generated_data_in2_in_wire <= ic_socket_FMA_i2_data_wire;
-  fu_fma_act_generated_data_in3_in_wire <= ic_socket_FMA_i3_data_wire;
-  ic_B1_data_6_in_wire <= fu_fma_act_generated_data_out1_out_wire;
-  ic_vB1024c_data_2_in_wire <= fu_fma_act_generated_data_out1_out_wire;
+  ic_B1_data_4_in_wire <= fu_vops_generated_data_out1_out_wire;
+  ic_vB1024B_data_3_in_wire <= fu_vops_generated_data_out1_out_wire;
+  fu_fma_generated_data_in1t_in_wire <= ic_socket_FMA_i1_data_wire;
+  fu_fma_generated_data_in2_in_wire <= ic_socket_FMA_i2_data_wire;
+  fu_fma_generated_data_in3_in_wire <= ic_socket_FMA_i3_data_wire;
+  ic_vB1024B_data_2_in_wire <= fu_fma_generated_data_out1_out_wire;
   fu_DMA_t1data_wire <= ic_socket_dma_i1_data_wire;
   fu_DMA_o1data_wire <= ic_socket_dma_i2_data_wire;
   fu_DMA_o2data_wire <= ic_socket_dma_i3_data_wire;
-  ic_B1_data_4_in_wire <= fu_DMA_r1data_wire;
-  ic_B2_data_6_in_wire <= fu_DMA_r1data_wire;
+  ic_B2_data_5_in_wire <= fu_DMA_r1data_wire;
   fu_dmem_LSU_t1_address_in_wire <= ic_socket_LSU1_i1_data_wire;
+  ic_vB1024A_data_0_in_wire <= fu_dmem_LSU_r1_data_out_wire;
   ic_vB1024B_data_0_in_wire <= fu_dmem_LSU_r1_data_out_wire;
-  ic_vB1024c_data_0_in_wire <= fu_dmem_LSU_r1_data_out_wire;
-  ic_B1_data_3_in_wire <= fu_dmem_LSU_r2_data_out_wire;
-  ic_B2_data_5_in_wire <= fu_dmem_LSU_r2_data_out_wire;
-  ic_B3_data_3_in_wire <= fu_dmem_LSU_r2_data_out_wire;
+  ic_B1_data_2_in_wire <= fu_dmem_LSU_r2_data_out_wire;
+  ic_B2_data_4_in_wire <= fu_dmem_LSU_r2_data_out_wire;
   fu_dmem_LSU_o1_data_in_wire <= ic_socket_LSU1_i2_data_wire;
   fu_add_mul_sub_t1data_wire <= ic_socket_add_mul_sub_i1_data_wire;
   fu_add_mul_sub_o1data_wire <= ic_socket_add_mul_sub_i2_data_wire;
-  ic_B2_data_7_in_wire <= fu_add_mul_sub_r1data_wire;
-  ic_B5_data_1_in_wire <= fu_add_mul_sub_r1data_wire;
-  fu_add_t1data_wire <= ic_socket_add_i1_data_wire;
-  fu_add_o1data_wire <= ic_socket_add_i2_data_wire;
-  ic_B3_data_4_in_wire <= fu_add_r1data_wire;
-  ic_B5_data_2_in_wire <= fu_add_r1data_wire;
+  ic_B2_data_6_in_wire <= fu_add_mul_sub_r1data_wire;
+  ic_B3_data_1_in_wire <= fu_add_mul_sub_r1data_wire;
   fu_ALU_t1data_wire <= ic_socket_ALU_i1_data_wire;
-  ic_B1_data_0_in_wire <= fu_ALU_r1data_wire;
   ic_B2_data_0_in_wire <= fu_ALU_r1data_wire;
   ic_B3_data_0_in_wire <= fu_ALU_r1data_wire;
   fu_ALU_o1data_wire <= ic_socket_ALU_i2_data_wire;
+  fu_pmem_LSU_t1_address_in_wire <= ic_socket_LSU2_i1_data_wire;
+  ic_vB1024A_data_3_in_wire <= fu_pmem_LSU_r1_data_out_wire;
+  ic_vB1024B_data_4_in_wire <= fu_pmem_LSU_r1_data_out_wire;
+  ic_B2_data_8_in_wire <= fu_pmem_LSU_r2_data_out_wire;
+  ic_B3_data_3_in_wire <= fu_pmem_LSU_r2_data_out_wire;
+  fu_pmem_LSU_o1_data_in_wire <= ic_socket_LSU2_i2_data_wire;
+  ic_vB1024A_data_2_in_wire <= rf_vRF1024_r1data_wire;
   ic_vB1024B_data_1_in_wire <= rf_vRF1024_r1data_wire;
-  ic_vB1024c_data_1_in_wire <= rf_vRF1024_r1data_wire;
   rf_vRF1024_t1data_wire <= ic_socket_vRF1024_i1_data_wire;
-  ic_B1_data_2_in_wire <= rf_RF32A_r1data_wire;
-  ic_B2_data_3_in_wire <= rf_RF32A_r1data_wire;
-  ic_B3_data_2_in_wire <= rf_RF32A_r1data_wire;
-  ic_B5_data_0_in_wire <= rf_RF32A_r1data_wire;
+  ic_B1_data_5_in_wire <= rf_RF32A_r1data_wire;
+  ic_B2_data_9_in_wire <= rf_RF32A_r1data_wire;
+  ic_B3_data_4_in_wire <= rf_RF32A_r1data_wire;
+  ic_B4_data_1_in_wire <= rf_RF32A_r1data_wire;
   rf_RF32A_t1data_wire <= ic_socket_RF32A_i1_data_wire;
+  ic_B1_data_1_in_wire <= rf_RF_BOOL_r1data_wire;
   ic_B2_data_2_in_wire <= rf_RF_BOOL_r1data_wire;
+  ic_vB1024A_data_1_in_wire <= rf_RF_BOOL_r1data_wire;
   rf_RF_BOOL_t1data_wire <= ic_socket_RF_BOOL_i1_data_wire;
-  ic_B1_data_5_in_wire <= rf_RF32B_r1data_wire;
-  ic_B2_data_8_in_wire <= rf_RF32B_r1data_wire;
-  ic_B3_data_5_in_wire <= rf_RF32B_r1data_wire;
+  ic_B1_data_3_in_wire <= rf_RF32B_r1data_wire;
+  ic_B2_data_7_in_wire <= rf_RF32B_r1data_wire;
+  ic_B3_data_2_in_wire <= rf_RF32B_r1data_wire;
+  ic_B4_data_0_in_wire <= rf_RF32B_r1data_wire;
   rf_RF32B_t1data_wire <= ic_socket_RF32B_i1_data_wire;
-  ic_B1_data_1_in_wire <= iu_IMM_r1data_wire;
+  ic_B1_data_0_in_wire <= iu_IMM_r1data_wire;
   ic_B2_data_1_in_wire <= iu_IMM_r1data_wire;
-  ic_B3_data_1_in_wire <= iu_IMM_r1data_wire;
-  ic_B4_data_0_in_wire <= iu_IMM_r1data_wire;
   ground_signal <= (others => '0');
 
   inst_fetch : tta_core_ifetch
@@ -931,29 +970,30 @@ begin
       simm_B3 => inst_decoder_simm_B3_wire,
       socket_ALU_i1_bus_cntrl => inst_decoder_socket_ALU_i1_bus_cntrl_wire,
       socket_ALU_i2_bus_cntrl => inst_decoder_socket_ALU_i2_bus_cntrl_wire,
-      socket_LSU1_i1_bus_cntrl => inst_decoder_socket_LSU1_i1_bus_cntrl_wire,
       socket_LSU1_i2_bus_cntrl => inst_decoder_socket_LSU1_i2_bus_cntrl_wire,
-      socket_RF32A_i1_bus_cntrl => inst_decoder_socket_RF32A_i1_bus_cntrl_wire,
+      socket_RF_BOOL_i1_bus_cntrl => inst_decoder_socket_RF_BOOL_i1_bus_cntrl_wire,
       socket_vRF1024_i1_bus_cntrl => inst_decoder_socket_vRF1024_i1_bus_cntrl_wire,
       socket_add_mul_sub_i1_bus_cntrl => inst_decoder_socket_add_mul_sub_i1_bus_cntrl_wire,
-      socket_add_i1_bus_cntrl => inst_decoder_socket_add_i1_bus_cntrl_wire,
+      socket_add_mul_sub_i2_bus_cntrl => inst_decoder_socket_add_mul_sub_i2_bus_cntrl_wire,
       socket_RF32B_i1_bus_cntrl => inst_decoder_socket_RF32B_i1_bus_cntrl_wire,
       socket_FMA_i1_bus_cntrl => inst_decoder_socket_FMA_i1_bus_cntrl_wire,
       socket_vOPS_i1_bus_cntrl => inst_decoder_socket_vOPS_i1_bus_cntrl_wire,
       socket_vOPS_i2_bus_cntrl => inst_decoder_socket_vOPS_i2_bus_cntrl_wire,
+      socket_LSU2_i2_bus_cntrl => inst_decoder_socket_LSU2_i2_bus_cntrl_wire,
+      socket_RF32A_i1_bus_cntrl => inst_decoder_socket_RF32A_i1_bus_cntrl_wire,
       B1_src_sel => inst_decoder_B1_src_sel_wire,
       B2_src_sel => inst_decoder_B2_src_sel_wire,
       B3_src_sel => inst_decoder_B3_src_sel_wire,
-      B5_src_sel => inst_decoder_B5_src_sel_wire,
+      B4_src_sel => inst_decoder_B4_src_sel_wire,
+      vB1024A_src_sel => inst_decoder_vB1024A_src_sel_wire,
       vB1024B_src_sel => inst_decoder_vB1024B_src_sel_wire,
-      vB1024c_src_sel => inst_decoder_vB1024c_src_sel_wire,
       fu_ALU_in1t_load => inst_decoder_fu_ALU_in1t_load_wire,
       fu_ALU_in2_load => inst_decoder_fu_ALU_in2_load_wire,
       fu_ALU_opc => inst_decoder_fu_ALU_opc_wire,
-      fu_FMA_ACT_in1t_load => inst_decoder_fu_FMA_ACT_in1t_load_wire,
-      fu_FMA_ACT_in2_load => inst_decoder_fu_FMA_ACT_in2_load_wire,
-      fu_FMA_ACT_in3_load => inst_decoder_fu_FMA_ACT_in3_load_wire,
-      fu_FMA_ACT_opc => inst_decoder_fu_FMA_ACT_opc_wire,
+      fu_FMA_in1t_load => inst_decoder_fu_FMA_in1t_load_wire,
+      fu_FMA_in2_load => inst_decoder_fu_FMA_in2_load_wire,
+      fu_FMA_in3_load => inst_decoder_fu_FMA_in3_load_wire,
+      fu_FMA_opc => inst_decoder_fu_FMA_opc_wire,
       fu_vOPS_in1t_load => inst_decoder_fu_vOPS_in1t_load_wire,
       fu_vOPS_in2_load => inst_decoder_fu_vOPS_in2_load_wire,
       fu_vOPS_in3_load => inst_decoder_fu_vOPS_in3_load_wire,
@@ -961,6 +1001,9 @@ begin
       fu_dmem_LSU_in1t_load => inst_decoder_fu_dmem_LSU_in1t_load_wire,
       fu_dmem_LSU_in2_load => inst_decoder_fu_dmem_LSU_in2_load_wire,
       fu_dmem_LSU_opc => inst_decoder_fu_dmem_LSU_opc_wire,
+      fu_pmem_LSU_in1t_load => inst_decoder_fu_pmem_LSU_in1t_load_wire,
+      fu_pmem_LSU_in2_load => inst_decoder_fu_pmem_LSU_in2_load_wire,
+      fu_pmem_LSU_opc => inst_decoder_fu_pmem_LSU_opc_wire,
       fu_DMA_in1t_load => inst_decoder_fu_DMA_in1t_load_wire,
       fu_DMA_in2_load => inst_decoder_fu_DMA_in2_load_wire,
       fu_DMA_in3_load => inst_decoder_fu_DMA_in3_load_wire,
@@ -968,8 +1011,8 @@ begin
       fu_add_mul_sub_in1t_load => inst_decoder_fu_add_mul_sub_in1t_load_wire,
       fu_add_mul_sub_in2_load => inst_decoder_fu_add_mul_sub_in2_load_wire,
       fu_add_mul_sub_opc => inst_decoder_fu_add_mul_sub_opc_wire,
-      fu_add_in1t_load => inst_decoder_fu_add_in1t_load_wire,
-      fu_add_in2_load => inst_decoder_fu_add_in2_load_wire,
+      fu_DBG_in1t_load => inst_decoder_fu_DBG_in1t_load_wire,
+      fu_DBG_opc => inst_decoder_fu_DBG_opc_wire,
       rf_RF_BOOL_rd_load => inst_decoder_rf_RF_BOOL_rd_load_wire,
       rf_RF_BOOL_rd_opc => inst_decoder_rf_RF_BOOL_rd_opc_wire,
       rf_RF_BOOL_wr_load => inst_decoder_rf_RF_BOOL_wr_load_wire,
@@ -997,6 +1040,19 @@ begin
       glock => inst_decoder_glock_wire,
       db_tta_nreset => db_tta_nreset);
 
+  fu_dbg_generated : fu_dbg
+    port map (
+      clk => clk,
+      rstx => rstx,
+      glock_in => fu_dbg_generated_glock_in_wire,
+      operation_in => fu_dbg_generated_operation_in_wire,
+      glockreq_out => fu_dbg_generated_glockreq_out_wire,
+      data_in1t_in => fu_dbg_generated_data_in1t_in_wire,
+      load_in1t_in => fu_dbg_generated_load_in1t_in_wire,
+      data_out1_out => fu_dbg_generated_data_out1_out_wire,
+      debug_lock_count_in => fu_DBG_debug_lock_count_in,
+      debug_cycle_count_in => fu_DBG_debug_cycle_count_in);
+
   fu_vops_generated : fu_vops
     port map (
       clk => clk,
@@ -1012,20 +1068,20 @@ begin
       load_in3_in => fu_vops_generated_load_in3_in_wire,
       data_out1_out => fu_vops_generated_data_out1_out_wire);
 
-  fu_fma_act_generated : fu_fma_act
+  fu_fma_generated : fu_fma
     port map (
       clk => clk,
       rstx => rstx,
-      glock_in => fu_fma_act_generated_glock_in_wire,
-      operation_in => fu_fma_act_generated_operation_in_wire,
-      glockreq_out => fu_fma_act_generated_glockreq_out_wire,
-      data_in1t_in => fu_fma_act_generated_data_in1t_in_wire,
-      load_in1t_in => fu_fma_act_generated_load_in1t_in_wire,
-      data_in2_in => fu_fma_act_generated_data_in2_in_wire,
-      load_in2_in => fu_fma_act_generated_load_in2_in_wire,
-      data_in3_in => fu_fma_act_generated_data_in3_in_wire,
-      load_in3_in => fu_fma_act_generated_load_in3_in_wire,
-      data_out1_out => fu_fma_act_generated_data_out1_out_wire);
+      glock_in => fu_fma_generated_glock_in_wire,
+      operation_in => fu_fma_generated_operation_in_wire,
+      glockreq_out => fu_fma_generated_glockreq_out_wire,
+      data_in1t_in => fu_fma_generated_data_in1t_in_wire,
+      load_in1t_in => fu_fma_generated_load_in1t_in_wire,
+      data_in2_in => fu_fma_generated_data_in2_in_wire,
+      load_in2_in => fu_fma_generated_load_in2_in_wire,
+      data_in3_in => fu_fma_generated_data_in3_in_wire,
+      load_in3_in => fu_fma_generated_load_in3_in_wire,
+      data_out1_out => fu_fma_generated_data_out1_out_wire);
 
   fu_DMA : fu_axi_bc
     generic map (
@@ -1113,20 +1169,6 @@ begin
       rstx => rstx,
       glock => fu_add_mul_sub_glock_wire);
 
-  fu_add : fu_add_always_1
-    generic map (
-      dataw => 32,
-      busw => 32)
-    port map (
-      t1data => fu_add_t1data_wire,
-      t1load => fu_add_t1load_wire,
-      o1data => fu_add_o1data_wire,
-      o1load => fu_add_o1load_wire,
-      r1data => fu_add_r1data_wire,
-      clk => clk,
-      rstx => rstx,
-      glock => fu_add_glock_wire);
-
   fu_ALU : fu_add_and_eq_gt_gtu_ior_shl_shr_shru_sub_sxhw_sxqw_xor_always_2
     generic map (
       dataw => 32,
@@ -1141,6 +1183,31 @@ begin
       clk => clk,
       rstx => rstx,
       glock => fu_ALU_glock_wire);
+
+  fu_pmem_LSU : fu_lsu_simd_32
+    generic map (
+      addrw_g => fu_pmem_LSU_addrw_g)
+    port map (
+      t1_address_in => fu_pmem_LSU_t1_address_in_wire,
+      t1_load_in => fu_pmem_LSU_t1_load_in_wire,
+      r1_data_out => fu_pmem_LSU_r1_data_out_wire,
+      r2_data_out => fu_pmem_LSU_r2_data_out_wire,
+      o1_data_in => fu_pmem_LSU_o1_data_in_wire,
+      o1_load_in => fu_pmem_LSU_o1_load_in_wire,
+      t1_opcode_in => fu_pmem_LSU_t1_opcode_in_wire,
+      avalid_out => fu_pmem_LSU_avalid_out,
+      aready_in => fu_pmem_LSU_aready_in,
+      aaddr_out => fu_pmem_LSU_aaddr_out,
+      awren_out => fu_pmem_LSU_awren_out,
+      astrb_out => fu_pmem_LSU_astrb_out,
+      adata_out => fu_pmem_LSU_adata_out,
+      rvalid_in => fu_pmem_LSU_rvalid_in,
+      rready_out => fu_pmem_LSU_rready_out,
+      rdata_in => fu_pmem_LSU_rdata_in,
+      clk => clk,
+      rstx => rstx,
+      glock_in => fu_pmem_LSU_glock_in_wire,
+      glockreq_out => fu_pmem_LSU_glockreq_out_wire);
 
   rf_vRF1024 : rf_1wr_1rd_always_1_guarded_0
     generic map (
@@ -1161,7 +1228,7 @@ begin
   rf_RF32A : rf_1wr_1rd_always_1_guarded_0
     generic map (
       dataw => 32,
-      rf_size => 8)
+      rf_size => 16)
     port map (
       r1data => rf_RF32A_r1data_wire,
       r1load => rf_RF32A_r1load_wire,
@@ -1232,12 +1299,10 @@ begin
       socket_ALU_i2_data => ic_socket_ALU_i2_data_wire,
       socket_ALU_i2_bus_cntrl => ic_socket_ALU_i2_bus_cntrl_wire,
       socket_LSU1_i1_data => ic_socket_LSU1_i1_data_wire,
-      socket_LSU1_i1_bus_cntrl => ic_socket_LSU1_i1_bus_cntrl_wire,
       socket_LSU1_i2_data => ic_socket_LSU1_i2_data_wire,
       socket_LSU1_i2_bus_cntrl => ic_socket_LSU1_i2_bus_cntrl_wire,
       socket_RF_BOOL_i1_data => ic_socket_RF_BOOL_i1_data_wire,
-      socket_RF32A_i1_data => ic_socket_RF32A_i1_data_wire,
-      socket_RF32A_i1_bus_cntrl => ic_socket_RF32A_i1_bus_cntrl_wire,
+      socket_RF_BOOL_i1_bus_cntrl => ic_socket_RF_BOOL_i1_bus_cntrl_wire,
       socket_vRF1024_i1_data => ic_socket_vRF1024_i1_data_wire,
       socket_vRF1024_i1_bus_cntrl => ic_socket_vRF1024_i1_bus_cntrl_wire,
       socket_gcu_i1_data => ic_socket_gcu_i1_data_wire,
@@ -1248,9 +1313,7 @@ begin
       socket_add_mul_sub_i1_data => ic_socket_add_mul_sub_i1_data_wire,
       socket_add_mul_sub_i1_bus_cntrl => ic_socket_add_mul_sub_i1_bus_cntrl_wire,
       socket_add_mul_sub_i2_data => ic_socket_add_mul_sub_i2_data_wire,
-      socket_add_i1_data => ic_socket_add_i1_data_wire,
-      socket_add_i1_bus_cntrl => ic_socket_add_i1_bus_cntrl_wire,
-      socket_add_i2_data => ic_socket_add_i2_data_wire,
+      socket_add_mul_sub_i2_bus_cntrl => ic_socket_add_mul_sub_i2_bus_cntrl_wire,
       socket_RF32B_i1_data => ic_socket_RF32B_i1_data_wire,
       socket_RF32B_i1_bus_cntrl => ic_socket_RF32B_i1_bus_cntrl_wire,
       socket_FMA_i1_data => ic_socket_FMA_i1_data_wire,
@@ -1262,6 +1325,12 @@ begin
       socket_vOPS_i2_data => ic_socket_vOPS_i2_data_wire,
       socket_vOPS_i2_bus_cntrl => ic_socket_vOPS_i2_bus_cntrl_wire,
       socket_vOPS_i3_data => ic_socket_vOPS_i3_data_wire,
+      socket_LSU2_i2_data => ic_socket_LSU2_i2_data_wire,
+      socket_LSU2_i2_bus_cntrl => ic_socket_LSU2_i2_bus_cntrl_wire,
+      socket_LSU2_i1_data => ic_socket_LSU2_i1_data_wire,
+      socket_RF32A_i1_data => ic_socket_RF32A_i1_data_wire,
+      socket_RF32A_i1_bus_cntrl => ic_socket_RF32A_i1_bus_cntrl_wire,
+      socket_DBG_i1_data => ic_socket_DBG_i1_data_wire,
       B1_mux_ctrl_in => ic_B1_mux_ctrl_in_wire,
       B1_data_0_in => ic_B1_data_0_in_wire,
       B1_data_1_in => ic_B1_data_1_in_wire,
@@ -1287,20 +1356,20 @@ begin
       B3_data_2_in => ic_B3_data_2_in_wire,
       B3_data_3_in => ic_B3_data_3_in_wire,
       B3_data_4_in => ic_B3_data_4_in_wire,
-      B3_data_5_in => ic_B3_data_5_in_wire,
+      B4_mux_ctrl_in => ic_B4_mux_ctrl_in_wire,
       B4_data_0_in => ic_B4_data_0_in_wire,
-      B5_mux_ctrl_in => ic_B5_mux_ctrl_in_wire,
-      B5_data_0_in => ic_B5_data_0_in_wire,
-      B5_data_1_in => ic_B5_data_1_in_wire,
-      B5_data_2_in => ic_B5_data_2_in_wire,
+      B4_data_1_in => ic_B4_data_1_in_wire,
+      vB1024A_mux_ctrl_in => ic_vB1024A_mux_ctrl_in_wire,
+      vB1024A_data_0_in => ic_vB1024A_data_0_in_wire,
+      vB1024A_data_1_in => ic_vB1024A_data_1_in_wire,
+      vB1024A_data_2_in => ic_vB1024A_data_2_in_wire,
+      vB1024A_data_3_in => ic_vB1024A_data_3_in_wire,
       vB1024B_mux_ctrl_in => ic_vB1024B_mux_ctrl_in_wire,
       vB1024B_data_0_in => ic_vB1024B_data_0_in_wire,
       vB1024B_data_1_in => ic_vB1024B_data_1_in_wire,
       vB1024B_data_2_in => ic_vB1024B_data_2_in_wire,
-      vB1024c_mux_ctrl_in => ic_vB1024c_mux_ctrl_in_wire,
-      vB1024c_data_0_in => ic_vB1024c_data_0_in_wire,
-      vB1024c_data_1_in => ic_vB1024c_data_1_in_wire,
-      vB1024c_data_2_in => ic_vB1024c_data_2_in_wire,
+      vB1024B_data_3_in => ic_vB1024B_data_3_in_wire,
+      vB1024B_data_4_in => ic_vB1024B_data_4_in_wire,
       simm_B1 => ic_simm_B1_wire,
       simm_cntrl_B1 => ic_simm_cntrl_B1_wire,
       simm_B2 => ic_simm_B2_wire,
