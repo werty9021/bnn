@@ -139,7 +139,39 @@ entity tta_accel is
     data_b_rvalid_in  : in std_logic_vector(1-1 downto 0);
     data_b_rready_out : out std_logic_vector(1-1 downto 0);
     data_b_rdata_in   : in std_logic_vector(dmem_data_width_g-1 downto 0);
+    core_pmem_avalid_in  : in std_logic_vector(core_count_g-1 downto 0);
+    core_pmem_aready_out : out std_logic_vector(core_count_g-1 downto 0);
+    core_pmem_aaddr_in   : in std_logic_vector(core_count_g*pmem_addr_width_g-1
+                                               downto 0);
+    core_pmem_awren_in : in std_logic_vector(core_count_g-1 downto 0);
+    core_pmem_astrb_in : in std_logic_vector((pmem_data_width_g+7)/8*core_count_g-1
+                                             downto 0);
+    core_pmem_adata_in : in std_logic_vector(core_count_g*pmem_data_width_g-1
+                                             downto 0);
+    core_pmem_rvalid_out : out std_logic_vector(core_count_g-1 downto 0);
+    core_pmem_rready_in  : in std_logic_vector(core_count_g-1 downto 0);
+    core_pmem_rdata_out  : out std_logic_vector(core_count_g*pmem_data_width_g-1
+                                                downto 0);
     
+    param_a_avalid_out : out std_logic_vector(1-1 downto 0);
+    param_a_aready_in  : in std_logic_vector(1-1 downto 0);
+    param_a_aaddr_out  : out std_logic_vector(local_mem_addrw_g-1 downto 0);
+    param_a_awren_out  : out std_logic_vector(1-1 downto 0);
+    param_a_astrb_out  : out std_logic_vector((pmem_data_width_g+7)/8-1 downto 0);
+    param_a_adata_out  : out std_logic_vector(pmem_data_width_g-1 downto 0);
+    param_a_rvalid_in  : in std_logic_vector(1-1 downto 0);
+    param_a_rready_out : out std_logic_vector(1-1 downto 0);
+    param_a_rdata_in   : in std_logic_vector(pmem_data_width_g-1 downto 0);
+    
+    param_b_avalid_out : out std_logic_vector(1-1 downto 0);
+    param_b_aready_in  : in std_logic_vector(1-1 downto 0);
+    param_b_aaddr_out  : out std_logic_vector(local_mem_addrw_g-1 downto 0);
+    param_b_awren_out  : out std_logic_vector(1-1 downto 0);
+    param_b_astrb_out  : out std_logic_vector((pmem_data_width_g+7)/8-1 downto 0);
+    param_b_adata_out  : out std_logic_vector(pmem_data_width_g-1 downto 0);
+    param_b_rvalid_in  : in std_logic_vector(1-1 downto 0);
+    param_b_rready_out : out std_logic_vector(1-1 downto 0);
+    param_b_rdata_in   : in std_logic_vector(pmem_data_width_g-1 downto 0);
     -- ifetch
     core_busy_out      : out std_logic_vector(core_count_g-1 downto 0);
     core_imem_data_out : out std_logic_vector(core_count_g*imem_data_width_g-1 downto 0);
@@ -282,35 +314,7 @@ architecture rtl of tta_accel is
   signal m_axi_rready   : std_logic;
   signal m_axi_rdata    : std_logic_vector(dmem_data_width_g-1 downto 0);
   
-  signal core_pmem_avalid_in  : std_logic_vector(core_count_g-1 downto 0);
-  signal core_pmem_aready_out : std_logic_vector(core_count_g-1 downto 0);
-  signal core_pmem_aaddr_in   : std_logic_vector(core_count_g*pmem_addr_width_g-1 downto 0);
-  signal core_pmem_awren_in   : std_logic_vector(core_count_g-1 downto 0);
-  signal core_pmem_astrb_in   : std_logic_vector(core_count_g*(pmem_data_width_g+7)/8-1 downto 0);
-  signal core_pmem_adata_in   : std_logic_vector(core_count_g*pmem_data_width_g-1 downto 0);
-  signal core_pmem_rvalid_out : std_logic_vector(core_count_g-1 downto 0);
-  signal core_pmem_rready_in  : std_logic_vector(core_count_g-1 downto 0);
-  signal core_pmem_rdata_out  : std_logic_vector(core_count_g*pmem_data_width_g-1 downto 0);
   
-  signal param_a_avalid_out : std_logic_vector(1-1 downto 0);
-  signal param_a_aready_in  : std_logic_vector(1-1 downto 0);
-  signal param_a_aaddr_out  : std_logic_vector(local_mem_addrw_g-1 downto 0);
-  signal param_a_awren_out  : std_logic_vector(1-1 downto 0);
-  signal param_a_astrb_out  : std_logic_vector((pmem_data_width_g+7)/8-1 downto 0);
-  signal param_a_adata_out  : std_logic_vector(pmem_data_width_g-1 downto 0);
-  signal param_a_rvalid_in  : std_logic_vector(1-1 downto 0);
-  signal param_a_rready_out : std_logic_vector(1-1 downto 0);
-  signal param_a_rdata_in   : std_logic_vector(pmem_data_width_g-1 downto 0);
-  
-  signal param_b_avalid_out : std_logic_vector(1-1 downto 0);
-  signal param_b_aready_in  : std_logic_vector(1-1 downto 0);
-  signal param_b_aaddr_out  : std_logic_vector(local_mem_addrw_g-1 downto 0);
-  signal param_b_awren_out  : std_logic_vector(1-1 downto 0);
-  signal param_b_astrb_out  : std_logic_vector((pmem_data_width_g+7)/8-1 downto 0);
-  signal param_b_adata_out  : std_logic_vector(pmem_data_width_g-1 downto 0);
-  signal param_b_rvalid_in  : std_logic_vector(1-1 downto 0);
-  signal param_b_rready_out : std_logic_vector(1-1 downto 0);
-  signal param_b_rdata_in   : std_logic_vector(pmem_data_width_g-1 downto 0);
   
 begin
 

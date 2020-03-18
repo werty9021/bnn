@@ -9,9 +9,9 @@ use work.tta_core_toplevel_params.all;
 entity tta_core_toplevel is
 
   generic (
-    axi_addr_width_g : integer := 19;
+    axi_addr_width_g : integer := 20;
     axi_id_width_g : integer := 12;
-    local_mem_addrw_g : integer := 0);
+    local_mem_addrw_g : integer := 5);
 
   port (
     clk : in std_logic;
@@ -107,27 +107,27 @@ architecture structural of tta_core_toplevel is
   signal core_db_pc_start_wire : std_logic_vector(IMEMADDRWIDTH-1 downto 0);
   signal core_db_bustraces_wire : std_logic_vector(BUSTRACE_WIDTH-1 downto 0);
   signal core_db_pc_next_wire : std_logic_vector(IMEMADDRWIDTH-1 downto 0);
-  signal core_fu_DBG_debug_lock_count_in_wire : std_logic_vector(63 downto 0);
   signal core_fu_DBG_debug_cycle_count_in_wire : std_logic_vector(63 downto 0);
-  signal onchip_mem_INSTR_a_aaddr_in_wire : std_logic_vector(12 downto 0);
-  signal onchip_mem_INSTR_a_adata_in_wire : std_logic_vector(81 downto 0);
+  signal core_fu_DBG_debug_lock_count_in_wire : std_logic_vector(63 downto 0);
+  signal onchip_mem_INSTR_a_aaddr_in_wire : std_logic_vector(13 downto 0);
+  signal onchip_mem_INSTR_a_adata_in_wire : std_logic_vector(83 downto 0);
   signal onchip_mem_INSTR_a_aready_out_wire : std_logic;
   signal onchip_mem_INSTR_a_astrb_in_wire : std_logic_vector(10 downto 0);
   signal onchip_mem_INSTR_a_avalid_in_wire : std_logic;
   signal onchip_mem_INSTR_a_awren_in_wire : std_logic;
-  signal onchip_mem_INSTR_a_rdata_out_wire : std_logic_vector(81 downto 0);
+  signal onchip_mem_INSTR_a_rdata_out_wire : std_logic_vector(83 downto 0);
   signal onchip_mem_INSTR_a_rready_in_wire : std_logic;
   signal onchip_mem_INSTR_a_rvalid_out_wire : std_logic;
-  signal onchip_mem_INSTR_b_aaddr_in_wire : std_logic_vector(12 downto 0);
-  signal onchip_mem_INSTR_b_adata_in_wire : std_logic_vector(81 downto 0);
+  signal onchip_mem_INSTR_b_aaddr_in_wire : std_logic_vector(13 downto 0);
+  signal onchip_mem_INSTR_b_adata_in_wire : std_logic_vector(83 downto 0);
   signal onchip_mem_INSTR_b_aready_out_wire : std_logic;
   signal onchip_mem_INSTR_b_astrb_in_wire : std_logic_vector(10 downto 0);
   signal onchip_mem_INSTR_b_avalid_in_wire : std_logic;
   signal onchip_mem_INSTR_b_awren_in_wire : std_logic;
-  signal onchip_mem_INSTR_b_rdata_out_wire : std_logic_vector(81 downto 0);
+  signal onchip_mem_INSTR_b_rdata_out_wire : std_logic_vector(83 downto 0);
   signal onchip_mem_INSTR_b_rready_in_wire : std_logic;
   signal onchip_mem_INSTR_b_rvalid_out_wire : std_logic;
-  signal onchip_mem_data_a_aaddr_in_wire : std_logic_vector(5 downto 0);
+  signal onchip_mem_data_a_aaddr_in_wire : std_logic_vector(4 downto 0);
   signal onchip_mem_data_a_adata_in_wire : std_logic_vector(1023 downto 0);
   signal onchip_mem_data_a_aready_out_wire : std_logic;
   signal onchip_mem_data_a_astrb_in_wire : std_logic_vector(127 downto 0);
@@ -136,7 +136,7 @@ architecture structural of tta_core_toplevel is
   signal onchip_mem_data_a_rdata_out_wire : std_logic_vector(1023 downto 0);
   signal onchip_mem_data_a_rready_in_wire : std_logic;
   signal onchip_mem_data_a_rvalid_out_wire : std_logic;
-  signal onchip_mem_data_b_aaddr_in_wire : std_logic_vector(5 downto 0);
+  signal onchip_mem_data_b_aaddr_in_wire : std_logic_vector(4 downto 0);
   signal onchip_mem_data_b_adata_in_wire : std_logic_vector(1023 downto 0);
   signal onchip_mem_data_b_aready_out_wire : std_logic;
   signal onchip_mem_data_b_astrb_in_wire : std_logic_vector(127 downto 0);
@@ -145,48 +145,57 @@ architecture structural of tta_core_toplevel is
   signal onchip_mem_data_b_rdata_out_wire : std_logic_vector(1023 downto 0);
   signal onchip_mem_data_b_rready_in_wire : std_logic;
   signal onchip_mem_data_b_rvalid_out_wire : std_logic;
-  signal onchip_mem_parameters_aaddr_in_wire : std_logic_vector(5 downto 0);
-  signal onchip_mem_parameters_adata_in_wire : std_logic_vector(1023 downto 0);
-  signal onchip_mem_parameters_aready_out_wire : std_logic;
-  signal onchip_mem_parameters_astrb_in_wire : std_logic_vector(127 downto 0);
-  signal onchip_mem_parameters_avalid_in_wire : std_logic;
-  signal onchip_mem_parameters_awren_in_wire : std_logic;
-  signal onchip_mem_parameters_rdata_out_wire : std_logic_vector(1023 downto 0);
-  signal onchip_mem_parameters_rready_in_wire : std_logic;
-  signal onchip_mem_parameters_rvalid_out_wire : std_logic;
-  signal tta_accel_0_core_db_pc_start_wire : std_logic_vector(12 downto 0);
-  signal tta_accel_0_core_db_pc_next_wire : std_logic_vector(12 downto 0);
-  signal tta_accel_0_core_db_bustraces_wire : std_logic_vector(2175 downto 0);
-  signal tta_accel_0_core_db_pc_wire : std_logic_vector(12 downto 0);
+  signal onchip_mem_param_a_aaddr_in_wire : std_logic_vector(4 downto 0);
+  signal onchip_mem_param_a_adata_in_wire : std_logic_vector(1023 downto 0);
+  signal onchip_mem_param_a_aready_out_wire : std_logic;
+  signal onchip_mem_param_a_astrb_in_wire : std_logic_vector(127 downto 0);
+  signal onchip_mem_param_a_avalid_in_wire : std_logic;
+  signal onchip_mem_param_a_awren_in_wire : std_logic;
+  signal onchip_mem_param_a_rdata_out_wire : std_logic_vector(1023 downto 0);
+  signal onchip_mem_param_a_rready_in_wire : std_logic;
+  signal onchip_mem_param_a_rvalid_out_wire : std_logic;
+  signal onchip_mem_param_b_aaddr_in_wire : std_logic_vector(4 downto 0);
+  signal onchip_mem_param_b_adata_in_wire : std_logic_vector(1023 downto 0);
+  signal onchip_mem_param_b_aready_out_wire : std_logic;
+  signal onchip_mem_param_b_astrb_in_wire : std_logic_vector(127 downto 0);
+  signal onchip_mem_param_b_avalid_in_wire : std_logic;
+  signal onchip_mem_param_b_awren_in_wire : std_logic;
+  signal onchip_mem_param_b_rdata_out_wire : std_logic_vector(1023 downto 0);
+  signal onchip_mem_param_b_rready_in_wire : std_logic;
+  signal onchip_mem_param_b_rvalid_out_wire : std_logic;
+  signal tta_accel_0_core_db_pc_start_wire : std_logic_vector(13 downto 0);
+  signal tta_accel_0_core_db_pc_next_wire : std_logic_vector(13 downto 0);
+  signal tta_accel_0_core_db_bustraces_wire : std_logic_vector(2207 downto 0);
+  signal tta_accel_0_core_db_pc_wire : std_logic_vector(13 downto 0);
   signal tta_accel_0_core_db_lockcnt_wire : std_logic_vector(63 downto 0);
   signal tta_accel_0_core_db_cyclecnt_wire : std_logic_vector(63 downto 0);
   signal tta_accel_0_core_db_tta_nreset_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_core_db_lockrq_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_core_busy_out_wire : std_logic_vector(0 downto 0);
-  signal tta_accel_0_core_imem_data_out_wire : std_logic_vector(81 downto 0);
+  signal tta_accel_0_core_imem_data_out_wire : std_logic_vector(83 downto 0);
   signal tta_accel_0_core_imem_en_x_in_wire : std_logic_vector(0 downto 0);
-  signal tta_accel_0_core_imem_addr_in_wire : std_logic_vector(12 downto 0);
+  signal tta_accel_0_core_imem_addr_in_wire : std_logic_vector(13 downto 0);
   signal tta_accel_0_INSTR_a_avalid_out_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_INSTR_a_aready_in_wire : std_logic_vector(0 downto 0);
-  signal tta_accel_0_INSTR_a_aaddr_out_wire : std_logic_vector(12 downto 0);
+  signal tta_accel_0_INSTR_a_aaddr_out_wire : std_logic_vector(13 downto 0);
   signal tta_accel_0_INSTR_a_awren_out_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_INSTR_a_astrb_out_wire : std_logic_vector(10 downto 0);
-  signal tta_accel_0_INSTR_a_adata_out_wire : std_logic_vector(81 downto 0);
+  signal tta_accel_0_INSTR_a_adata_out_wire : std_logic_vector(83 downto 0);
   signal tta_accel_0_INSTR_a_rvalid_in_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_INSTR_a_rready_out_wire : std_logic_vector(0 downto 0);
-  signal tta_accel_0_INSTR_a_rdata_in_wire : std_logic_vector(81 downto 0);
+  signal tta_accel_0_INSTR_a_rdata_in_wire : std_logic_vector(83 downto 0);
   signal tta_accel_0_INSTR_b_avalid_out_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_INSTR_b_aready_in_wire : std_logic_vector(0 downto 0);
-  signal tta_accel_0_INSTR_b_aaddr_out_wire : std_logic_vector(12 downto 0);
+  signal tta_accel_0_INSTR_b_aaddr_out_wire : std_logic_vector(13 downto 0);
   signal tta_accel_0_INSTR_b_awren_out_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_INSTR_b_astrb_out_wire : std_logic_vector(10 downto 0);
-  signal tta_accel_0_INSTR_b_adata_out_wire : std_logic_vector(81 downto 0);
+  signal tta_accel_0_INSTR_b_adata_out_wire : std_logic_vector(83 downto 0);
   signal tta_accel_0_INSTR_b_rvalid_in_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_INSTR_b_rready_out_wire : std_logic_vector(0 downto 0);
-  signal tta_accel_0_INSTR_b_rdata_in_wire : std_logic_vector(81 downto 0);
+  signal tta_accel_0_INSTR_b_rdata_in_wire : std_logic_vector(83 downto 0);
   signal tta_accel_0_core_dmem_avalid_in_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_core_dmem_aready_out_wire : std_logic_vector(0 downto 0);
-  signal tta_accel_0_core_dmem_aaddr_in_wire : std_logic_vector(5 downto 0);
+  signal tta_accel_0_core_dmem_aaddr_in_wire : std_logic_vector(4 downto 0);
   signal tta_accel_0_core_dmem_awren_in_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_core_dmem_astrb_in_wire : std_logic_vector(127 downto 0);
   signal tta_accel_0_core_dmem_adata_in_wire : std_logic_vector(1023 downto 0);
@@ -195,7 +204,7 @@ architecture structural of tta_core_toplevel is
   signal tta_accel_0_core_dmem_rdata_out_wire : std_logic_vector(1023 downto 0);
   signal tta_accel_0_data_a_avalid_out_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_data_a_aready_in_wire : std_logic_vector(0 downto 0);
-  signal tta_accel_0_data_a_aaddr_out_wire : std_logic_vector(5 downto 0);
+  signal tta_accel_0_data_a_aaddr_out_wire : std_logic_vector(4 downto 0);
   signal tta_accel_0_data_a_awren_out_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_data_a_astrb_out_wire : std_logic_vector(127 downto 0);
   signal tta_accel_0_data_a_adata_out_wire : std_logic_vector(1023 downto 0);
@@ -204,13 +213,40 @@ architecture structural of tta_core_toplevel is
   signal tta_accel_0_data_a_rdata_in_wire : std_logic_vector(1023 downto 0);
   signal tta_accel_0_data_b_avalid_out_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_data_b_aready_in_wire : std_logic_vector(0 downto 0);
-  signal tta_accel_0_data_b_aaddr_out_wire : std_logic_vector(5 downto 0);
+  signal tta_accel_0_data_b_aaddr_out_wire : std_logic_vector(4 downto 0);
   signal tta_accel_0_data_b_awren_out_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_data_b_astrb_out_wire : std_logic_vector(127 downto 0);
   signal tta_accel_0_data_b_adata_out_wire : std_logic_vector(1023 downto 0);
   signal tta_accel_0_data_b_rvalid_in_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_data_b_rready_out_wire : std_logic_vector(0 downto 0);
   signal tta_accel_0_data_b_rdata_in_wire : std_logic_vector(1023 downto 0);
+  signal tta_accel_0_core_pmem_avalid_in_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_core_pmem_aready_out_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_core_pmem_aaddr_in_wire : std_logic_vector(4 downto 0);
+  signal tta_accel_0_core_pmem_awren_in_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_core_pmem_astrb_in_wire : std_logic_vector(127 downto 0);
+  signal tta_accel_0_core_pmem_adata_in_wire : std_logic_vector(1023 downto 0);
+  signal tta_accel_0_core_pmem_rvalid_out_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_core_pmem_rready_in_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_core_pmem_rdata_out_wire : std_logic_vector(1023 downto 0);
+  signal tta_accel_0_param_a_avalid_out_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_param_a_aready_in_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_param_a_aaddr_out_wire : std_logic_vector(4 downto 0);
+  signal tta_accel_0_param_a_awren_out_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_param_a_astrb_out_wire : std_logic_vector(127 downto 0);
+  signal tta_accel_0_param_a_adata_out_wire : std_logic_vector(1023 downto 0);
+  signal tta_accel_0_param_a_rvalid_in_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_param_a_rready_out_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_param_a_rdata_in_wire : std_logic_vector(1023 downto 0);
+  signal tta_accel_0_param_b_avalid_out_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_param_b_aready_in_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_param_b_aaddr_out_wire : std_logic_vector(4 downto 0);
+  signal tta_accel_0_param_b_awren_out_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_param_b_astrb_out_wire : std_logic_vector(127 downto 0);
+  signal tta_accel_0_param_b_adata_out_wire : std_logic_vector(1023 downto 0);
+  signal tta_accel_0_param_b_rvalid_in_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_param_b_rready_out_wire : std_logic_vector(0 downto 0);
+  signal tta_accel_0_param_b_rdata_in_wire : std_logic_vector(1023 downto 0);
 
   component tta_core
     generic (
@@ -276,8 +312,8 @@ architecture structural of tta_core_toplevel is
       db_pc_start : in std_logic_vector(IMEMADDRWIDTH-1 downto 0);
       db_bustraces : out std_logic_vector(BUSTRACE_WIDTH-1 downto 0);
       db_pc_next : out std_logic_vector(IMEMADDRWIDTH-1 downto 0);
-      fu_DBG_debug_lock_count_in : in std_logic_vector(64-1 downto 0);
-      fu_DBG_debug_cycle_count_in : in std_logic_vector(64-1 downto 0));
+      fu_DBG_debug_cycle_count_in : in std_logic_vector(64-1 downto 0);
+      fu_DBG_debug_lock_count_in : in std_logic_vector(64-1 downto 0));
   end component;
 
   component tta_accel
@@ -327,39 +363,39 @@ architecture structural of tta_core_toplevel is
       s_axi_rlast : out std_logic;
       s_axi_rvalid : out std_logic;
       s_axi_rready : in std_logic;
-      core_db_pc_start : out std_logic_vector(13-1 downto 0);
-      core_db_pc_next : in std_logic_vector(13-1 downto 0);
-      core_db_bustraces : in std_logic_vector(2176-1 downto 0);
-      core_db_pc : in std_logic_vector(13-1 downto 0);
+      core_db_pc_start : out std_logic_vector(14-1 downto 0);
+      core_db_pc_next : in std_logic_vector(14-1 downto 0);
+      core_db_bustraces : in std_logic_vector(2208-1 downto 0);
+      core_db_pc : in std_logic_vector(14-1 downto 0);
       core_db_lockcnt : in std_logic_vector(64-1 downto 0);
       core_db_cyclecnt : in std_logic_vector(64-1 downto 0);
       core_db_tta_nreset : out std_logic_vector(1-1 downto 0);
       core_db_lockrq : out std_logic_vector(1-1 downto 0);
       core_busy_out : out std_logic_vector(1-1 downto 0);
-      core_imem_data_out : out std_logic_vector(82-1 downto 0);
+      core_imem_data_out : out std_logic_vector(84-1 downto 0);
       core_imem_en_x_in : in std_logic_vector(1-1 downto 0);
-      core_imem_addr_in : in std_logic_vector(13-1 downto 0);
+      core_imem_addr_in : in std_logic_vector(14-1 downto 0);
       INSTR_a_avalid_out : out std_logic_vector(1-1 downto 0);
       INSTR_a_aready_in : in std_logic_vector(1-1 downto 0);
-      INSTR_a_aaddr_out : out std_logic_vector(13-1 downto 0);
+      INSTR_a_aaddr_out : out std_logic_vector(14-1 downto 0);
       INSTR_a_awren_out : out std_logic_vector(1-1 downto 0);
       INSTR_a_astrb_out : out std_logic_vector(11-1 downto 0);
-      INSTR_a_adata_out : out std_logic_vector(82-1 downto 0);
+      INSTR_a_adata_out : out std_logic_vector(84-1 downto 0);
       INSTR_a_rvalid_in : in std_logic_vector(1-1 downto 0);
       INSTR_a_rready_out : out std_logic_vector(1-1 downto 0);
-      INSTR_a_rdata_in : in std_logic_vector(82-1 downto 0);
+      INSTR_a_rdata_in : in std_logic_vector(84-1 downto 0);
       INSTR_b_avalid_out : out std_logic_vector(1-1 downto 0);
       INSTR_b_aready_in : in std_logic_vector(1-1 downto 0);
-      INSTR_b_aaddr_out : out std_logic_vector(13-1 downto 0);
+      INSTR_b_aaddr_out : out std_logic_vector(14-1 downto 0);
       INSTR_b_awren_out : out std_logic_vector(1-1 downto 0);
       INSTR_b_astrb_out : out std_logic_vector(11-1 downto 0);
-      INSTR_b_adata_out : out std_logic_vector(82-1 downto 0);
+      INSTR_b_adata_out : out std_logic_vector(84-1 downto 0);
       INSTR_b_rvalid_in : in std_logic_vector(1-1 downto 0);
       INSTR_b_rready_out : out std_logic_vector(1-1 downto 0);
-      INSTR_b_rdata_in : in std_logic_vector(82-1 downto 0);
+      INSTR_b_rdata_in : in std_logic_vector(84-1 downto 0);
       core_dmem_avalid_in : in std_logic_vector(1-1 downto 0);
       core_dmem_aready_out : out std_logic_vector(1-1 downto 0);
-      core_dmem_aaddr_in : in std_logic_vector(6-1 downto 0);
+      core_dmem_aaddr_in : in std_logic_vector(5-1 downto 0);
       core_dmem_awren_in : in std_logic_vector(1-1 downto 0);
       core_dmem_astrb_in : in std_logic_vector(128-1 downto 0);
       core_dmem_adata_in : in std_logic_vector(1024-1 downto 0);
@@ -368,7 +404,7 @@ architecture structural of tta_core_toplevel is
       core_dmem_rdata_out : out std_logic_vector(1024-1 downto 0);
       data_a_avalid_out : out std_logic_vector(1-1 downto 0);
       data_a_aready_in : in std_logic_vector(1-1 downto 0);
-      data_a_aaddr_out : out std_logic_vector(6-1 downto 0);
+      data_a_aaddr_out : out std_logic_vector(5-1 downto 0);
       data_a_awren_out : out std_logic_vector(1-1 downto 0);
       data_a_astrb_out : out std_logic_vector(128-1 downto 0);
       data_a_adata_out : out std_logic_vector(1024-1 downto 0);
@@ -377,13 +413,40 @@ architecture structural of tta_core_toplevel is
       data_a_rdata_in : in std_logic_vector(1024-1 downto 0);
       data_b_avalid_out : out std_logic_vector(1-1 downto 0);
       data_b_aready_in : in std_logic_vector(1-1 downto 0);
-      data_b_aaddr_out : out std_logic_vector(6-1 downto 0);
+      data_b_aaddr_out : out std_logic_vector(5-1 downto 0);
       data_b_awren_out : out std_logic_vector(1-1 downto 0);
       data_b_astrb_out : out std_logic_vector(128-1 downto 0);
       data_b_adata_out : out std_logic_vector(1024-1 downto 0);
       data_b_rvalid_in : in std_logic_vector(1-1 downto 0);
       data_b_rready_out : out std_logic_vector(1-1 downto 0);
-      data_b_rdata_in : in std_logic_vector(1024-1 downto 0));
+      data_b_rdata_in : in std_logic_vector(1024-1 downto 0);
+      core_pmem_avalid_in : in std_logic_vector(1-1 downto 0);
+      core_pmem_aready_out : out std_logic_vector(1-1 downto 0);
+      core_pmem_aaddr_in : in std_logic_vector(5-1 downto 0);
+      core_pmem_awren_in : in std_logic_vector(1-1 downto 0);
+      core_pmem_astrb_in : in std_logic_vector(128-1 downto 0);
+      core_pmem_adata_in : in std_logic_vector(1024-1 downto 0);
+      core_pmem_rvalid_out : out std_logic_vector(1-1 downto 0);
+      core_pmem_rready_in : in std_logic_vector(1-1 downto 0);
+      core_pmem_rdata_out : out std_logic_vector(1024-1 downto 0);
+      param_a_avalid_out : out std_logic_vector(1-1 downto 0);
+      param_a_aready_in : in std_logic_vector(1-1 downto 0);
+      param_a_aaddr_out : out std_logic_vector(5-1 downto 0);
+      param_a_awren_out : out std_logic_vector(1-1 downto 0);
+      param_a_astrb_out : out std_logic_vector(128-1 downto 0);
+      param_a_adata_out : out std_logic_vector(1024-1 downto 0);
+      param_a_rvalid_in : in std_logic_vector(1-1 downto 0);
+      param_a_rready_out : out std_logic_vector(1-1 downto 0);
+      param_a_rdata_in : in std_logic_vector(1024-1 downto 0);
+      param_b_avalid_out : out std_logic_vector(1-1 downto 0);
+      param_b_aready_in : in std_logic_vector(1-1 downto 0);
+      param_b_aaddr_out : out std_logic_vector(5-1 downto 0);
+      param_b_awren_out : out std_logic_vector(1-1 downto 0);
+      param_b_astrb_out : out std_logic_vector(128-1 downto 0);
+      param_b_adata_out : out std_logic_vector(1024-1 downto 0);
+      param_b_rvalid_in : in std_logic_vector(1-1 downto 0);
+      param_b_rready_out : out std_logic_vector(1-1 downto 0);
+      param_b_rdata_in : in std_logic_vector(1024-1 downto 0));
   end component;
 
   component xilinx_dp_blockram
@@ -413,24 +476,6 @@ architecture structural of tta_core_toplevel is
       rstx : in std_logic);
   end component;
 
-  component xilinx_blockram
-    generic (
-      dataw_g : integer;
-      addrw_g : integer);
-    port (
-      aaddr_in : in std_logic_vector(addrw_g-1 downto 0);
-      adata_in : in std_logic_vector(dataw_g-1 downto 0);
-      aready_out : out std_logic;
-      astrb_in : in std_logic_vector((dataw_g+7)/8-1 downto 0);
-      avalid_in : in std_logic;
-      awren_in : in std_logic;
-      clk : in std_logic;
-      rdata_out : out std_logic_vector(dataw_g-1 downto 0);
-      rready_in : in std_logic;
-      rstx : in std_logic;
-      rvalid_out : out std_logic);
-  end component;
-
 
 begin
 
@@ -447,15 +492,15 @@ begin
   core_fu_dmem_LSU_rvalid_in_wire <= tta_accel_0_core_dmem_rvalid_out_wire;
   tta_accel_0_core_dmem_rready_in_wire <= core_fu_dmem_LSU_rready_out_wire;
   core_fu_dmem_LSU_rdata_in_wire <= tta_accel_0_core_dmem_rdata_out_wire;
-  onchip_mem_parameters_avalid_in_wire <= core_fu_pmem_LSU_avalid_out_wire(0);
-  core_fu_pmem_LSU_aready_in_wire(0) <= onchip_mem_parameters_aready_out_wire;
-  onchip_mem_parameters_aaddr_in_wire <= core_fu_pmem_LSU_aaddr_out_wire;
-  onchip_mem_parameters_awren_in_wire <= core_fu_pmem_LSU_awren_out_wire(0);
-  onchip_mem_parameters_astrb_in_wire <= core_fu_pmem_LSU_astrb_out_wire;
-  onchip_mem_parameters_adata_in_wire <= core_fu_pmem_LSU_adata_out_wire;
-  core_fu_pmem_LSU_rvalid_in_wire(0) <= onchip_mem_parameters_rvalid_out_wire;
-  onchip_mem_parameters_rready_in_wire <= core_fu_pmem_LSU_rready_out_wire(0);
-  core_fu_pmem_LSU_rdata_in_wire <= onchip_mem_parameters_rdata_out_wire;
+  tta_accel_0_core_pmem_avalid_in_wire <= core_fu_pmem_LSU_avalid_out_wire;
+  core_fu_pmem_LSU_aready_in_wire <= tta_accel_0_core_pmem_aready_out_wire;
+  tta_accel_0_core_pmem_aaddr_in_wire <= core_fu_pmem_LSU_aaddr_out_wire;
+  tta_accel_0_core_pmem_awren_in_wire <= core_fu_pmem_LSU_awren_out_wire;
+  tta_accel_0_core_pmem_astrb_in_wire <= core_fu_pmem_LSU_astrb_out_wire;
+  tta_accel_0_core_pmem_adata_in_wire <= core_fu_pmem_LSU_adata_out_wire;
+  core_fu_pmem_LSU_rvalid_in_wire <= tta_accel_0_core_pmem_rvalid_out_wire;
+  tta_accel_0_core_pmem_rready_in_wire <= core_fu_pmem_LSU_rready_out_wire;
+  core_fu_pmem_LSU_rdata_in_wire <= tta_accel_0_core_pmem_rdata_out_wire;
   core_db_tta_nreset_wire <= tta_accel_0_core_db_tta_nreset_wire(0);
   core_fu_DBG_debug_lock_count_in_wire <= core_db_lockcnt_wire;
   tta_accel_0_core_db_lockcnt_wire <= core_db_lockcnt_wire;
@@ -502,6 +547,24 @@ begin
   tta_accel_0_data_b_rvalid_in_wire(0) <= onchip_mem_data_b_rvalid_out_wire;
   onchip_mem_data_b_rready_in_wire <= tta_accel_0_data_b_rready_out_wire(0);
   tta_accel_0_data_b_rdata_in_wire <= onchip_mem_data_b_rdata_out_wire;
+  onchip_mem_param_a_avalid_in_wire <= tta_accel_0_param_a_avalid_out_wire(0);
+  tta_accel_0_param_a_aready_in_wire(0) <= onchip_mem_param_a_aready_out_wire;
+  onchip_mem_param_a_aaddr_in_wire <= tta_accel_0_param_a_aaddr_out_wire;
+  onchip_mem_param_a_awren_in_wire <= tta_accel_0_param_a_awren_out_wire(0);
+  onchip_mem_param_a_astrb_in_wire <= tta_accel_0_param_a_astrb_out_wire;
+  onchip_mem_param_a_adata_in_wire <= tta_accel_0_param_a_adata_out_wire;
+  tta_accel_0_param_a_rvalid_in_wire(0) <= onchip_mem_param_a_rvalid_out_wire;
+  onchip_mem_param_a_rready_in_wire <= tta_accel_0_param_a_rready_out_wire(0);
+  tta_accel_0_param_a_rdata_in_wire <= onchip_mem_param_a_rdata_out_wire;
+  onchip_mem_param_b_avalid_in_wire <= tta_accel_0_param_b_avalid_out_wire(0);
+  tta_accel_0_param_b_aready_in_wire(0) <= onchip_mem_param_b_aready_out_wire;
+  onchip_mem_param_b_aaddr_in_wire <= tta_accel_0_param_b_aaddr_out_wire;
+  onchip_mem_param_b_awren_in_wire <= tta_accel_0_param_b_awren_out_wire(0);
+  onchip_mem_param_b_astrb_in_wire <= tta_accel_0_param_b_astrb_out_wire;
+  onchip_mem_param_b_adata_in_wire <= tta_accel_0_param_b_adata_out_wire;
+  tta_accel_0_param_b_rvalid_in_wire(0) <= onchip_mem_param_b_rvalid_out_wire;
+  onchip_mem_param_b_rready_in_wire <= tta_accel_0_param_b_rready_out_wire(0);
+  tta_accel_0_param_b_rdata_in_wire <= onchip_mem_param_b_rdata_out_wire;
 
   core : tta_core
     generic map (
@@ -567,25 +630,25 @@ begin
       db_pc_start => core_db_pc_start_wire,
       db_bustraces => core_db_bustraces_wire,
       db_pc_next => core_db_pc_next_wire,
-      fu_DBG_debug_lock_count_in => core_fu_DBG_debug_lock_count_in_wire,
-      fu_DBG_debug_cycle_count_in => core_fu_DBG_debug_cycle_count_in_wire);
+      fu_DBG_debug_cycle_count_in => core_fu_DBG_debug_cycle_count_in_wire,
+      fu_DBG_debug_lock_count_in => core_fu_DBG_debug_lock_count_in_wire);
 
   tta_accel_0 : tta_accel
     generic map (
       core_count_g => 1,
       axi_addr_width_g => axi_addr_width_g,
       axi_id_width_g => axi_id_width_g,
-      imem_addr_width_g => 13,
-      imem_data_width_g => 82,
-      bus_count_g => 68,
+      imem_addr_width_g => 14,
+      imem_data_width_g => 84,
+      bus_count_g => 69,
       local_mem_addrw_g => local_mem_addrw_g,
       sync_reset_g => 1,
       axi_offset_g => 0,
       full_debugger_g => 1,
       dmem_data_width_g => 1024,
-      dmem_addr_width_g => 6,
-      pmem_data_width_g => 0,
-      pmem_addr_width_g => 0)
+      dmem_addr_width_g => 5,
+      pmem_data_width_g => 1024,
+      pmem_addr_width_g => 5)
     port map (
       clk => clk,
       rstx => rstx,
@@ -673,12 +736,39 @@ begin
       data_b_adata_out => tta_accel_0_data_b_adata_out_wire,
       data_b_rvalid_in => tta_accel_0_data_b_rvalid_in_wire,
       data_b_rready_out => tta_accel_0_data_b_rready_out_wire,
-      data_b_rdata_in => tta_accel_0_data_b_rdata_in_wire);
+      data_b_rdata_in => tta_accel_0_data_b_rdata_in_wire,
+      core_pmem_avalid_in => tta_accel_0_core_pmem_avalid_in_wire,
+      core_pmem_aready_out => tta_accel_0_core_pmem_aready_out_wire,
+      core_pmem_aaddr_in => tta_accel_0_core_pmem_aaddr_in_wire,
+      core_pmem_awren_in => tta_accel_0_core_pmem_awren_in_wire,
+      core_pmem_astrb_in => tta_accel_0_core_pmem_astrb_in_wire,
+      core_pmem_adata_in => tta_accel_0_core_pmem_adata_in_wire,
+      core_pmem_rvalid_out => tta_accel_0_core_pmem_rvalid_out_wire,
+      core_pmem_rready_in => tta_accel_0_core_pmem_rready_in_wire,
+      core_pmem_rdata_out => tta_accel_0_core_pmem_rdata_out_wire,
+      param_a_avalid_out => tta_accel_0_param_a_avalid_out_wire,
+      param_a_aready_in => tta_accel_0_param_a_aready_in_wire,
+      param_a_aaddr_out => tta_accel_0_param_a_aaddr_out_wire,
+      param_a_awren_out => tta_accel_0_param_a_awren_out_wire,
+      param_a_astrb_out => tta_accel_0_param_a_astrb_out_wire,
+      param_a_adata_out => tta_accel_0_param_a_adata_out_wire,
+      param_a_rvalid_in => tta_accel_0_param_a_rvalid_in_wire,
+      param_a_rready_out => tta_accel_0_param_a_rready_out_wire,
+      param_a_rdata_in => tta_accel_0_param_a_rdata_in_wire,
+      param_b_avalid_out => tta_accel_0_param_b_avalid_out_wire,
+      param_b_aready_in => tta_accel_0_param_b_aready_in_wire,
+      param_b_aaddr_out => tta_accel_0_param_b_aaddr_out_wire,
+      param_b_awren_out => tta_accel_0_param_b_awren_out_wire,
+      param_b_astrb_out => tta_accel_0_param_b_astrb_out_wire,
+      param_b_adata_out => tta_accel_0_param_b_adata_out_wire,
+      param_b_rvalid_in => tta_accel_0_param_b_rvalid_in_wire,
+      param_b_rready_out => tta_accel_0_param_b_rready_out_wire,
+      param_b_rdata_in => tta_accel_0_param_b_rdata_in_wire);
 
   onchip_mem_INSTR : xilinx_dp_blockram
     generic map (
-      dataw_g => 82,
-      addrw_g => 13)
+      dataw_g => 84,
+      addrw_g => 14)
     port map (
       a_aaddr_in => onchip_mem_INSTR_a_aaddr_in_wire,
       a_adata_in => onchip_mem_INSTR_a_adata_in_wire,
@@ -704,7 +794,7 @@ begin
   onchip_mem_data : xilinx_dp_blockram
     generic map (
       dataw_g => 1024,
-      addrw_g => 6)
+      addrw_g => 5)
     port map (
       a_aaddr_in => onchip_mem_data_a_aaddr_in_wire,
       a_adata_in => onchip_mem_data_a_adata_in_wire,
@@ -727,21 +817,30 @@ begin
       clk => clk,
       rstx => rstx);
 
-  onchip_mem_parameters : xilinx_blockram
+  onchip_mem_param : xilinx_dp_blockram
     generic map (
       dataw_g => 1024,
-      addrw_g => 6)
+      addrw_g => 5)
     port map (
-      aaddr_in => onchip_mem_parameters_aaddr_in_wire,
-      adata_in => onchip_mem_parameters_adata_in_wire,
-      aready_out => onchip_mem_parameters_aready_out_wire,
-      astrb_in => onchip_mem_parameters_astrb_in_wire,
-      avalid_in => onchip_mem_parameters_avalid_in_wire,
-      awren_in => onchip_mem_parameters_awren_in_wire,
+      a_aaddr_in => onchip_mem_param_a_aaddr_in_wire,
+      a_adata_in => onchip_mem_param_a_adata_in_wire,
+      a_aready_out => onchip_mem_param_a_aready_out_wire,
+      a_astrb_in => onchip_mem_param_a_astrb_in_wire,
+      a_avalid_in => onchip_mem_param_a_avalid_in_wire,
+      a_awren_in => onchip_mem_param_a_awren_in_wire,
+      a_rdata_out => onchip_mem_param_a_rdata_out_wire,
+      a_rready_in => onchip_mem_param_a_rready_in_wire,
+      a_rvalid_out => onchip_mem_param_a_rvalid_out_wire,
+      b_aaddr_in => onchip_mem_param_b_aaddr_in_wire,
+      b_adata_in => onchip_mem_param_b_adata_in_wire,
+      b_aready_out => onchip_mem_param_b_aready_out_wire,
+      b_astrb_in => onchip_mem_param_b_astrb_in_wire,
+      b_avalid_in => onchip_mem_param_b_avalid_in_wire,
+      b_awren_in => onchip_mem_param_b_awren_in_wire,
+      b_rdata_out => onchip_mem_param_b_rdata_out_wire,
+      b_rready_in => onchip_mem_param_b_rready_in_wire,
+      b_rvalid_out => onchip_mem_param_b_rvalid_out_wire,
       clk => clk,
-      rdata_out => onchip_mem_parameters_rdata_out_wire,
-      rready_in => onchip_mem_parameters_rready_in_wire,
-      rstx => rstx,
-      rvalid_out => onchip_mem_parameters_rvalid_out_wire);
+      rstx => rstx);
 
 end structural;

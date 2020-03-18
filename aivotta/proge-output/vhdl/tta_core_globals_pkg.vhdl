@@ -3,7 +3,7 @@ use work.tta_core_imem_mau.all;
 
 package tta_core_globals is
   -- address width of the instruction memory
-  constant IMEMADDRWIDTH : positive := 13;
+  constant IMEMADDRWIDTH : positive := 14;
   -- width of the instruction memory in MAUs
   constant IMEMWIDTHINMAUS : positive := 1;
   -- width of instruction fetch block.
@@ -11,9 +11,9 @@ package tta_core_globals is
   -- clock period
   constant PERIOD : time := 10 ns;
   -- number of busses.
-  constant BUSTRACE_WIDTH : positive := 2176;
+  constant BUSTRACE_WIDTH : positive := 2208;
   -- number of cores
   constant CORECOUNT : positive := 1;
   -- instruction width
-  constant INSTRUCTIONWIDTH : positive := 82;
+  constant INSTRUCTIONWIDTH : positive := 84;
 end tta_core_globals;

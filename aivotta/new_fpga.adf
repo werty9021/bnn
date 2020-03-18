@@ -44,7 +44,7 @@
       <writes-to/>
     </segment>
     <short-immediate>
-      <extension>sign</extension>
+      <extension>zero</extension>
       <width>12</width>
     </short-immediate>
   </bus>
@@ -54,44 +54,12 @@
     <guard>
       <always-true/>
     </guard>
-    <guard>
-      <simple-expr>
-        <bool>
-          <name>RF_BOOL</name>
-          <index>0</index>
-        </bool>
-      </simple-expr>
-    </guard>
-    <guard>
-      <simple-expr>
-        <bool>
-          <name>RF_BOOL</name>
-          <index>1</index>
-        </bool>
-      </simple-expr>
-    </guard>
-    <guard>
-      <inverted-expr>
-        <bool>
-          <name>RF_BOOL</name>
-          <index>0</index>
-        </bool>
-      </inverted-expr>
-    </guard>
-    <guard>
-      <inverted-expr>
-        <bool>
-          <name>RF_BOOL</name>
-          <index>1</index>
-        </bool>
-      </inverted-expr>
-    </guard>
     <segment name="seg1">
       <writes-to/>
     </segment>
     <short-immediate>
       <extension>sign</extension>
-      <width>8</width>
+      <width>9</width>
     </short-immediate>
   </bus>
 
@@ -123,26 +91,24 @@
     </short-immediate>
   </bus>
 
+  <bus name="B5">
+    <width>32</width>
+    <guard>
+      <always-true/>
+    </guard>
+    <segment name="seg1">
+      <writes-to/>
+    </segment>
+    <short-immediate>
+      <extension>zero</extension>
+      <width>0</width>
+    </short-immediate>
+  </bus>
+
   <bus name="vB1024A">
     <width>1024</width>
     <guard>
       <always-true/>
-    </guard>
-    <guard>
-      <simple-expr>
-        <bool>
-          <name>RF_BOOL</name>
-          <index>0</index>
-        </bool>
-      </simple-expr>
-    </guard>
-    <guard>
-      <inverted-expr>
-        <bool>
-          <name>RF_BOOL</name>
-          <index>0</index>
-        </bool>
-      </inverted-expr>
     </guard>
     <segment name="seg1">
       <writes-to/>
@@ -180,11 +146,11 @@
 
   <socket name="ALU_o1">
     <writes-to>
-      <bus>B3</bus>
+      <bus>B1</bus>
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
-      <bus>B2</bus>
+      <bus>B4</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
@@ -195,7 +161,11 @@
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B2</bus>
+      <bus>B4</bus>
+      <segment>seg1</segment>
+    </reads-from>
+    <reads-from>
+      <bus>B1</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
@@ -208,10 +178,6 @@
   </socket>
 
   <socket name="LSU1_i2">
-    <reads-from>
-      <bus>B1</bus>
-      <segment>seg1</segment>
-    </reads-from>
     <reads-from>
       <bus>B2</bus>
       <segment>seg1</segment>
@@ -323,7 +289,7 @@
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
-      <bus>B1</bus>
+      <bus>B5</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
@@ -361,21 +327,9 @@
       <bus>B2</bus>
       <segment>seg1</segment>
     </reads-from>
-    <reads-from>
-      <bus>B4</bus>
-      <segment>seg1</segment>
-    </reads-from>
-    <reads-from>
-      <bus>B3</bus>
-      <segment>seg1</segment>
-    </reads-from>
   </socket>
 
   <socket name="add_mul_sub_i2">
-    <reads-from>
-      <bus>B1</bus>
-      <segment>seg1</segment>
-    </reads-from>
     <reads-from>
       <bus>B4</bus>
       <segment>seg1</segment>
@@ -383,10 +337,6 @@
   </socket>
 
   <socket name="add_mul_sub_o1">
-    <writes-to>
-      <bus>B2</bus>
-      <segment>seg1</segment>
-    </writes-to>
     <writes-to>
       <bus>B3</bus>
       <segment>seg1</segment>
@@ -418,7 +368,7 @@
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B2</bus>
+      <bus>B4</bus>
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
@@ -426,7 +376,7 @@
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B4</bus>
+      <bus>B2</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
@@ -437,7 +387,11 @@
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B1</bus>
+      <bus>B5</bus>
+      <segment>seg1</segment>
+    </reads-from>
+    <reads-from>
+      <bus>B4</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
@@ -465,22 +419,22 @@
 
   <socket name="vOPS_i1">
     <reads-from>
-      <bus>vB1024B</bus>
+      <bus>B1</bus>
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B1</bus>
+      <bus>vB1024B</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
 
   <socket name="vOPS_i2">
     <reads-from>
-      <bus>vB1024B</bus>
+      <bus>B2</bus>
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B3</bus>
+      <bus>vB1024A</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
@@ -494,20 +448,16 @@
 
   <socket name="vOPS_o1">
     <writes-to>
-      <bus>vB1024B</bus>
+      <bus>B2</bus>
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
-      <bus>B1</bus>
+      <bus>vB1024B</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
 
   <socket name="LSU2_i2">
-    <reads-from>
-      <bus>B4</bus>
-      <segment>seg1</segment>
-    </reads-from>
     <reads-from>
       <bus>B3</bus>
       <segment>seg1</segment>
@@ -538,30 +488,30 @@
 
   <socket name="LSU2_o2">
     <writes-to>
-      <bus>B3</bus>
+      <bus>B2</bus>
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
-      <bus>B2</bus>
+      <bus>B3</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
 
   <socket name="RF32A_o1">
     <writes-to>
-      <bus>B1</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
       <bus>B2</bus>
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
-      <bus>B3</bus>
+      <bus>B1</bus>
       <segment>seg1</segment>
     </writes-to>
     <writes-to>
       <bus>B4</bus>
+      <segment>seg1</segment>
+    </writes-to>
+    <writes-to>
+      <bus>B3</bus>
       <segment>seg1</segment>
     </writes-to>
   </socket>
@@ -572,7 +522,7 @@
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B2</bus>
+      <bus>B4</bus>
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
@@ -580,7 +530,7 @@
       <segment>seg1</segment>
     </reads-from>
     <reads-from>
-      <bus>B4</bus>
+      <bus>B2</bus>
       <segment>seg1</segment>
     </reads-from>
   </socket>
@@ -1128,6 +1078,21 @@
         </writes>
       </pipeline>
     </operation>
+    <operation>
+      <name>vbcast32x32</name>
+      <bind name="1">in1t</bind>
+      <bind name="2">out1</bind>
+      <pipeline>
+        <reads name="1">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <writes name="2">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </writes>
+      </pipeline>
+    </operation>
     <address-space/>
   </function-unit>
 
@@ -1472,7 +1437,7 @@
         </reads>
       </pipeline>
     </operation>
-    <address-space>parameters</address-space>
+    <address-space>param</address-space>
   </function-unit>
 
   <function-unit name="DMA">
@@ -1494,26 +1459,6 @@
       <connects-to>dma_o1</connects-to>
       <width>32</width>
     </port>
-    <operation>
-      <name>burst_bc</name>
-      <bind name="1">in1t</bind>
-      <bind name="2">in2</bind>
-      <bind name="3">in3</bind>
-      <pipeline>
-        <reads name="1">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <reads name="2">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-        <reads name="3">
-          <start-cycle>0</start-cycle>
-          <cycles>1</cycles>
-        </reads>
-      </pipeline>
-    </operation>
     <operation>
       <name>status_bc</name>
       <bind name="1">in1t</bind>
@@ -1557,6 +1502,31 @@
           <start-cycle>0</start-cycle>
           <cycles>1</cycles>
         </reads>
+      </pipeline>
+    </operation>
+    <operation>
+      <name>burst_bc</name>
+      <bind name="1">in1t</bind>
+      <bind name="2">in2</bind>
+      <bind name="3">in3</bind>
+      <bind name="4">out1</bind>
+      <pipeline>
+        <reads name="1">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <reads name="2">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <reads name="3">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </reads>
+        <writes name="4">
+          <start-cycle>0</start-cycle>
+          <cycles>1</cycles>
+        </writes>
       </pipeline>
     </operation>
     <address-space>axi_as</address-space>
@@ -1728,7 +1698,7 @@
 
   <register-file name="vRF1024">
     <type>normal</type>
-    <size>4</size>
+    <size>8</size>
     <width>1024</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -1743,7 +1713,7 @@
   <address-space name="instructions">
     <width>8</width>
     <min-address>0</min-address>
-    <max-address>8191</max-address>
+    <max-address>16383</max-address>
     <shared-memory>0</shared-memory>
   </address-space>
 
@@ -1755,10 +1725,10 @@
     <numerical-id>0</numerical-id>
   </address-space>
 
-  <address-space name="parameters">
+  <address-space name="param">
     <width>8</width>
     <min-address>0</min-address>
-    <max-address>8191</max-address>
+    <max-address>4095</max-address>
     <shared-memory>0</shared-memory>
     <numerical-id>1</numerical-id>
   </address-space>
@@ -1822,20 +1792,16 @@
     <template name="no_limm"/>
     <template name="limm32">
       <slot>
-        <name>B2</name>
-        <width>8</width>
-      </slot>
-      <slot>
         <name>B1</name>
-        <width>8</width>
+        <width>23</width>
       </slot>
       <slot>
-        <name>B3</name>
-        <width>8</width>
+        <name>vB1024A</name>
+        <width>5</width>
       </slot>
       <slot>
-        <name>B4</name>
-        <width>8</width>
+        <name>vB1024B</name>
+        <width>4</width>
       </slot>
     </template>
   </immediate-unit>

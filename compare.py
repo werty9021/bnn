@@ -8,7 +8,7 @@ for filename in sorted(os.listdir('../data/output/')):
     suffix = filename.split('.')[0]
     if suffix in ['conv0', 'conv16', 'act15']:
         ref_dtype = np.float32
-        out_dtype = np.float32
+        out_dtype = np.uint16
     elif 'conv' in suffix:
         ref_dtype = np.float32
         out_dtype = np.uint16

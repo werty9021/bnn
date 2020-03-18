@@ -6,9 +6,9 @@ static inline unsigned minu(unsigned arg0, unsigned arg1) {
 }
 
 // __attribute__((__noinline__))
-void dma_queue_bursts(unsigned from, unsigned to, const unsigned elements, const unsigned bytes) {
+int dma_queue_bursts(unsigned from, unsigned to, const unsigned elements, const unsigned bytes) {
     unsigned length = elements * bytes;
-    
+    int id;
     #if DMA_sw
     while (length != 0) {
         // Figure out the longest burst possible within AXI constraints
@@ -26,14 +26,16 @@ void dma_queue_bursts(unsigned from, unsigned to, const unsigned elements, const
         }
         burst_len = minu(boundary_check_max, burst_len);
         unsigned burst_len_actual = burst_len - 1;
-        _TCE_BURST_BC(burst_len_actual, from, to);
+        
+        _TCE_BURST_BC(burst_len_actual, from, to, id);
         length -= burst_len;
         from += burst_len;
         to += burst_len;
     }
     #else
-    _TCE_BURST_BC(length, from, to);
+    _TCE_BURST_BC(length, from, to, id);
     #endif
+    return id;
 }
 
 extern inline void dma_wait();
